@@ -18,3 +18,8 @@ body {
   height: 100vh;
   position: relative;
 }
+
+button {
+  background: none;
+  border: none;
+}

@@ -1,134 +1,162 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { getTodosLocalStorage } from "../../helpers/getTodosLocalStorage";
-import { PayloadTodos, TodosState } from "../../entities/entities";
 
-const initialState: TodosState = {
-  todos: getTodosLocalStorage(),
-  categoryTodo: "",
-  isSaving: false,
-  isEditing: false,
-  todoEdit: "",
+import { ToDo, ToDoCategory, ToDosState } from "../../entities/entities";
+
+import { getCategoriesFromLocalStorage } from "../../helpers/getCategoriesFromLocalStorage";
+import { defaultCategories } from "../../constants/config";
+
+const localStorageCategories = getCategoriesFromLocalStorage();
+
+const initialState: ToDosState = {
+  categories: localStorageCategories.length
+    ? localStorageCategories
+    : defaultCategories,
+  loading: false,
+  viewIdCategory: "",
+  idToDoToEdit: "",
 };
 
-export const todosSlice = createSlice({
-  name: "todos",
+export const toDosSlice = createSlice({
+  name: "toDos",
   initialState,
   reducers: {
-    setCategoryTodo: (
-      state,
-      action: PayloadAction<PayloadTodos["setCategoryTodo"]>
-    ) => {
-      state.categoryTodo = action.payload;
+    newCategoryToDo: (state, action: PayloadAction<ToDoCategory>) => {
+      state.loading = true;
+
+      const category = action.payload;
+
+      state.categories.push(category);
+      state.loading = false;
     },
-    newCategoryTodo: (
+    addToDo: (
       state,
-      action: PayloadAction<PayloadTodos["newCategoryTodo"]>
+      action: PayloadAction<{
+        idCategory: string;
+        newToDo: ToDo;
+      }>
     ) => {
-      state.isSaving = true;
-      state.todos.push(action.payload);
-      state.isSaving = false;
-    },
-    addTodo: (state, action: PayloadAction<PayloadTodos["addTodo"]>) => {
-      state.isSaving = true;
-      state.todos.map((todo) => {
-        if (todo.category === action.payload.category) {
-          return todo.todosCategory.push(action.payload.newTodo);
-        }
-        return todo;
+      state.loading = true;
+
+      const idCategory = action.payload.idCategory;
+      const newToDo = action.payload.newToDo;
+
+      state.categories = state.categories.map((category) => {
+        if (category.id === idCategory) category.toDos.push(newToDo);
+        return category;
       });
-      state.isSaving = false;
+
+      state.loading = false;
     },
-    removeTodo: (state, action: PayloadAction<PayloadTodos["removeTodo"]>) => {
-      state.isSaving = true;
-      state.todos.map((todo) => {
-        if (todo.category === action.payload.category) {
-          todo.todosCategory = todo.todosCategory.filter(
-            (todoCategory) => todoCategory.id !== action.payload.id
+    removeToDo: (
+      state,
+      action: PayloadAction<{ idCategory: string; idToDo: string }>
+    ) => {
+      state.loading = true;
+
+      const idCategory = action.payload.idCategory;
+      const idToDo = action.payload.idToDo;
+
+      state.categories = state.categories.map((category) => {
+        if (category.id === idCategory)
+          category.toDos = category.toDos.filter((toDo) => toDo.id !== idToDo);
+
+        return category;
+      });
+
+      state.loading = false;
+    },
+    doneToDo: (
+      state,
+      action: PayloadAction<{ idCategory: string; idToDo: string }>
+    ) => {
+      state.loading = true;
+
+      const idCategory = action.payload.idCategory;
+      const idToDo = action.payload.idToDo;
+
+      state.categories = state.categories.map((category) => {
+        if (category.id === idCategory)
+          category.toDos.forEach((toDo) => {
+            if (toDo.id === idToDo) toDo.done = !toDo.done;
+          });
+
+        return category;
+      });
+
+      state.loading = false;
+    },
+    goToImportantToDo: (
+      state,
+      action: PayloadAction<{ idCategory: string; toDo: ToDo }>
+    ) => {
+      state.loading = true;
+
+      const idCategory = action.payload.idCategory;
+      const toDoToMove = action.payload.toDo;
+
+      state.categories = state.categories.map((category) => {
+        if (category.id === idCategory)
+          category.toDos = category.toDos.filter(
+            (toDo) => toDo.id !== toDoToMove.id
           );
-        }
-        return todo;
-      });
-      state.isSaving = false;
-    },
-    doneTodo: (state, action: PayloadAction<PayloadTodos["doneTodo"]>) => {
-      state.isSaving = true;
-      state.todos.map((todo) => {
-        if (todo.category === action.payload.category) {
-          todo.todosCategory.map((todoCategory) => {
-            if (todoCategory.id === action.payload.id) {
-              todoCategory.done = !todoCategory.done;
-            }
-            return todoCategory;
-          });
-        }
-        return todo;
-      });
-      state.isSaving = false;
-    },
 
-    goToImportantTodo: (
+        if (category.id === "important") category.toDos.push(toDoToMove);
+
+        return category;
+      });
+
+      state.loading = false;
+    },
+    editToDo: (
       state,
-      action: PayloadAction<PayloadTodos["goToImportantTodo"]>
+      action: PayloadAction<{ idCategory: string; toDo: ToDo }>
     ) => {
-      state.isSaving = true;
-      state.todos.map((todo) => {
-        if (todo.category === action.payload.category) {
-          return (todo.todosCategory = todo.todosCategory.filter(
-            (todoCategory) => todoCategory.id !== action.payload.todo.id
-          ));
-        }
+      state.loading = true;
 
-        if (todo.category === "Important") {
-          return todo.todosCategory.push(action.payload.todo);
-        }
-        return todo;
-      });
-      state.isSaving = false;
-    },
+      const idCategory = action.payload.idCategory;
+      const toDoEdited = action.payload.toDo;
 
-    inputTodoChange: (
-      state,
-      action: PayloadAction<PayloadTodos["inputTodoChange"]>
-    ) => {
-      state.isSaving = true;
-      state.todoEdit = action.payload;
-      state.isSaving = false;
-    },
-
-    inputTodoChangeReset: (state) => {
-      state.todoEdit = "";
-    },
-
-    editTodo: (state, action: PayloadAction<PayloadTodos["editTodo"]>) => {
-      state.isSaving = true;
-
-      state.todos.map((todo) => {
-        if (todo.category === action.payload.category) {
-          todo.todosCategory.map((todoCategory) => {
-            if (todoCategory.id === action.payload.todoEdited.id) {
-              return (todoCategory.content = action.payload.todoEdited.content);
-            }
-            return todoCategory;
+      state.categories = state.categories.map((category) => {
+        if (category.id === idCategory)
+          category.toDos.forEach((toDo) => {
+            if (toDo.id === toDoEdited.id) toDo.content = toDoEdited.content;
           });
-        }
-        return todo;
+
+        return category;
       });
 
-      state.isSaving = false;
+      state.loading = false;
+    },
+    setViewIdCategory: (state, action: PayloadAction<string>) => {
+      const idCategory = action.payload;
+
+      state.viewIdCategory = idCategory;
+    },
+    setEditToDo: (state, action: PayloadAction<string>) => {
+      state.loading = true;
+
+      const idToDo = action.payload;
+
+      state.idToDoToEdit = idToDo;
+
+      state.loading = false;
+    },
+    resetIdToDoToEdit: (state) => {
+      state.idToDoToEdit = "";
     },
   },
 });
 
 export const {
-  setCategoryTodo,
-  newCategoryTodo,
-  addTodo,
-  removeTodo,
-  doneTodo,
-  goToImportantTodo,
-  inputTodoChange,
-  inputTodoChangeReset,
-  editTodo,
-} = todosSlice.actions;
+  newCategoryToDo,
+  addToDo,
+  removeToDo,
+  doneToDo,
+  goToImportantToDo,
+  editToDo,
+  setViewIdCategory,
+  setEditToDo,
+  resetIdToDoToEdit,
+} = toDosSlice.actions;
 
-export default todosSlice.reducer;
+export default toDosSlice.reducer;

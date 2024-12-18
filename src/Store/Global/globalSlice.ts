@@ -1,12 +1,19 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { GlobalState, PayloadGlobal } from "../../entities/entities";
+
+import { Alert, GlobalState } from "../../entities/entities";
 
 const initialState: GlobalState = {
-  sidebarMobile: false,
-  modalAddCategory: false,
-  modalAddTodo: false,
-  messageAlert: "",
-  typeAlert: "",
+  alert: {
+    message: "",
+    type: "",
+  },
+  modal: {
+    modalAddCategory: false,
+    modalManageToDo: false,
+  },
+  sidebar: {
+    sidebarMobile: false,
+  },
 };
 
 export const globalSlice = createSlice({
@@ -14,33 +21,33 @@ export const globalSlice = createSlice({
   initialState,
   reducers: {
     openSidebar: (state) => {
-      state.sidebarMobile = true;
+      state.sidebar.sidebarMobile = true;
     },
     closeSidebar: (state) => {
-      state.sidebarMobile = false;
+      state.sidebar.sidebarMobile = false;
     },
     openModalAddCategory: (state) => {
-      state.modalAddCategory = true;
+      state.modal.modalAddCategory = true;
     },
     closeModalAddCategory: (state) => {
-      state.modalAddCategory = false;
+      state.modal.modalAddCategory = false;
     },
-    openModalAddTodo: (state) => {
-      state.modalAddTodo = true;
+    openModalManageToDo: (state) => {
+      state.modal.modalManageToDo = true;
     },
-    closeModalAddTodo: (state) => {
-      state.modalAddTodo = false;
+    closeModalManageToDo: (state) => {
+      state.modal.modalManageToDo = false;
     },
-    displayAlert: (
-      state,
-      action: PayloadAction<PayloadGlobal["displayAlert"]>
-    ) => {
-      state.messageAlert = action.payload.message;
-      state.typeAlert = action.payload.type;
+    displayAlert: (state, action: PayloadAction<Alert>) => {
+      const message = action.payload.message;
+      const type = action.payload.type;
+
+      state.alert.message = message;
+      state.alert.type = type;
     },
     resetAlert: (state) => {
-      state.messageAlert = "";
-      state.typeAlert = "";
+      state.alert.message = "";
+      state.alert.type = "";
     },
   },
 });
@@ -50,8 +57,8 @@ export const {
   closeSidebar,
   openModalAddCategory,
   closeModalAddCategory,
-  openModalAddTodo,
-  closeModalAddTodo,
+  openModalManageToDo,
+  closeModalManageToDo,
   displayAlert,
   resetAlert,
 } = globalSlice.actions;

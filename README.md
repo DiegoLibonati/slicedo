@@ -4,8 +4,8 @@
 
 1. Clone the repository
 2. Join to the correct path of the clone
-3. Install node_modules with yarn install
-4. Use yarn dev or start (depends package.json) to run the app page
+3. Execute: `yarn install` or `npm install`
+4. Execute: `yarn start` or `npm start` and enjoy!
 
 ## Description
 
@@ -19,6 +19,41 @@ I made a web application that serves to save things to do. In addition we have a
 4. REDUX
 5. REDUX-TOOLKIT
 
+## Libraries used
+
+#### Dependencies
+
+```
+"@types/jest": "^29.5.13"
+"@types/node": "^20.10.6"
+"@types/react": "^18.2.46"
+"@types/react-dom": "^18.2.18"
+"react": "^18.2.0"
+"react-dom": "^18.2.0"
+"react-icons": "^4.4.0"
+"react-scripts": "5.0.1"
+"react-redux": "^8.0.2"
+"redux": "^4.2.0"
+"@reduxjs/toolkit": "^1.8.5"
+"web-vitals": "^2.1.4"
+"animate.css": "^4.1.1"
+"emoji-picker-react": "^3.6.2"
+"uuid": "^11.0.3"
+```
+
+#### devDependencies
+
+```
+"@testing-library/dom": "^10.4.0"
+"@testing-library/jest-dom": "^6.6.2"
+"@testing-library/react": "^16.0.1"
+"@testing-library/user-event": "^14.5.2"
+"jest": "^29.7.0"
+"jest-environment-jsdom": "^29.7.0"
+"ts-jest": "^29.2.5"
+"typescript": "^5.3.3"
+```
+
 ## Portfolio Link
 
 [`https://www.diegolibonati.com.ar/#/project/ToDo-React-Redux`](https://www.diegolibonati.com.ar/#/project/ToDo-React-Redux)
@@ -27,149 +62,7 @@ I made a web application that serves to save things to do. In addition we have a
 
 https://user-images.githubusercontent.com/99032604/199861233-0a2873d1-06fd-495c-a0d3-6ea432c885a5.mp4
 
-## Documentation
+## Testing
 
-### views/ToDoPresentation.tsx | views/ToDoView.tsx
-
-These views will be those in which it is rendered on the same place depending on where the user is standing. At the beginning it is on the `ToDoPresentation.tsx` view since all the categories will be displayed. If the user clicks on a category, it will go to the view `ToDoView.tsx`.
-
-### Store | globalSlice.ts and todosSlice.ts
-
-Here we will find two types of slice that are saved in the store. We have the `globalSlice.ts` which will be in charge of containing the states and the reducers of global functions such as modals or alert operation etc. While the Slice of `todosSlice.ts` takes care of the main functionality of this application, saving the state of the ToDos and also its reducers to be able to handle them.
-
-### hooks/useForm.tsx
-
-The `useForm.tsx` we will use to handle all the forms of our application. In it you can save the value of the inputs, reset them to their default value and check if they are changing:
-
-```
-import { useState } from "react";
-import { UseForm } from "../entities/entities";
-
-export const useForm = <T,>(initialForm: T): UseForm<T> => {
-  const [formState, setFormState] = useState(initialForm);
-
-  const onInputChange = ({ target }: { target: HTMLInputElement }) => {
-    const { name, value } = target;
-
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
-  const onTextAreaChange = ({ target }: { target: HTMLTextAreaElement }) => {
-    const { name, value } = target;
-
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
-  const onResetForm = () => {
-    setFormState(initialForm);
-  };
-
-  return {
-    formState,
-    onInputChange,
-    onTextAreaChange,
-    onResetForm,
-  };
-};
-```
-
-### hooks/useMatchMedia.tsx
-
-We will use the `useMatchMedia.tsx` to check when a user changes from one resolution to another:
-
-```
-import { useEffect, useMemo, useState } from "react";
-import { UseMatchMedia } from "../entities/entities";
-
-export function useMediaQuery(mediaQueryString: string): UseMatchMedia {
-  const queryString = removeReservedMediaKeyWord(mediaQueryString);
-  const query = useMemo(() => window.matchMedia(queryString), [queryString]);
-  const [matches, setMatches] = useState<boolean>(query.matches);
-
-  useEffect(() => {
-    const listener = (e: MediaQueryListEvent) => setMatches(e.matches);
-    query.addEventListener("change", (e) => listener(e));
-    return () => query.removeEventListener("change", (e) => listener(e));
-  }, [query]);
-  return { matches };
-}
-
-function removeReservedMediaKeyWord(mediaQueryString: string): string {
-  return mediaQueryString.replace("@media", "").trim();
-}
-```
-
-### hooks/useTodo.tsx
-
-We will use the `useTodo.tsx` to be able to save new categories of ToDos:
-
-```
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import uuid from "react-uuid";
-import { getTodosLocalStorage } from "../helpers/getTodosLocalStorage";
-import { newCategoryTodo } from "../Store/Todos/todosSlice";
-import { Todo, UseTodo } from "../entities/entities";
-
-export const useTodo = (todos: Todo[] = getTodosLocalStorage()): UseTodo => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
-
-  const setNewCategory: UseTodo["setNewCategory"] = (newCategory) => {
-    const keys = [];
-
-    for (const key of Object.keys(newCategory)) {
-      keys.push(key);
-    }
-
-    if (Object.keys(newCategory).length === keys.length) {
-      console.log(Object.keys(newCategory).length, keys.length);
-
-      const object = {
-        id: uuid(),
-        category: newCategory["category"],
-        todosCategory: [],
-        icon: `${newCategory["emoji"]}`,
-      };
-
-      dispatch(newCategoryTodo(object));
-    } else {
-      return "Error";
-    }
-  };
-
-  return {
-    todosLocalStorage: todos,
-    setNewCategory,
-  };
-};
-```
-
-### helpers/categoriesData.ts
-
-In `categoriesData.ts` we are going to preload the categories that we want to come by default when a user never entered.
-
-### helpers/getNamesTodoCategories.ts
-
-`getNamesTodoCategories.ts` will allow us to obtain the name of each category along with its icon.
-
-### helpers/getTodoCategories.ts
-
-`getTodoCategories.ts` will allow us to obtain all the categories that exist.
-
-### helpers/getTodoEdit.ts
-
-`getTodoEdit.js` will allow us to get the todo that was modified.
-
-### helpers/getTodosLocalStorage.ts
-
-`getTodosLocalStorage.ts` will return the todos that we have stored in LocalStorage if we enter this application at some point and if not, it will preload the ToDos from `categoriesData.ts`.
+1. Join to the correct path of the clone
+2. Execute: `yarn test` or `npm test`

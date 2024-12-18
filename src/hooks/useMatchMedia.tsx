@@ -1,8 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import { UseMatchMedia } from "../entities/entities";
+
+type UseMatchMedia = {
+  matches: boolean;
+};
 
 export function useMediaQuery(mediaQueryString: string): UseMatchMedia {
   const queryString = removeReservedMediaKeyWord(mediaQueryString);
+
   const query = useMemo(() => window.matchMedia(queryString), [queryString]);
   const [matches, setMatches] = useState<boolean>(query.matches);
 
@@ -11,7 +15,8 @@ export function useMediaQuery(mediaQueryString: string): UseMatchMedia {
     query.addEventListener("change", (e) => listener(e));
     return () => query.removeEventListener("change", (e) => listener(e));
   }, [query]);
-  return { matches };
+
+  return { matches: matches };
 }
 
 function removeReservedMediaKeyWord(mediaQueryString: string): string {

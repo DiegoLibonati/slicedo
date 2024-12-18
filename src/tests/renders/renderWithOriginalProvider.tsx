@@ -1,0 +1,15 @@
+import { render } from "@testing-library/react";
+
+import { Provider } from "react-redux";
+
+import { store } from "../../store/store";
+
+type RenderWithOriginalProvider = {
+  children: React.ReactNode;
+};
+
+export const renderWithOriginalProvider = ({
+  children,
+}: RenderWithOriginalProvider) => {
+  return render(<Provider store={store}>{children}</Provider>);
+};
