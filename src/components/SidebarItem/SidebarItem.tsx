@@ -12,7 +12,7 @@ export const SidebarItem = ({
   onOpenCategoryToDo,
 }: SidebarItemProps) => {
   return (
-    <li className="sidebar_nav_list_item">
+    <li className="sidebar__list-item">
       <h2 onClick={onOpenCategoryToDo}>
         {icon}
         {category}

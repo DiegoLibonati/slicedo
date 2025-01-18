@@ -16,12 +16,12 @@ export const Alert = (): JSX.Element => {
   return (
     <div
       className={
-        alert.message ? `alert_container ${alert.type}` : "alert_container"
+        alert.message ? `alert ${alert.type}` : "alert"
       }
     >
       <h2>{alert.message}</h2>
       <button type="button" onClick={handleClickClose} aria-label="close alert">
-        <AiOutlineCloseCircle className="alert-close"></AiOutlineCloseCircle>
+        <AiOutlineCloseCircle className="icon__alert-close"></AiOutlineCloseCircle>
       </button>
     </div>
   );

@@ -85,18 +85,18 @@ export const ToDoItem = ({
     <article
       className={
         toDo.done
-          ? "todo_container done animate__animated animate__fadeIn"
-          : "todo_container animate__animated animate__fadeIn"
+          ? "todo done animate__animated animate__fadeIn"
+          : "todo animate__animated animate__fadeIn"
       }
     >
-      <div className="todo_header">
+      <div className="todo__header">
         {toDo.done && (
           <button
             type="button"
             onClick={handleClickUnDoneToDo}
             aria-label="undone todo"
           >
-            <FaCalendarCheck className="check-calendar"></FaCalendarCheck>
+            <FaCalendarCheck className="icon__calendar-check"></FaCalendarCheck>
           </button>
         )}
 
@@ -106,29 +106,29 @@ export const ToDoItem = ({
             onClick={handleClickDoneToDo}
             aria-label="done todo"
           >
-            <FaCalendar className="calendar"></FaCalendar>
+            <FaCalendar className="icon__calendar"></FaCalendar>
           </button>
         )}
 
-        <h3 className={toDo.done ? "todo_content_done" : "todo_content"}>
+        <h3 className={toDo.done ? "todo__content--done" : "todo__content"}>
           {toDo.content}
         </h3>
       </div>
 
-      <div className="todo_options">
+      <div className="todo__options">
         <button
           type="button"
           onClick={handleClickRemoveToDo}
           aria-label="remove todo"
         >
           <FaTrash
-            className={toDo.done ? "todo-icon todo-icon-done" : "todo-icon"}
+            className={toDo.done ? "icon__todo icon__todo-done" : "icon__todo"}
           ></FaTrash>
         </button>
 
         {!toDo.done && (
           <button type="button" onClick={handleEditToDo} aria-label="edit todo">
-            <FaEdit className="todo-icon"></FaEdit>
+            <FaEdit className="icon__todo"></FaEdit>
           </button>
         )}
 
@@ -138,7 +138,7 @@ export const ToDoItem = ({
             onClick={handleMoveToImportant}
             aria-label="move todo to important"
           >
-            <FaStar className="todo-icon"></FaStar>
+            <FaStar className="icon__todo"></FaStar>
           </button>
         )}
       </div>

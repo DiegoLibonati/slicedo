@@ -1,24 +1,29 @@
-import { defaultCategories } from "../constants/config";
 import { getToDoById } from "./getToDoById";
 
-test("It should return a toDo by id.", () => {
-  const categories = defaultCategories;
-  const category = categories[0];
-  const toDos = category.toDos;
-  const toDo = toDos[0];
+import { defaultCategories } from "../constants/config";
 
-  const toDoById = getToDoById(toDos, toDo.id);
+describe("getToDoById.ts", () => {
+  describe("General Tests.", () => {
+    test("It should return a toDo by id.", () => {
+      const categories = defaultCategories;
+      const category = categories[0];
+      const toDos = category.toDos;
+      const toDo = toDos[0];
 
-  expect(toDoById).toEqual(toDo);
-});
+      const toDoById = getToDoById(toDos, toDo.id);
 
-test("It should not return a toDo if it is not found.", () => {
-  const categories = defaultCategories;
-  const category = categories[0];
-  const toDos = category.toDos;
-  const idNotFound = "asdasdas";
+      expect(toDoById).toEqual(toDo);
+    });
 
-  const toDoById = getToDoById(toDos, idNotFound);
+    test("It should not return a toDo if it is not found.", () => {
+      const categories = defaultCategories;
+      const category = categories[0];
+      const toDos = category.toDos;
+      const idNotFound = "asdasdas";
 
-  expect(toDoById).toBeUndefined();
+      const toDoById = getToDoById(toDos, idNotFound);
+
+      expect(toDoById).toBeUndefined();
+    });
+  });
 });

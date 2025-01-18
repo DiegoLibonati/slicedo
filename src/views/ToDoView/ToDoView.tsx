@@ -47,36 +47,36 @@ export const ToDoView = ({
     <main
       className={
         sidebar.sidebarMobile
-          ? "main_container open-sidebar animate__animated animate__fadeIn"
-          : "main_container animate__animated animate__fadeIn"
+          ? "main__todo-view sidebar--open animate__animated animate__fadeIn"
+          : "main__todo-view animate__animated animate__fadeIn"
       }
     >
       {loading ? (
         <Loader></Loader>
       ) : (
         <Fragment>
-          <section className="todo_title">
+          <section className="category__title">
             <h2>
               {icon}
               {category.toUpperCase()}
             </h2>
 
-            <h2 className="dateString-Date">{new Date().toUTCString()}</h2>
+            <h2 className="category__date">{new Date().toUTCString()}</h2>
             {sidebar.sidebarMobile && (
               <button
                 type="button"
                 onClick={handleClickCloseSidebar}
                 aria-label="close sidebar"
               >
-                <AiOutlineCloseCircle className="todo-icon close-icon"></AiOutlineCloseCircle>
+                <AiOutlineCloseCircle className="icon__todo icon__close"></AiOutlineCloseCircle>
               </button>
             )}
           </section>
 
-          <hr className="hr-todo"></hr>
+          <hr className="todo__hr"></hr>
 
           {toDos.length > 0 && (
-            <section className="todos_container">
+            <section className="todos">
               {toDos?.map((toDo) => {
                 return (
                   <ToDoItem
@@ -106,10 +106,10 @@ export const ToDoView = ({
               onClick={handleClickAddToDo}
               aria-label="add todo"
             >
-              <FaPlus className="add_todo"></FaPlus>
+              <FaPlus className="icon__add-todo"></FaPlus>
             </button>
           ) : (
-            <section className="add_first_todo_container">
+            <section className="first__add-todo">
               <h1>
                 ADD YOUR FIRST TODO <br></br>IN {category.toUpperCase()}
               </h1>
@@ -118,7 +118,7 @@ export const ToDoView = ({
                 onClick={handleClickAddToDo}
                 aria-label="add todo"
               >
-                <FaRegPaperPlane className="plane-todo-icon"></FaRegPaperPlane>
+                <FaRegPaperPlane className="icon__plane-todo"></FaRegPaperPlane>
               </button>
             </section>
           )}

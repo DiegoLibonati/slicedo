@@ -22,9 +22,9 @@ export const ToDoPresentantionButton = ({
   };
 
   return (
-    <article className="ToDoButton_container">
+    <article className="category">
       <button
-        className="ToDoButton"
+        className="category__btn"
         onClick={handleClickCategory}
         aria-label="todo category button"
       >

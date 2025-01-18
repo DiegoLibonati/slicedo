@@ -3,8 +3,6 @@ import user from "@testing-library/user-event";
 
 import { SidebarItem } from "./SidebarItem";
 
-const mockOnOpenCategoryToDo = jest.fn();
-
 type RenderComponent = {
   props: {
     icon: string;
@@ -16,6 +14,8 @@ type RenderComponent = {
 };
 
 const renderComponent = (): RenderComponent => {
+  const mockOnOpenCategoryToDo = jest.fn();
+
   const props = {
     icon: "1",
     category: "cat",
@@ -38,32 +38,36 @@ const renderComponent = (): RenderComponent => {
   };
 };
 
-test("It must render the sidebar item.", () => {
-  const { props } = renderComponent();
+describe("SidebarItem.tsx", () => {
+  describe("General Tests.", () => {
+    test("It must render the sidebar item.", () => {
+      const { props } = renderComponent();
 
-  const sidebarItem = screen.getByRole("listitem");
-  const heading = screen.getByRole("heading", {
-    name: `${props.icon}${props.category}`,
+      const sidebarItem = screen.getByRole("listitem");
+      const heading = screen.getByRole("heading", {
+        name: `${props.icon}${props.category}`,
+      });
+      const quantity = screen.getByRole("heading", {
+        name: String(props.quantity),
+      });
+
+      expect(sidebarItem).toBeInTheDocument();
+      expect(heading).toBeInTheDocument();
+      expect(quantity).toBeInTheDocument();
+    });
+
+    test("It must execute the 'onOpenCategoryToDo' function when you click on the item title.", async () => {
+      const { props } = renderComponent();
+
+      const heading = screen.getByRole("heading", {
+        name: `${props.icon}${props.category}`,
+      });
+
+      expect(heading).toBeInTheDocument();
+
+      await user.click(heading);
+
+      expect(props.onOpenCategoryToDo).toHaveBeenCalledTimes(1);
+    });
   });
-  const quantity = screen.getByRole("heading", {
-    name: String(props.quantity),
-  });
-
-  expect(sidebarItem).toBeInTheDocument();
-  expect(heading).toBeInTheDocument();
-  expect(quantity).toBeInTheDocument();
-});
-
-test("It must execute the 'onOpenCategoryToDo' function when you click on the item title.", async () => {
-  const { props } = renderComponent();
-
-  const heading = screen.getByRole("heading", {
-    name: `${props.icon}${props.category}`,
-  });
-
-  expect(heading).toBeInTheDocument();
-
-  await user.click(heading);
-
-  expect(mockOnOpenCategoryToDo).toHaveBeenCalledTimes(1);
 });

@@ -35,17 +35,17 @@ export const Sidebar = (): JSX.Element => {
   };
 
   return (
-    <header className="header_container">
+    <header className="sidebar">
       {loading ? (
         <Loader></Loader>
       ) : (
         <Fragment>
-          <div className="sidebar_title">
+          <div className="sidebar__title">
             <h2>Die Redux ToDo</h2>
           </div>
 
-          <nav className="sidebar_nav">
-            <ul className="sidebar_nav_list">
+          <nav className="sidebar__nav">
+            <ul className="sidebar__list">
               {categories.map((category, index) => {
                 return (
                   <Fragment key={category.id}>
@@ -56,7 +56,7 @@ export const Sidebar = (): JSX.Element => {
                       quantity={category.toDos.length}
                     ></SidebarItem>
 
-                    {index === 2 && <hr className="hr-sidebar"></hr>}
+                    {index === 2 && <hr className="sidebar__hr"></hr>}
                   </Fragment>
                 );
               })}

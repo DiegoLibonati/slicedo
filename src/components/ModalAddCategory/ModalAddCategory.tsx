@@ -64,28 +64,28 @@ export const ModalAddCategory = (): JSX.Element => {
   };
 
   return (
-    <div className="modal_container">
+    <div className="modal">
       <button
         type="button"
         onClick={handleClickClose}
         aria-label="close modal add category"
       >
-        <FaWindowClose className="close_modal_addcategory"></FaWindowClose>
+        <FaWindowClose className="modal__add-category"></FaWindowClose>
       </button>
       <form
-        className="modal_form animate__animated animate__fadeIn"
+        className="modal__form animate__animated animate__fadeIn"
         onSubmit={onSubmit}
       >
         <Picker onEmojiClick={onEmojiClick} />
         <input
-          className="modal_input"
+          className="modal__input"
           placeholder="Category Name"
           onChange={onInputChange}
           name="categoryName"
           value={formState.categoryName}
         ></input>
         <button
-          className="modal_button"
+          className="modal__btn"
           type="submit"
           aria-label="create category"
         >

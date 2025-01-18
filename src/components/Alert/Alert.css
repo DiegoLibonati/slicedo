@@ -1,4 +1,4 @@
-.alert_container {
+.alert {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -11,30 +11,30 @@
   border-radius: 1rem;
 }
 
-.alert_container.good-alert {
-  background-color: rgb(0, 255, 0);
+.alert.good-alert {
+  background-color: var(--green-color);
   padding: 1rem;
 }
 
-.alert_container.bad-alert {
-  background-color: red;
+.alert.bad-alert {
+  background-color: var(--red-color);
   padding: 1rem;
 }
 
-.alert_container h2 {
+.alert h2 {
   font-size: 1.5rem;
-  color: #fff;
+  color: var(--white-color);
 }
 
-.alert-close {
+.icon__alert-close {
   width: 100%;
-  font-size: 2rem;
-  color: #fff;
+  font-size: 3rem;
+  color: var(--white-color);
   cursor: pointer;
 }
 
 @media only screen and (min-width: 1024px) {
-  .alert_container {
+  .alert {
     width: 50rem;
   }
 }

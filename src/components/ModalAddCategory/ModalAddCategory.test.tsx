@@ -9,125 +9,121 @@ import { useAppDispatch } from "../../constants/redux";
 
 import { renderWithOriginalProvider } from "../../tests/renders/renderWithOriginalProvider";
 
-const mockDispatch = jest.fn();
-
 jest.mock("../../constants/redux", () => ({
   useAppDispatch: jest.fn(),
 }));
 
-beforeEach(() => {
-  jest.resetAllMocks();
+describe("ModalAddCategory.tsx", () => {
+  describe("General Tests.", () => {
+    const mockDispatch = jest.fn();
 
-  (useAppDispatch as unknown as jest.Mock).mockReturnValue(mockDispatch);
-});
+    beforeEach(() => {
+      jest.resetAllMocks();
 
-// type RenderComponent = {
-//   container: HTMLElement;
-// };
+      (useAppDispatch as unknown as jest.Mock).mockReturnValue(mockDispatch);
+    });
 
-// const renderComponent = (): RenderComponent => {
-//   const { container } = render(<ModalAddCategory></ModalAddCategory>);
+    test("It must render the close button.", () => {
+      renderWithOriginalProvider({
+        children: <ModalAddCategory></ModalAddCategory>,
+      });
 
-//   return {
-//     container: container,
-//   };
-// };
+      const btnClose = screen.getByRole("button", {
+        name: /close modal add category/i,
+      });
 
-test("It must render the close button.", () => {
-  renderWithOriginalProvider({
-    children: <ModalAddCategory></ModalAddCategory>,
-  });
+      expect(btnClose).toBeInTheDocument();
+    });
 
-  const btnClose = screen.getByRole("button", {
-    name: /close modal add category/i,
-  });
+    test("It must render the emoji picker, the category name input and the create button.", () => {
+      const { container } = renderWithOriginalProvider({
+        children: <ModalAddCategory></ModalAddCategory>,
+      });
 
-  expect(btnClose).toBeInTheDocument();
-});
+      // eslint-disable-next-line
+      const emojiPickerContainer = container.querySelector(
+        ".emoji-picker-react"
+      ) as HTMLElement;
+      const input = screen.getByPlaceholderText("Category Name");
+      const btnCreate = screen.getByRole("button", {
+        name: /create category/i,
+      });
 
-test("It must render the emoji picker, the category name input and the create button.", () => {
-  const { container } = renderWithOriginalProvider({
-    children: <ModalAddCategory></ModalAddCategory>,
-  });
+      expect(emojiPickerContainer).toBeInTheDocument();
+      expect(input).toBeInTheDocument();
+      expect(btnCreate).toBeInTheDocument();
+    });
 
-  // eslint-disable-next-line
-  const emojiPickerContainer = container.querySelector(
-    ".emoji-picker-react"
-  ) as HTMLElement;
-  const input = screen.getByPlaceholderText("Category Name");
-  const btnCreate = screen.getByRole("button", { name: /create category/i });
+    test("It should close the modal when the close button is clicked.", async () => {
+      renderWithOriginalProvider({
+        children: <ModalAddCategory></ModalAddCategory>,
+      });
 
-  expect(emojiPickerContainer).toBeInTheDocument();
-  expect(input).toBeInTheDocument();
-  expect(btnCreate).toBeInTheDocument();
-});
+      const btnClose = screen.getByRole("button", {
+        name: /close modal add category/i,
+      });
 
-test("It should close the modal when the close button is clicked.", async () => {
-  renderWithOriginalProvider({
-    children: <ModalAddCategory></ModalAddCategory>,
-  });
+      expect(btnClose).toBeInTheDocument();
 
-  const btnClose = screen.getByRole("button", {
-    name: /close modal add category/i,
-  });
+      await user.click(btnClose);
 
-  expect(btnClose).toBeInTheDocument();
+      expect(mockDispatch).toHaveBeenCalledTimes(1);
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: "global/closeModalAddCategory",
+        payload: undefined,
+      });
+    });
 
-  await user.click(btnClose);
+    test("It must create a new category when you click 'create'.", async () => {
+      const emoji = undefined;
+      const inputValue = "cat123";
 
-  expect(mockDispatch).toHaveBeenCalledTimes(1);
-  expect(mockDispatch).toHaveBeenCalledWith({
-    type: "global/closeModalAddCategory",
-    payload: undefined,
-  });
-});
+      renderWithOriginalProvider({
+        children: <ModalAddCategory></ModalAddCategory>,
+      });
 
-test("It must create a new category when you click 'create'.", async () => {
-  const emoji = undefined;
-  const inputValue = "cat123";
+      const input = screen.getByPlaceholderText("Category Name");
+      const btnCreate = screen.getByRole("button", {
+        name: /create category/i,
+      });
 
-  renderWithOriginalProvider({
-    children: <ModalAddCategory></ModalAddCategory>,
-  });
+      expect(input).toBeInTheDocument();
+      expect(btnCreate).toBeInTheDocument();
 
-  const input = screen.getByPlaceholderText("Category Name");
-  const btnCreate = screen.getByRole("button", { name: /create category/i });
+      await user.clear(input);
+      await user.click(input);
+      await user.keyboard(inputValue);
 
-  expect(input).toBeInTheDocument();
-  expect(btnCreate).toBeInTheDocument();
+      expect(input).toHaveValue(inputValue);
 
-  await user.clear(input);
-  await user.click(input);
-  await user.keyboard(inputValue);
+      await user.click(btnCreate);
 
-  expect(input).toHaveValue(inputValue);
+      const category: ToDoCategory = {
+        id: expect.any(String),
+        category: inputValue,
+        toDos: [],
+        icon: emoji!,
+      };
 
-  await user.click(btnCreate);
+      const alert: Alert = {
+        message: `${emoji} ${inputValue} was successfully added!`,
+        type: "good-alert",
+      };
 
-  const category: ToDoCategory = {
-    id: expect.any(String),
-    category: inputValue,
-    toDos: [],
-    icon: emoji!,
-  };
-
-  const alert: Alert = {
-    message: `${emoji} ${inputValue} was successfully added!`,
-    type: "good-alert",
-  };
-
-  expect(input).not.toHaveValue(inputValue);
-  expect(mockDispatch).toHaveBeenCalledTimes(3);
-  expect(mockDispatch).toHaveBeenCalledWith({
-    type: "toDos/newCategoryToDo",
-    payload: category,
-  });
-  expect(mockDispatch).toHaveBeenCalledWith({
-    type: "global/displayAlert",
-    payload: alert,
-  });
-  expect(mockDispatch).toHaveBeenCalledWith({
-    type: "global/closeModalAddCategory",
-    payload: undefined,
+      expect(input).not.toHaveValue(inputValue);
+      expect(mockDispatch).toHaveBeenCalledTimes(3);
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: "toDos/newCategoryToDo",
+        payload: category,
+      });
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: "global/displayAlert",
+        payload: alert,
+      });
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: "global/closeModalAddCategory",
+        payload: undefined,
+      });
+    });
   });
 });

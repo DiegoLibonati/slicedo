@@ -87,13 +87,13 @@ export const ModalManageToDo = ({
   };
 
   return (
-    <div className="modal_addtodo_wrapper">
+    <div className="modal__add-todo">
       <button type="button" aria-label="close modal" onClick={handleCloseModal}>
-        <FaWindowClose className="close_modal_addtodo"></FaWindowClose>
+        <FaWindowClose className="icon__close-add-todo"></FaWindowClose>
       </button>
 
       <form
-        className="modal_addtodo_container animate__animated animate__fadeIn"
+        className="form__modal-add-todo animate__animated animate__fadeIn"
         onSubmit={onSubmit}
       >
         <h2>

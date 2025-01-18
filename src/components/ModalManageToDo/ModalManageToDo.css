@@ -1,15 +1,15 @@
-.modal_addtodo_wrapper {
+.modal__add-todo {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: #00000088;
+  background-color: rgba(var(--black-int-color), 0.5);
   position: absolute;
   z-index: 9999;
 }
 
-.modal_addtodo_container {
+.form__modal-add-todo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,18 +17,18 @@
   border-radius: 1rem;
   width: 75%;
   height: 50%;
-  background-color: #28847f;
+  background-color: var(--primary-color);
 }
 
-.modal_addtodo_container h2 {
+.form__modal-add-todo h2 {
   font-size: 3rem;
-  color: #fff;
+  color: var(--white-color);
   align-self: flex-start;
   width: calc(100%-2rem);
   margin: 0 1rem 0 1rem;
 }
 
-.modal_addtodo_container textarea {
+.form__modal-add-todo textarea {
   resize: none;
   width: calc(100% - 2rem);
   height: 70%;
@@ -36,18 +36,18 @@
   margin: 1rem;
   border: none;
   outline: none;
-  color: #28847f;
+  color: var(--primary-color);
   font-size: 2rem;
-  background-color: #fff;
+  background-color: var(--white-color);
   border-radius: 1rem;
 }
 
-.modal_addtodo_container button {
-  background-color: #fff;
+.form__modal-add-todo button {
+  background-color: var(--white-color);
   width: calc(100% - 2rem);
   height: 10%;
   border-radius: 1rem;
-  color: #28847f;
+  color: var(--primary-color);
   border: none;
   font-size: 2rem;
   font-weight: 900;
@@ -55,11 +55,11 @@
   cursor: pointer;
 }
 
-.close_modal_addtodo {
+.icon__close-add-todo {
   position: absolute;
   top: 1rem;
   right: 1rem;
   font-size: 3rem;
-  color: #fff;
+  color: var(--white-color);
   cursor: pointer;
 }

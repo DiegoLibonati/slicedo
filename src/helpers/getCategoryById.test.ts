@@ -1,20 +1,25 @@
-import { defaultCategories } from "../constants/config";
 import { getCategoryById } from "./getCategoryById";
 
-test("It should return a category by id.", () => {
-  const categories = defaultCategories;
-  const category = categories[0];
+import { defaultCategories } from "../constants/config";
 
-  const categoryById = getCategoryById(categories, category.id);
+describe("getCategoryById.ts", () => {
+  describe("General Tests.", () => {
+    test("It should return a category by id.", () => {
+      const categories = defaultCategories;
+      const category = categories[0];
 
-  expect(categoryById).toEqual(category);
-});
+      const categoryById = getCategoryById(categories, category.id);
 
-test("It should not return a category if it is not found.", () => {
-  const categories = defaultCategories;
-  const idNotFound = "asdasdas";
+      expect(categoryById).toEqual(category);
+    });
 
-  const categoryById = getCategoryById(categories, idNotFound);
+    test("It should not return a category if it is not found.", () => {
+      const categories = defaultCategories;
+      const idNotFound = "asdasdas";
 
-  expect(categoryById).toBeUndefined();
+      const categoryById = getCategoryById(categories, idNotFound);
+
+      expect(categoryById).toBeUndefined();
+    });
+  });
 });

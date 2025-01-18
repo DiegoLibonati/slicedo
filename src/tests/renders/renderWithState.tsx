@@ -8,7 +8,7 @@ import { GlobalState, ToDosState } from "../../entities/entities";
 import globalSlice from "../../store/global/globalSlice";
 import toDosSlice from "../../store/toDos/toDosSlice";
 
-import { GLOBAL_STATE_MOCK, TODOS_STATE_MOCK } from "../jest.setup";
+import { mockGlobalState, mockTodosState } from "../jest.constants";
 
 type RenderWithStateProps = {
   globalState?: GlobalState;
@@ -18,8 +18,8 @@ type RenderWithStateProps = {
 
 export const renderWithState = ({
   children,
-  globalState = GLOBAL_STATE_MOCK,
-  toDosState = TODOS_STATE_MOCK,
+  globalState = mockGlobalState,
+  toDosState = mockTodosState,
 }: RenderWithStateProps) => {
   const testStore = configureStore({
     reducer: {

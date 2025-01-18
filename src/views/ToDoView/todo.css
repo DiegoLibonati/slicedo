@@ -1,9 +1,9 @@
-.main_container {
+.main__todo-view {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-flow: column nowrap;
-  background-color: #28847f;
+  background-color: var(--primary-color);
   width: 0;
   height: 100%;
   position: absolute;
@@ -13,12 +13,12 @@
   transition: width 1s;
 }
 
-.open-sidebar {
+.sidebar--open {
   width: 100%;
   transition: width 1s;
 }
 
-.todo_title {
+.category__title {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,27 +26,28 @@
   padding: 1rem;
 }
 
-.todo_title h2 {
+.category__title h2 {
   white-space: nowrap;
   font-size: 2rem;
-  color: #fff;
+  color: var(--white-color);
   padding: 1rem 0 1rem 0;
 }
 
-.hr-todo {
+.todo__hr {
   width: 100%;
-  color: #fff;
-  background-color: #fff;
+  color: var(--white-color);
+  background-color: var(--white-color);
   border: none;
   height: 0.2rem;
 }
 
-.todo-icon.close-icon {
+.icon__todo.icon__close {
   font-size: 3rem;
+  color: var(--white-color);
   cursor: pointer;
 }
 
-.todos_container {
+.todos {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,7 +57,7 @@
   padding: 1rem;
 }
 
-.todo_container {
+.todo {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -64,18 +65,18 @@
   width: 100%;
   height: auto;
   padding: 1rem;
-  background-color: #fff;
+  background-color: var(--white-color);
   border-radius: 1rem;
   margin: 0.5rem 0 0.5rem 0;
   transition: background-color 1s;
 }
 
 .done {
-  background-color: #ff0000;
+  background-color: var(--red-color);
   transition: background-color 1s;
 }
 
-.todo_header {
+.todo__header {
   display: grid;
   grid-template-columns: 3rem 1fr;
   justify-items: center;
@@ -84,22 +85,21 @@
   height: auto;
 }
 
-.todo_content {
+.todo__content {
   font-size: 2rem;
   justify-self: flex-start;
   align-self: flex-start;
-  color: #000;
+  color: var(--black-color);
 }
 
-.todo_content_done {
+.todo__content--done {
   font-size: 2rem;
   justify-self: flex-start;
   align-self: flex-start;
-  white-space: nowrap;
-  color: #ffffff;
+  color: var(--white-color);
 }
 
-.todo_options {
+.todo__options {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -108,43 +108,43 @@
   height: auto;
 }
 
-.todo-icon {
+.icon__todo {
   margin: 1rem;
   font-size: 1.5rem;
-  color: #999;
+  color: var(--primary-color);
   cursor: pointer;
 }
 
-.todo-icon.todo-icon-done {
-  color: #fff;
+.icon__todo.icon__todo-done {
+  color: var(--white-color);
 }
 
-.add_todo {
+.icon__add-todo {
   position: absolute;
   z-index: 50;
   bottom: 2rem;
   right: 2rem;
   font-size: 3rem;
-  background-color: #ff0000;
-  color: #fff;
+  background-color: var(--red-color);
+  color: var(--white-color);
   border-radius: 50%;
   padding: 0.5rem;
   cursor: pointer;
 }
 
-.check-calendar {
-  color: #fff;
+.icon__calendar-check {
+  color: var(--white-color);
   font-size: 2rem;
   cursor: pointer;
 }
 
-.calendar {
-  color: #28847f;
+.icon__calendar {
+  color: var(--primary-color);
   font-size: 2rem;
   cursor: pointer;
 }
 
-.add_first_todo_container {
+.first__add-todo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,68 +154,67 @@
   padding: 1rem;
 }
 
-.add_first_todo_container h1 {
-  white-space: nowrap;
+.first__add-todo h1 {
   font-size: 3rem;
   text-align: center;
-  color: #fff;
+  color: var(--white-color);
 }
 
-.plane-todo-icon {
+.icon__plane-todo {
   font-size: 5rem;
   margin-top: 2rem;
-  color: #fff;
+  color: var(--white-color);
   cursor: pointer;
 }
 
-.dateString-Date {
+.category__date {
   display: none;
 }
 
 @media only screen and (min-width: 1024px) {
-  .main_container {
+  .main__todo-view {
     width: calc(100% - 30rem);
     right: 0;
-    background-color: #d4f1ef;
+    background-color: var(--secondary-color);
     transition: width 0s;
   }
 
-  .open-sidebar {
+  .sidebar--open {
     transition: width 0s;
   }
 
-  .todo_title h2 {
+  .category__title h2 {
     font-size: 3.5rem;
-    color: #28847f;
+    color: var(--primary-color);
   }
 
-  .dateString-Date {
+  .category__date {
     display: block;
   }
 
-  .hr-todo {
-    color: #28847f;
-    background-color: #28847f;
+  .todo__hr {
+    color: var(--primary-color);
+    background-color: var(--primary-color);
     height: 0.2rem;
     margin: 1rem;
     width: calc(100% - 2rem);
   }
 
-  .todo-icon {
-    color: #28847f;
+  .icon__todo {
+    color: var(--primary-color);
   }
 
-  .todo-icon.close-icon {
+  .icon__todo.icon__close {
     display: none;
   }
 
-  .add_first_todo_container h1 {
+  .first__add-todo h1 {
     font-size: 6rem;
-    color: #28847f;
+    color: var(--primary-color);
   }
 
-  .plane-todo-icon {
+  .icon__plane-todo {
     font-size: 10rem;
-    color: #28847f;
+    color: var(--primary-color);
   }
 }
