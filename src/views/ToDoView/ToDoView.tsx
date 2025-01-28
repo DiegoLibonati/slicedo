@@ -14,7 +14,7 @@ import {
 } from "../../store/global/globalSlice";
 import { useAppDispatch, useAppSelector } from "../../constants/redux";
 
-import "./todo.css";
+import "./ToDoView.css";
 
 interface ToDoViewProps {
   icon: string;
@@ -47,36 +47,39 @@ export const ToDoView = ({
     <main
       className={
         sidebar.sidebarMobile
-          ? "main__todo-view sidebar--open animate__animated animate__fadeIn"
-          : "main__todo-view animate__animated animate__fadeIn"
+          ? "main-todo-view main-todo-view--sidebar-open animate__animated animate__fadeIn"
+          : "main-todo-view animate__animated animate__fadeIn"
       }
     >
       {loading ? (
         <Loader></Loader>
       ) : (
         <Fragment>
-          <section className="category__title">
-            <h2>
+          <section className="category-header">
+            <h2 className="category-header__name">
               {icon}
               {category.toUpperCase()}
             </h2>
 
-            <h2 className="category__date">{new Date().toUTCString()}</h2>
+            <h2 className="category-header__date">
+              {new Date().toUTCString()}
+            </h2>
             {sidebar.sidebarMobile && (
               <button
                 type="button"
                 onClick={handleClickCloseSidebar}
                 aria-label="close sidebar"
+                className="category-header__btn-close"
               >
-                <AiOutlineCloseCircle className="icon__todo icon__close"></AiOutlineCloseCircle>
+                <AiOutlineCloseCircle className="category-header__btn-close-icon"></AiOutlineCloseCircle>
               </button>
             )}
           </section>
 
-          <hr className="todo__hr"></hr>
+          <hr className="category-hr"></hr>
 
           {toDos.length > 0 && (
-            <section className="todos">
+            <section className="category-todos">
               {toDos?.map((toDo) => {
                 return (
                   <ToDoItem
@@ -105,20 +108,22 @@ export const ToDoView = ({
               type="button"
               onClick={handleClickAddToDo}
               aria-label="add todo"
+              className="category-btn-add"
             >
-              <FaPlus className="icon__add-todo"></FaPlus>
+              <FaPlus className="category-btn-add__icon"></FaPlus>
             </button>
           ) : (
-            <section className="first__add-todo">
-              <h1>
+            <section className="category-first-add">
+              <h1 className="category-first-add__title">
                 ADD YOUR FIRST TODO <br></br>IN {category.toUpperCase()}
               </h1>
               <button
                 type="button"
                 onClick={handleClickAddToDo}
                 aria-label="add todo"
+                className="category-first-add__btn-add"
               >
-                <FaRegPaperPlane className="icon__plane-todo"></FaRegPaperPlane>
+                <FaRegPaperPlane className="category-first-add__btn-add-icon"></FaRegPaperPlane>
               </button>
             </section>
           )}

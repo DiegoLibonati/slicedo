@@ -1,0 +1,26 @@
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.sidebar-item__category,
+.sidebar-item__quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 1024px) {
+  .sidebar-item__category,
+  .sidebar-item__quantity {
+    color: var(--black-color);
+  }
+}

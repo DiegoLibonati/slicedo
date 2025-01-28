@@ -1,3 +1,5 @@
+import "./SidebarItem.css";
+
 interface SidebarItemProps {
   icon: string;
   category: string;
@@ -12,12 +14,12 @@ export const SidebarItem = ({
   onOpenCategoryToDo,
 }: SidebarItemProps) => {
   return (
-    <li className="sidebar__list-item">
-      <h2 onClick={onOpenCategoryToDo}>
+    <li className="sidebar-item">
+      <h2 onClick={onOpenCategoryToDo} className="sidebar-item__category">
         {icon}
         {category}
       </h2>
-      <h2>{quantity}</h2>
+      <h2 className="sidebar-item__quantity">{quantity}</h2>
     </li>
   );
 };

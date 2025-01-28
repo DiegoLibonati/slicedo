@@ -14,8 +14,13 @@ import {
   setEditToDo,
   removeToDo,
 } from "../../store/toDos/toDosSlice";
-import { displayAlert, openModalManageToDo } from "../../store/global/globalSlice";
+import {
+  displayAlert,
+  openModalManageToDo,
+} from "../../store/global/globalSlice";
 import { useAppDispatch } from "../../constants/redux";
+
+import "./ToDoItem.css";
 
 interface ToDoItemProps {
   id: string;
@@ -59,7 +64,7 @@ export const ToDoItem = ({
     dispatch(
       displayAlert({
         message: `${toDo.id} was successfully removed from ${category}!`,
-        type: "bad-alert",
+        type: "alert--bad",
       })
     );
   };
@@ -76,7 +81,7 @@ export const ToDoItem = ({
     dispatch(
       displayAlert({
         message: `${toDo.id} was successfully moved to Important!`,
-        type: "good-alert",
+        type: "alert--good",
       })
     );
   };
@@ -85,18 +90,19 @@ export const ToDoItem = ({
     <article
       className={
         toDo.done
-          ? "todo done animate__animated animate__fadeIn"
-          : "todo animate__animated animate__fadeIn"
+          ? "todo-item todo-item--done animate__animated animate__fadeIn"
+          : "todo-item animate__animated animate__fadeIn"
       }
     >
-      <div className="todo__header">
+      <div className="todo-item__header">
         {toDo.done && (
           <button
             type="button"
             onClick={handleClickUnDoneToDo}
             aria-label="undone todo"
+            className="todo-item__header-btn-undone"
           >
-            <FaCalendarCheck className="icon__calendar-check"></FaCalendarCheck>
+            <FaCalendarCheck className="todo-item__header-btn-undone-icon"></FaCalendarCheck>
           </button>
         )}
 
@@ -105,30 +111,47 @@ export const ToDoItem = ({
             type="button"
             onClick={handleClickDoneToDo}
             aria-label="done todo"
+            className="todo-item__header-btn-done"
           >
-            <FaCalendar className="icon__calendar"></FaCalendar>
+            <FaCalendar className="todo-item__header-btn-done-icon"></FaCalendar>
           </button>
         )}
 
-        <h3 className={toDo.done ? "todo__content--done" : "todo__content"}>
+        <h3
+          className={
+            toDo.done
+              ? "todo-item__header-content--done"
+              : "todo-item__header-content"
+          }
+        >
           {toDo.content}
         </h3>
       </div>
 
-      <div className="todo__options">
+      <div className="todo-item__options">
         <button
           type="button"
           onClick={handleClickRemoveToDo}
           aria-label="remove todo"
+          className="todo-item__options-btn-remove"
         >
           <FaTrash
-            className={toDo.done ? "icon__todo icon__todo-done" : "icon__todo"}
+            className={
+              toDo.done
+                ? "todo-item__options-btn-remove-icon--done"
+                : "todo-item__options-btn-remove-icon"
+            }
           ></FaTrash>
         </button>
 
         {!toDo.done && (
-          <button type="button" onClick={handleEditToDo} aria-label="edit todo">
-            <FaEdit className="icon__todo"></FaEdit>
+          <button
+            type="button"
+            onClick={handleEditToDo}
+            aria-label="edit todo"
+            className="todo-item__options-btn-edit"
+          >
+            <FaEdit className="todo-item__options-btn-edit-icon"></FaEdit>
           </button>
         )}
 
@@ -137,8 +160,9 @@ export const ToDoItem = ({
             type="button"
             onClick={handleMoveToImportant}
             aria-label="move todo to important"
+            className="todo-item__options-btn-move-important"
           >
-            <FaStar className="icon__todo"></FaStar>
+            <FaStar className="todo-item__options-btn-move-important-icon"></FaStar>
           </button>
         )}
       </div>

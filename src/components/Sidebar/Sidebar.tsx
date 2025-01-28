@@ -14,7 +14,7 @@ import { useMediaQuery } from "../../hooks/useMatchMedia";
 import { useAppSelector, useAppDispatch } from "../../constants/redux";
 import { MEDIA_QUERY_1024 } from "../../constants/config";
 
-import "./sidebar.css";
+import "./Sidebar.css";
 
 export const Sidebar = (): JSX.Element => {
   const { categories, loading } = useAppSelector((state) => state.toDos);
@@ -41,7 +41,7 @@ export const Sidebar = (): JSX.Element => {
       ) : (
         <Fragment>
           <div className="sidebar__title">
-            <h2>Die Redux ToDo</h2>
+            <h2 className="sidebar__title-text">Die Redux ToDo</h2>
           </div>
 
           <nav className="sidebar__nav">
@@ -69,8 +69,9 @@ export const Sidebar = (): JSX.Element => {
             type="button"
             onClick={handleClickOpenModalAddCategory}
             aria-label="open modal add category"
+            className="sidebar__btn-open-modal-add-category"
           >
-            <FaPlus className="add-category"></FaPlus>
+            <FaPlus className="sidebar__btn-open-modal-add-category-icon"></FaPlus>
           </button>
         </Fragment>
       )}

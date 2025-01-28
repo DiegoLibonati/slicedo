@@ -13,7 +13,7 @@
   padding: 1rem;
 }
 
-.sidebar__title h2 {
+.sidebar__title-text {
   font-size: 3rem;
   color: var(--white-color);
 }
@@ -37,39 +37,7 @@
   height: 100%;
 }
 
-.sidebar__list-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-flow: row wrap;
-  width: 100%;
-  height: auto;
-  margin-bottom: 1rem;
-}
-
-.sidebar-icon {
-  font-size: 2rem;
-  margin-right: 1rem;
-  color: var(--white-color);
-}
-
-.sidebar__list-item h2 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: var(--white-color);
-  cursor: pointer;
-}
-
-.sidebar__hr {
-  width: 100%;
-  color: var(--black-color);
-  background-color: var(--black-color);
-  margin: 1rem 0 1rem 0;
-}
-
-.add-category {
+.sidebar__btn-open-modal-add-category-icon {
   position: absolute;
   z-index: 50;
   bottom: 2rem;
@@ -82,22 +50,21 @@
   cursor: pointer;
 }
 
+.sidebar__hr {
+  width: 100%;
+  color: var(--black-color);
+  background-color: var(--black-color);
+  margin: 1rem 0 1rem 0;
+}
+
 @media only screen and (min-width: 1024px) {
   .sidebar {
     width: 30rem;
     background-color: var(--white-color);
   }
 
-  .sidebar__title h2 {
+  .sidebar__title-text {
     font-size: 3rem;
-    color: var(--black-color);
-  }
-
-  .sidebar__list-item h2 {
-    color: var(--black-color);
-  }
-
-  .sidebar-icon {
     color: var(--black-color);
   }
 }

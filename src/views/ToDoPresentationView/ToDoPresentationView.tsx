@@ -2,13 +2,13 @@ import { ToDoPresentantionButton } from "../../components/ToDoPresentationButton
 
 import { useAppSelector } from "../../constants/redux";
 
-import "./todopresentation.css";
+import "./ToDoPresentation.css";
 
 export const ToDoPresentationView = (): JSX.Element => {
   const { categories } = useAppSelector((state) => state.toDos);
 
   return (
-    <main className="main__presentation">
+    <main className="main-todo-presentation-view">
       <section className="categories">
         {categories.map((category) => {
           return (

@@ -14,14 +14,15 @@ export const Alert = (): JSX.Element => {
   };
 
   return (
-    <div
-      className={
-        alert.message ? `alert ${alert.type}` : "alert"
-      }
-    >
-      <h2>{alert.message}</h2>
-      <button type="button" onClick={handleClickClose} aria-label="close alert">
-        <AiOutlineCloseCircle className="icon__alert-close"></AiOutlineCloseCircle>
+    <div className={alert.message ? `alert ${alert.type}` : "alert"}>
+      <h2 className="alert__text">{alert.message}</h2>
+      <button
+        type="button"
+        onClick={handleClickClose}
+        aria-label="close alert"
+        className="alert__btn-close"
+      >
+        <AiOutlineCloseCircle className="alert__btn-close-icon"></AiOutlineCloseCircle>
       </button>
     </div>
   );

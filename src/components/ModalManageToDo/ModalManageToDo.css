@@ -1,4 +1,4 @@
-.modal__add-todo {
+.modal-manage-todo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,7 +9,16 @@
   z-index: 9999;
 }
 
-.form__modal-add-todo {
+.modal-manage-todo-btn-close-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 3rem;
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+.modal-manage-todo__form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +29,7 @@
   background-color: var(--primary-color);
 }
 
-.form__modal-add-todo h2 {
+.modal-manage-todo__form-category {
   font-size: 3rem;
   color: var(--white-color);
   align-self: flex-start;
@@ -28,7 +37,7 @@
   margin: 0 1rem 0 1rem;
 }
 
-.form__modal-add-todo textarea {
+.modal-manage-todo__form-textarea {
   resize: none;
   width: calc(100% - 2rem);
   height: 70%;
@@ -42,7 +51,7 @@
   border-radius: 1rem;
 }
 
-.form__modal-add-todo button {
+.modal-manage-todo__form-submit {
   background-color: var(--white-color);
   width: calc(100% - 2rem);
   height: 10%;
@@ -52,14 +61,5 @@
   font-size: 2rem;
   font-weight: 900;
   letter-spacing: 0.2rem;
-  cursor: pointer;
-}
-
-.icon__close-add-todo {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 3rem;
-  color: var(--white-color);
   cursor: pointer;
 }

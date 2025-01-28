@@ -57,35 +57,36 @@ export const ModalAddCategory = (): JSX.Element => {
     dispatch(
       displayAlert({
         message: `${emoji} ${categoryName} was successfully added!`,
-        type: "good-alert",
+        type: "alert--good",
       })
     );
     dispatch(closeModalAddCategory());
   };
 
   return (
-    <div className="modal">
+    <div className="modal-add-category">
       <button
         type="button"
         onClick={handleClickClose}
         aria-label="close modal add category"
+        className="modal-add-category__btn-close"
       >
-        <FaWindowClose className="modal__add-category"></FaWindowClose>
+        <FaWindowClose className="modal-add-category__btn-close-icon"></FaWindowClose>
       </button>
       <form
-        className="modal__form animate__animated animate__fadeIn"
+        className="modal-add-category__form animate__animated animate__fadeIn"
         onSubmit={onSubmit}
       >
         <Picker onEmojiClick={onEmojiClick} />
         <input
-          className="modal__input"
+          className="modal-add-category__form-input"
           placeholder="Category Name"
           onChange={onInputChange}
           name="categoryName"
           value={formState.categoryName}
         ></input>
         <button
-          className="modal__btn"
+          className="modal-add-category__form-btn-create"
           type="submit"
           aria-label="create category"
         >

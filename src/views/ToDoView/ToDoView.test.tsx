@@ -65,7 +65,7 @@ describe("ToDoView.tsx", () => {
 
       expect(main).toBeInTheDocument();
       expect(main).toHaveClass(
-        "main__todo-view sidebar--open animate__animated animate__fadeIn"
+        "main-todo-view main-todo-view--sidebar-open animate__animated animate__fadeIn"
       );
     });
 
@@ -150,7 +150,7 @@ describe("ToDoView.tsx", () => {
 
       expect(main).toBeInTheDocument();
       expect(main).toHaveClass(
-        "main__todo-view animate__animated animate__fadeIn"
+        "main-todo-view animate__animated animate__fadeIn"
       );
     });
   });
@@ -291,7 +291,7 @@ describe("ToDoView.tsx", () => {
         });
 
         // eslint-disable-next-line
-        const toDoContainer = container.querySelector(".todos") as HTMLElement;
+        const toDoContainer = container.querySelector(".category-todos") as HTMLElement;
 
         expect(toDoContainer).toBeInTheDocument();
         // eslint-disable-next-line
@@ -428,7 +428,7 @@ describe("ToDoView.tsx", () => {
 
       // eslint-disable-next-line
       const modal = container.querySelector(
-        ".modal__add-todo"
+        ".modal-manage-todo"
       ) as HTMLDivElement;
 
       expect(modal).toBeInTheDocument();

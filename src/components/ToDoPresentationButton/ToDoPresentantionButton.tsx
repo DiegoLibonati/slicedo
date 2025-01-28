@@ -2,6 +2,8 @@ import { useAppDispatch } from "../../constants/redux";
 
 import { setViewIdCategory } from "../../store/toDos/toDosSlice";
 
+import "./ToDoPresentationButton.css";
+
 interface ToDoPresentantionButtonProps {
   idCategory: string;
   category: string;
@@ -24,7 +26,7 @@ export const ToDoPresentantionButton = ({
   return (
     <article className="category">
       <button
-        className="category__btn"
+        className="category__btn-name"
         onClick={handleClickCategory}
         aria-label="todo category button"
       >

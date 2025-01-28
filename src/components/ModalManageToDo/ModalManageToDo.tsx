@@ -57,7 +57,7 @@ export const ModalManageToDo = ({
       dispatch(
         displayAlert({
           message: `${newToDo.id} was successfully added!`,
-          type: "good-alert",
+          type: "alert--good",
         })
       );
     } else {
@@ -72,7 +72,7 @@ export const ModalManageToDo = ({
       dispatch(
         displayAlert({
           message: `${toDo.id} was successfully edited!`,
-          type: "good-alert",
+          type: "alert--good",
         })
       );
     }
@@ -87,16 +87,21 @@ export const ModalManageToDo = ({
   };
 
   return (
-    <div className="modal__add-todo">
-      <button type="button" aria-label="close modal" onClick={handleCloseModal}>
-        <FaWindowClose className="icon__close-add-todo"></FaWindowClose>
+    <div className="modal-manage-todo">
+      <button
+        type="button"
+        aria-label="close modal"
+        onClick={handleCloseModal}
+        className="modal-manage-todo-btn-close"
+      >
+        <FaWindowClose className="modal-manage-todo-btn-close-icon"></FaWindowClose>
       </button>
 
       <form
-        className="form__modal-add-todo animate__animated animate__fadeIn"
+        className="modal-manage-todo__form animate__animated animate__fadeIn"
         onSubmit={onSubmit}
       >
-        <h2>
+        <h2 className="modal-manage-todo__form-category">
           {icon}
           {category}
         </h2>
@@ -105,9 +110,14 @@ export const ModalManageToDo = ({
           placeholder="Insert a content..."
           onChange={onTextAreaChange}
           value={formState.toDoContent}
+          className="modal-manage-todo__form-textarea"
         ></textarea>
 
-        <button type="submit" aria-label="submit form">
+        <button
+          type="submit"
+          aria-label="submit form"
+          className="modal-manage-todo__form-submit"
+        >
           {toDo ? "EDIT TODO" : "ADD TODO"}
         </button>
       </form>

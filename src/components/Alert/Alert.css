@@ -11,22 +11,22 @@
   border-radius: 1rem;
 }
 
-.alert.good-alert {
+.alert--good {
   background-color: var(--green-color);
   padding: 1rem;
 }
 
-.alert.bad-alert {
+.alert--bad {
   background-color: var(--red-color);
   padding: 1rem;
 }
 
-.alert h2 {
+.alert__text {
   font-size: 1.5rem;
   color: var(--white-color);
 }
 
-.icon__alert-close {
+.alert__btn-close-icon {
   width: 100%;
   font-size: 3rem;
   color: var(--white-color);

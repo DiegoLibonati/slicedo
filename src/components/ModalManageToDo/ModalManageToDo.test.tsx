@@ -155,7 +155,7 @@ describe("ModalManageToDo.tsx", () => {
       };
 
       const alert: Alert = {
-        type: "good-alert",
+        type: "alert--good",
         message: expect.any(String),
       };
 
@@ -213,7 +213,7 @@ describe("ModalManageToDo.tsx", () => {
       };
 
       const alert: Alert = {
-        type: "good-alert",
+        type: "alert--good",
         message: `${toDo.id} was successfully edited!`,
       };
 

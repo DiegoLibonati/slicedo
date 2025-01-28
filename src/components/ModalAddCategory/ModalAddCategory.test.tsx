@@ -107,7 +107,7 @@ describe("ModalAddCategory.tsx", () => {
 
       const alert: Alert = {
         message: `${emoji} ${inputValue} was successfully added!`,
-        type: "good-alert",
+        type: "alert--good",
       };
 
       expect(input).not.toHaveValue(inputValue);

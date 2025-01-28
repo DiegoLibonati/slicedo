@@ -156,7 +156,7 @@ describe("Sidebar.tsx", () => {
 
       // eslint-disable-next-line
       const modalAddCategory = container.querySelector(
-        ".modal"
+        ".modal-add-category"
       ) as HTMLDivElement;
 
       expect(modalAddCategory).toBeInTheDocument();
