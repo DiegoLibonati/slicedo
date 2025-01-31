@@ -40,8 +40,8 @@ export const Sidebar = (): JSX.Element => {
         <Loader></Loader>
       ) : (
         <Fragment>
-          <div className="sidebar__title">
-            <h2 className="sidebar__title-text">Die Redux ToDo</h2>
+          <div className="sidebar__header">
+            <h2 className="sidebar__title">Die Redux ToDo</h2>
           </div>
 
           <nav className="sidebar__nav">

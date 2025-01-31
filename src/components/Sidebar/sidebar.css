@@ -9,11 +9,11 @@
   position: absolute;
 }
 
-.sidebar__title {
+.sidebar__header {
   padding: 1rem;
 }
 
-.sidebar__title-text {
+.sidebar__title {
   font-size: 3rem;
   color: var(--white-color);
 }
@@ -63,7 +63,7 @@
     background-color: var(--white-color);
   }
 
-  .sidebar__title-text {
+  .sidebar__title {
     font-size: 3rem;
     color: var(--black-color);
   }

@@ -92,9 +92,9 @@ export const ModalManageToDo = ({
         type="button"
         aria-label="close modal"
         onClick={handleCloseModal}
-        className="modal-manage-todo-btn-close"
+        className="modal-manage-todo__btn-close"
       >
-        <FaWindowClose className="modal-manage-todo-btn-close-icon"></FaWindowClose>
+        <FaWindowClose className="modal-manage-todo__btn-close-icon"></FaWindowClose>
       </button>
 
       <form

@@ -100,9 +100,9 @@ export const ToDoItem = ({
             type="button"
             onClick={handleClickUnDoneToDo}
             aria-label="undone todo"
-            className="todo-item__header-btn-undone"
+            className="todo-item__btn-undone"
           >
-            <FaCalendarCheck className="todo-item__header-btn-undone-icon"></FaCalendarCheck>
+            <FaCalendarCheck className="todo-item__btn-undone-icon"></FaCalendarCheck>
           </button>
         )}
 
@@ -111,17 +111,17 @@ export const ToDoItem = ({
             type="button"
             onClick={handleClickDoneToDo}
             aria-label="done todo"
-            className="todo-item__header-btn-done"
+            className="todo-item__btn-done"
           >
-            <FaCalendar className="todo-item__header-btn-done-icon"></FaCalendar>
+            <FaCalendar className="todo-item__btn-done-icon"></FaCalendar>
           </button>
         )}
 
         <h3
           className={
             toDo.done
-              ? "todo-item__header-content--done"
-              : "todo-item__header-content"
+              ? "todo-item__content--done"
+              : "todo-item__content"
           }
         >
           {toDo.content}
@@ -133,13 +133,13 @@ export const ToDoItem = ({
           type="button"
           onClick={handleClickRemoveToDo}
           aria-label="remove todo"
-          className="todo-item__options-btn-remove"
+          className="todo-item__btn-remove"
         >
           <FaTrash
             className={
               toDo.done
-                ? "todo-item__options-btn-remove-icon--done"
-                : "todo-item__options-btn-remove-icon"
+                ? "todo-item__btn-remove-icon--done"
+                : "todo-item__btn-remove-icon"
             }
           ></FaTrash>
         </button>
@@ -149,9 +149,9 @@ export const ToDoItem = ({
             type="button"
             onClick={handleEditToDo}
             aria-label="edit todo"
-            className="todo-item__options-btn-edit"
+            className="todo-item__btn-edit"
           >
-            <FaEdit className="todo-item__options-btn-edit-icon"></FaEdit>
+            <FaEdit className="todo-item__btn-edit-icon"></FaEdit>
           </button>
         )}
 
@@ -160,9 +160,9 @@ export const ToDoItem = ({
             type="button"
             onClick={handleMoveToImportant}
             aria-label="move todo to important"
-            className="todo-item__options-btn-move-important"
+            className="todo-item__btn-move-important"
           >
-            <FaStar className="todo-item__options-btn-move-important-icon"></FaStar>
+            <FaStar className="todo-item__btn-move-important-icon"></FaStar>
           </button>
         )}
       </div>

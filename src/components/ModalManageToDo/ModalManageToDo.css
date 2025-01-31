@@ -9,7 +9,7 @@
   z-index: 9999;
 }
 
-.modal-manage-todo-btn-close-icon {
+.modal-manage-todo__btn-close-icon {
   position: absolute;
   top: 1rem;
   right: 1rem;

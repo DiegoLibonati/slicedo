@@ -29,26 +29,26 @@
   height: auto;
 }
 
-.todo-item__header-btn-undone-icon {
+.todo-item__btn-undone-icon {
   color: var(--white-color);
   font-size: 2rem;
   cursor: pointer;
 }
 
-.todo-item__header-btn-done-icon {
+.todo-item__btn-done-icon {
   color: var(--primary-color);
   font-size: 2rem;
   cursor: pointer;
 }
 
-.todo-item__header-content {
+.todo-item__content {
   font-size: 2rem;
   justify-self: flex-start;
   align-self: flex-start;
   color: var(--black-color);
 }
 
-.todo-item__header-content--done {
+.todo-item__content--done {
   font-size: 2rem;
   justify-self: flex-start;
   align-self: flex-start;
@@ -65,15 +65,15 @@
   height: auto;
 }
 
-.todo-item__options-btn-remove-icon,
-.todo-item__options-btn-edit-icon,
-.todo-item__options-btn-move-important-icon {
+.todo-item__btn-remove-icon,
+.todo-item__btn-edit-icon,
+.todo-item__btn-move-important-icon {
   font-size: 1.5rem;
   color: var(--primary-color);
   cursor: pointer;
 }
 
-.todo-item__options-btn-remove-icon--done {
+.todo-item__btn-remove-icon--done {
   font-size: 1.5rem;
   cursor: pointer;
   color: var(--white-color);

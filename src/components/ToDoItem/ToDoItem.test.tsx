@@ -171,7 +171,7 @@ describe("ToDoItem.tsx", () => {
       const heading = screen.getByRole("heading", { name: props.content });
 
       expect(heading).toBeInTheDocument();
-      expect(heading).toHaveClass("todo-item__header-content--done");
+      expect(heading).toHaveClass("todo-item__content--done");
     });
 
     test("It should render the remove button with the done settings set to true and execute its respective function when clicked", async () => {
@@ -193,7 +193,7 @@ describe("ToDoItem.tsx", () => {
 
       expect(btnRemove).toBeInTheDocument();
       expect(icon).toBeInTheDocument();
-      expect(icon).toHaveClass("todo-item__options-btn-remove-icon--done");
+      expect(icon).toHaveClass("todo-item__btn-remove-icon--done");
 
       await user.click(btnRemove);
 
@@ -291,7 +291,7 @@ describe("ToDoItem.tsx", () => {
       const heading = screen.getByRole("heading", { name: props.content });
 
       expect(heading).toBeInTheDocument();
-      expect(heading).toHaveClass("todo-item__header-content");
+      expect(heading).toHaveClass("todo-item__content");
     });
 
     test("It should render the remove button with the done settings set to true and execute its respective function when clicked", async () => {
@@ -313,7 +313,7 @@ describe("ToDoItem.tsx", () => {
 
       expect(btnRemove).toBeInTheDocument();
       expect(icon).toBeInTheDocument();
-      expect(icon).toHaveClass("todo-item__options-btn-remove-icon");
+      expect(icon).toHaveClass("todo-item__btn-remove-icon");
 
       await user.click(btnRemove);
 
