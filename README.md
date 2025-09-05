@@ -24,17 +24,13 @@ I made a web application that serves to save things to do. In addition we have a
 #### Dependencies
 
 ```
-"@types/jest": "^29.5.13"
-"@types/node": "^20.10.6"
-"@types/react": "^18.2.46"
-"@types/react-dom": "^18.2.18"
 "react": "^18.2.0"
 "react-dom": "^18.2.0"
 "react-icons": "^4.4.0"
 "react-scripts": "5.0.1"
-"react-redux": "^8.0.2"
-"redux": "^4.2.0"
-"@reduxjs/toolkit": "^1.8.5"
+"react-redux": "^9.2.0"
+"redux": "^5.0.1"
+"@reduxjs/toolkit": "^2.5.0"
 "web-vitals": "^2.1.4"
 "animate.css": "^4.1.1"
 "emoji-picker-react": "^3.6.2"
@@ -48,10 +44,14 @@ I made a web application that serves to save things to do. In addition we have a
 "@testing-library/jest-dom": "^6.6.2"
 "@testing-library/react": "^16.0.1"
 "@testing-library/user-event": "^14.5.2"
+"@types/jest": "^29.5.13"
+"@types/node": "^20.10.6"
+"@types/react": "^18.2.46"
+"@types/react-dom": "^18.2.18"
 "jest": "^29.7.0"
 "jest-environment-jsdom": "^29.7.0"
 "ts-jest": "^29.2.5"
-"typescript": "^5.3.3"
+"typescript": "^4.9.5"
 ```
 
 ## Portfolio Link

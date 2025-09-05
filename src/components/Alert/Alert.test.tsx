@@ -5,8 +5,8 @@ import { GlobalState } from "../../entities/entities";
 
 import { Alert } from "./Alert";
 
-import { renderWithState } from "../../tests/renders/renderWithState";
-import { mockGlobalState } from "../../tests/jest.constants";
+import { renderWithState } from "../../../tests/renders/renderWithState";
+import { mockGlobalState } from "../../../tests/jest.constants";
 
 describe("Alert.tsx", () => {
   describe("General Tests.", () => {

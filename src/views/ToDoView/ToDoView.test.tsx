@@ -7,8 +7,8 @@ import { ToDoView } from "./ToDoView";
 
 import { useAppDispatch } from "../../constants/redux";
 
-import { renderWithState } from "../../tests/renders/renderWithState";
-import { mockGlobalState, mockTodosState } from "../../tests/jest.constants";
+import { renderWithState } from "../../../tests/renders/renderWithState";
+import { mockGlobalState, mockTodosState } from "../../../tests/jest.constants";
 
 jest.mock("../../constants/redux", () => ({
   ...jest.requireActual("../../constants/redux"),

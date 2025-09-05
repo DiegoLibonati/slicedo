@@ -5,7 +5,7 @@ import { ToDoPresentantionButton } from "./ToDoPresentantionButton";
 
 import { useAppDispatch } from "../../constants/redux";
 
-import { renderWithOriginalProvider } from "../../tests/renders/renderWithOriginalProvider";
+import { renderWithOriginalProvider } from "../../../tests/renders/renderWithOriginalProvider";
 
 jest.mock("../../constants/redux", () => ({
   useAppDispatch: jest.fn(),

@@ -1,7 +1,7 @@
 import { ToDoPresentationView } from "./ToDoPresentationView";
 
-import { renderWithState } from "../../tests/renders/renderWithState";
-import { mockTodosState } from "../../tests/jest.constants";
+import { renderWithState } from "../../../tests/renders/renderWithState";
+import { mockTodosState } from "../../../tests/jest.constants";
 
 describe("ToDoPresentationView.tsx", () => {
   describe("General Tests.", () => {

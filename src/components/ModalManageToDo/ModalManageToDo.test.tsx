@@ -7,8 +7,8 @@ import { ModalManageToDo } from "./ModalManageToDo";
 
 import { useAppDispatch } from "../../constants/redux";
 
-import { renderWithOriginalProvider } from "../../tests/renders/renderWithOriginalProvider";
-import { renderWithState } from "../../tests/renders/renderWithState";
+import { renderWithOriginalProvider } from "../../../tests/renders/renderWithOriginalProvider";
+import { renderWithState } from "../../../tests/renders/renderWithState";
 
 jest.mock("../../constants/redux", () => ({
   ...jest.requireActual("../../constants/redux"),

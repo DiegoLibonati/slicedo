@@ -3,10 +3,10 @@ import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 
-import { GlobalState, ToDosState } from "../../entities/entities";
+import { GlobalState, ToDosState } from "../../src/entities/entities";
 
-import globalSlice from "../../store/global/globalSlice";
-import toDosSlice from "../../store/toDos/toDosSlice";
+import globalSlice from "../../src/store/global/globalSlice";
+import toDosSlice from "../../src/store/toDos/toDosSlice";
 
 import { mockGlobalState, mockTodosState } from "../jest.constants";
 
