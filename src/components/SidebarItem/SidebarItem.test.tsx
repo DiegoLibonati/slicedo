@@ -1,7 +1,7 @@
 import { screen, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { SidebarItem } from "./SidebarItem";
+import { SidebarItem } from "@src/components/SidebarItem/SidebarItem";
 
 type RenderComponent = {
   props: {

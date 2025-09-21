@@ -1,6 +1,6 @@
-import { GlobalState, ToDosState } from "../src/entities/entities";
+import { GlobalState, ToDosState } from "@src/entities/entities";
 
-import { defaultCategories } from "../src/constants/config";
+import { defaultCategories } from "@src/constants/config";
 
 // Mock Local Storage
 

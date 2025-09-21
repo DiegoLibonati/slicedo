@@ -1,9 +1,9 @@
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
-import { resetAlert } from "../../store/global/globalSlice";
-import { useAppDispatch, useAppSelector } from "../../constants/redux";
+import { resetAlert } from "@src/store/global/globalSlice";
+import { useAppDispatch, useAppSelector } from "@src/constants/redux";
 
-import "./Alert.css";
+import "@src/components/Alert/Alert.css";
 
 export const Alert = (): JSX.Element => {
   const { alert } = useAppSelector((state) => state.global);

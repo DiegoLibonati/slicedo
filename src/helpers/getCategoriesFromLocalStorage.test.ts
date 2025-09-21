@@ -1,8 +1,8 @@
-import { getCategoriesFromLocalStorage } from "./getCategoriesFromLocalStorage";
+import { getCategoriesFromLocalStorage } from "@src/helpers/getCategoriesFromLocalStorage";
 
-import { LOCAL_STORAGE_KEY_CATEGORIES } from "../constants/config";
+import { LOCAL_STORAGE_KEY_CATEGORIES } from "@src/constants/config";
 
-import { mocksLocalStorage } from "../../tests/jest.constants";
+import { mocksLocalStorage } from "@tests/jest.constants";
 
 describe("getCategoriesFromLocalStorage.ts", () => {
   describe("General Tests.", () => {

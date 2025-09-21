@@ -1,15 +1,15 @@
 import { screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { Alert, ToDoCategory } from "../../entities/entities";
+import { Alert, ToDoCategory } from "@src/entities/entities";
 
-import { ModalAddCategory } from "./ModalAddCategory";
+import { ModalAddCategory } from "@src/components/ModalAddCategory/ModalAddCategory";
 
-import { useAppDispatch } from "../../constants/redux";
+import { useAppDispatch } from "@src/constants/redux";
 
-import { renderWithOriginalProvider } from "../../../tests/renders/renderWithOriginalProvider";
+import { renderWithOriginalProvider } from "@tests/renders/renderWithOriginalProvider";
 
-jest.mock("../../constants/redux", () => ({
+jest.mock("@src/constants/redux", () => ({
   useAppDispatch: jest.fn(),
 }));
 

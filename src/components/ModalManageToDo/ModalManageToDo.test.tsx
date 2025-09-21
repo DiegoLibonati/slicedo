@@ -1,17 +1,17 @@
 import { screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { Alert, ToDo, ToDosState } from "../../entities/entities";
+import { Alert, ToDo, ToDosState } from "@src/entities/entities";
 
-import { ModalManageToDo } from "./ModalManageToDo";
+import { ModalManageToDo } from "@src/components/ModalManageToDo/ModalManageToDo";
 
-import { useAppDispatch } from "../../constants/redux";
+import { useAppDispatch } from "@src/constants/redux";
 
-import { renderWithOriginalProvider } from "../../../tests/renders/renderWithOriginalProvider";
-import { renderWithState } from "../../../tests/renders/renderWithState";
+import { renderWithOriginalProvider } from "@tests/renders/renderWithOriginalProvider";
+import { renderWithState } from "@tests/renders/renderWithState";
 
-jest.mock("../../constants/redux", () => ({
-  ...jest.requireActual("../../constants/redux"),
+jest.mock("@src/constants/redux", () => ({
+  ...jest.requireActual("@src/constants/redux"),
   useAppDispatch: jest.fn(),
 }));
 

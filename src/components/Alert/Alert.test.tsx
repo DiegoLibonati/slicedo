@@ -1,12 +1,12 @@
 import { screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { GlobalState } from "../../entities/entities";
+import { GlobalState } from "@src/entities/entities";
 
-import { Alert } from "./Alert";
+import { Alert } from "@src/components/Alert/Alert";
 
-import { renderWithState } from "../../../tests/renders/renderWithState";
-import { mockGlobalState } from "../../../tests/jest.constants";
+import { renderWithState } from "@tests/renders/renderWithState";
+import { mockGlobalState } from "@tests/jest.constants";
 
 describe("Alert.tsx", () => {
   describe("General Tests.", () => {

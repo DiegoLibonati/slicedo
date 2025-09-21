@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import globalSlice from "./global/globalSlice";
-import toDosSlice from "./toDos/toDosSlice";
+import globalSlice from "@src/store/global/globalSlice";
+import toDosSlice from "@src/store/toDos/toDosSlice";
 
 export const store = configureStore({
   reducer: {

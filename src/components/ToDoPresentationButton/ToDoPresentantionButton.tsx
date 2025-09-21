@@ -1,8 +1,8 @@
-import { useAppDispatch } from "../../constants/redux";
+import { useAppDispatch } from "@src/constants/redux";
 
-import { setViewIdCategory } from "../../store/toDos/toDosSlice";
+import { setViewIdCategory } from "@src/store/toDos/toDosSlice";
 
-import "./ToDoPresentationButton.css";
+import "@src/components/ToDoPresentationButton/ToDoPresentationButton.css";
 
 interface ToDoPresentantionButtonProps {
   idCategory: string;

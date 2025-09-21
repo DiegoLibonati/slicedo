@@ -1,13 +1,13 @@
 import { screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { ToDoPresentantionButton } from "./ToDoPresentantionButton";
+import { ToDoPresentantionButton } from "@src/components/ToDoPresentationButton/ToDoPresentantionButton";
 
-import { useAppDispatch } from "../../constants/redux";
+import { useAppDispatch } from "@src/constants/redux";
 
-import { renderWithOriginalProvider } from "../../../tests/renders/renderWithOriginalProvider";
+import { renderWithOriginalProvider } from "@tests/renders/renderWithOriginalProvider";
 
-jest.mock("../../constants/redux", () => ({
+jest.mock("@src/constants/redux", () => ({
   useAppDispatch: jest.fn(),
 }));
 

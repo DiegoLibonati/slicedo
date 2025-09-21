@@ -3,18 +3,18 @@ import { FaWindowClose } from "react-icons/fa";
 import Picker, { IEmojiData } from "emoji-picker-react";
 import { v4 as uuidv4 } from "uuid";
 
-import { ToDoCategory } from "../../entities/entities";
+import { ToDoCategory } from "@src/entities/entities";
 
 import {
   closeModalAddCategory,
   displayAlert,
-} from "../../store/global/globalSlice";
-import { newCategoryToDo } from "../../store/toDos/toDosSlice";
-import { useForm } from "../../hooks/useForm";
+} from "@src/store/global/globalSlice";
+import { newCategoryToDo } from "@src/store/toDos/toDosSlice";
+import { useForm } from "@src/hooks/useForm";
 
-import { useAppDispatch } from "../../constants/redux";
+import { useAppDispatch } from "@src/constants/redux";
 
-import "./ModalAddCategory.css";
+import "@src/components/ModalAddCategory/ModalAddCategory.css";
 
 export const ModalAddCategory = (): JSX.Element => {
   const dispatch = useAppDispatch();

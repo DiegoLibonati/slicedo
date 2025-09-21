@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { Alert, GlobalState } from "../../entities/entities";
+import { Alert, GlobalState } from "@src/entities/entities";
 
 const initialState: GlobalState = {
   alert: {

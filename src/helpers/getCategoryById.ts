@@ -1,4 +1,4 @@
-import { ToDoCategory } from "../entities/entities";
+import { ToDoCategory } from "@src/entities/entities";
 
 export const getCategoryById = (
   categories: ToDoCategory[],

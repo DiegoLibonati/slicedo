@@ -1,24 +1,24 @@
 import { useEffect, useMemo } from "react";
 import { Fragment } from "react/jsx-runtime";
 
-import { ToDoCategory } from "./entities/entities";
+import { ToDoCategory } from "@src/entities/entities";
 
-import { Alert } from "./components/Alert/Alert";
-import { Sidebar } from "./components/Sidebar/Sidebar";
+import { Alert } from "@src/components/Alert/Alert";
+import { Sidebar } from "@src/components/Sidebar/Sidebar";
 
-import { ToDoView } from "./views/ToDoView/ToDoView";
-import { ToDoPresentationView } from "./views/ToDoPresentationView/ToDoPresentationView";
+import { ToDoView } from "@src/views/ToDoView/ToDoView";
+import { ToDoPresentationView } from "@src/views/ToDoPresentationView/ToDoPresentationView";
 
-import { useMediaQuery } from "./hooks/useMatchMedia";
-import { getCategoryById } from "./helpers/getCategoryById";
-import { setLocalStorage } from "./helpers/setLocalStorage";
-import { useAppSelector } from "./constants/redux";
+import { useMediaQuery } from "@src/hooks/useMatchMedia";
+import { getCategoryById } from "@src/helpers/getCategoryById";
+import { setLocalStorage } from "@src/helpers/setLocalStorage";
+import { useAppSelector } from "@src/constants/redux";
 import {
   LOCAL_STORAGE_KEY_CATEGORIES,
   MEDIA_QUERY_1024,
-} from "./constants/config";
+} from "@src/constants/config";
 
-import "./App.css";
+import "@src/App.css";
 import "animate.css";
 
 function App(): JSX.Element {

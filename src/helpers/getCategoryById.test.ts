@@ -1,6 +1,6 @@
-import { getCategoryById } from "./getCategoryById";
+import { getCategoryById } from "@src/helpers/getCategoryById";
 
-import { defaultCategories } from "../constants/config";
+import { defaultCategories } from "@src/constants/config";
 
 describe("getCategoryById.ts", () => {
   describe("General Tests.", () => {

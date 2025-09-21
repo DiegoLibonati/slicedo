@@ -1,9 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { ToDo, ToDoCategory, ToDosState } from "../../entities/entities";
+import { ToDo, ToDoCategory, ToDosState } from "@src/entities/entities";
 
-import { getCategoriesFromLocalStorage } from "../../helpers/getCategoriesFromLocalStorage";
-import { defaultCategories } from "../../constants/config";
+import { getCategoriesFromLocalStorage } from "@src/helpers/getCategoriesFromLocalStorage";
+import { defaultCategories } from "@src/constants/config";
 
 const localStorageCategories = getCategoriesFromLocalStorage();
 

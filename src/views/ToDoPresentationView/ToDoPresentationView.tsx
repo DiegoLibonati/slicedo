@@ -1,8 +1,8 @@
-import { ToDoPresentantionButton } from "../../components/ToDoPresentationButton/ToDoPresentantionButton";
+import { ToDoPresentantionButton } from "@src/components/ToDoPresentationButton/ToDoPresentantionButton";
 
-import { useAppSelector } from "../../constants/redux";
+import { useAppSelector } from "@src/constants/redux";
 
-import "./ToDoPresentation.css";
+import "@src/views/ToDoPresentationView/ToDoPresentationView.css";
 
 export const ToDoPresentationView = (): JSX.Element => {
   const { categories } = useAppSelector((state) => state.toDos);

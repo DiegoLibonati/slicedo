@@ -1,20 +1,20 @@
 import { Fragment } from "react/jsx-runtime";
 import { FaPlus } from "react-icons/fa";
 
-import { ModalAddCategory } from "../ModalAddCategory/ModalAddCategory";
-import { SidebarItem } from "../SidebarItem/SidebarItem";
-import { Loader } from "../Loader/Loader";
+import { ModalAddCategory } from "@src/components/ModalAddCategory/ModalAddCategory";
+import { SidebarItem } from "@src/components/SidebarItem/SidebarItem";
+import { Loader } from "@src/components/Loader/Loader";
 
 import {
   openModalAddCategory,
   openSidebar,
-} from "../../store/global/globalSlice";
-import { setViewIdCategory } from "../../store/toDos/toDosSlice";
-import { useMediaQuery } from "../../hooks/useMatchMedia";
-import { useAppSelector, useAppDispatch } from "../../constants/redux";
-import { MEDIA_QUERY_1024 } from "../../constants/config";
+} from "@src/store/global/globalSlice";
+import { setViewIdCategory } from "@src/store/toDos/toDosSlice";
+import { useMediaQuery } from "@src/hooks/useMatchMedia";
+import { useAppSelector, useAppDispatch } from "@src/constants/redux";
+import { MEDIA_QUERY_1024 } from "@src/constants/config";
 
-import "./Sidebar.css";
+import "@src/components/Sidebar/Sidebar.css";
 
 export const Sidebar = (): JSX.Element => {
   const { categories, loading } = useAppSelector((state) => state.toDos);

@@ -2,19 +2,19 @@ import { Fragment } from "react/jsx-runtime";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaPlus, FaRegPaperPlane } from "react-icons/fa";
 
-import { ToDo } from "../../entities/entities";
+import { ToDo } from "@src/entities/entities";
 
-import { Loader } from "../../components/Loader/Loader";
-import { ModalManageToDo } from "../../components/ModalManageToDo/ModalManageToDo";
-import { ToDoItem } from "../../components/ToDoItem/ToDoItem";
+import { Loader } from "@src/components/Loader/Loader";
+import { ModalManageToDo } from "@src/components/ModalManageToDo/ModalManageToDo";
+import { ToDoItem } from "@src/components/ToDoItem/ToDoItem";
 
 import {
   closeSidebar,
   openModalManageToDo,
-} from "../../store/global/globalSlice";
-import { useAppDispatch, useAppSelector } from "../../constants/redux";
+} from "@src/store/global/globalSlice";
+import { useAppDispatch, useAppSelector } from "@src/constants/redux";
 
-import "./ToDoView.css";
+import "@src/views/TodoView/ToDoView.css";
 
 interface ToDoViewProps {
   icon: string;

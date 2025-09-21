@@ -1,21 +1,21 @@
 import { screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { Sidebar } from "./Sidebar";
+import { Sidebar } from "@src/components/Sidebar/Sidebar";
 
-import { useAppDispatch } from "../../constants/redux";
-import { defaultCategories } from "../../constants/config";
+import { useAppDispatch } from "@src/constants/redux";
+import { defaultCategories } from "@src/constants/config";
 
-import { renderWithOriginalProvider } from "../../../tests/renders/renderWithOriginalProvider";
-import { renderWithState } from "../../../tests/renders/renderWithState";
+import { renderWithOriginalProvider } from "@tests/renders/renderWithOriginalProvider";
+import { renderWithState } from "@tests/renders/renderWithState";
 import {
   mockGlobalState,
   setMockMatchMedia,
   mockTodosState,
-} from "../../../tests/jest.constants";
+} from "@tests/jest.constants";
 
-jest.mock("../../constants/redux", () => ({
-  ...jest.requireActual("../../constants/redux"),
+jest.mock("@src/constants/redux", () => ({
+  ...jest.requireActual("@src/constants/redux"),
   useAppDispatch: jest.fn(),
 }));
 

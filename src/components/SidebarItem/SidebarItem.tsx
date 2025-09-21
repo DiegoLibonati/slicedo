@@ -1,4 +1,4 @@
-import "./SidebarItem.css";
+import "@src/components/SidebarItem/SidebarItem.css";
 
 interface SidebarItemProps {
   icon: string;

@@ -6,21 +6,21 @@ import {
   FaCalendarCheck,
 } from "react-icons/fa";
 
-import { ToDo } from "../../entities/entities";
+import { ToDo } from "@src/entities/entities";
 
 import {
   doneToDo,
   goToImportantToDo,
   setEditToDo,
   removeToDo,
-} from "../../store/toDos/toDosSlice";
+} from "@src/store/toDos/toDosSlice";
 import {
   displayAlert,
   openModalManageToDo,
-} from "../../store/global/globalSlice";
-import { useAppDispatch } from "../../constants/redux";
+} from "@src/store/global/globalSlice";
+import { useAppDispatch } from "@src/constants/redux";
 
-import "./ToDoItem.css";
+import "@src/components/ToDoItem/ToDoItem.css";
 
 interface ToDoItemProps {
   id: string;
@@ -119,9 +119,7 @@ export const ToDoItem = ({
 
         <h3
           className={
-            toDo.done
-              ? "todo-item__content--done"
-              : "todo-item__content"
+            toDo.done ? "todo-item__content--done" : "todo-item__content"
           }
         >
           {toDo.content}

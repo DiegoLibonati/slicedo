@@ -1,17 +1,17 @@
 import { screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { ToDo } from "../../entities/entities";
+import { ToDo } from "@src/entities/entities";
 
-import { ToDoView } from "./ToDoView";
+import { ToDoView } from "@src/views/ToDoView/ToDoView";
 
-import { useAppDispatch } from "../../constants/redux";
+import { useAppDispatch } from "@src/constants/redux";
 
-import { renderWithState } from "../../../tests/renders/renderWithState";
-import { mockGlobalState, mockTodosState } from "../../../tests/jest.constants";
+import { renderWithState } from "@tests/renders/renderWithState";
+import { mockGlobalState, mockTodosState } from "@tests/jest.constants";
 
-jest.mock("../../constants/redux", () => ({
-  ...jest.requireActual("../../constants/redux"),
+jest.mock("@src/constants/redux", () => ({
+  ...jest.requireActual("@src/constants/redux"),
   useAppDispatch: jest.fn(),
 }));
 

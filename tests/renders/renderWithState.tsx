@@ -1,14 +1,14 @@
-import { render } from "@testing-library/react";
-
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 
-import { GlobalState, ToDosState } from "../../src/entities/entities";
+import { render } from "@testing-library/react";
 
-import globalSlice from "../../src/store/global/globalSlice";
-import toDosSlice from "../../src/store/toDos/toDosSlice";
+import { GlobalState, ToDosState } from "@src/entities/entities";
 
-import { mockGlobalState, mockTodosState } from "../jest.constants";
+import globalSlice from "@src/store/global/globalSlice";
+import toDosSlice from "@src/store/toDos/toDosSlice";
+
+import { mockGlobalState, mockTodosState } from "@tests/jest.constants";
 
 type RenderWithStateProps = {
   globalState?: GlobalState;

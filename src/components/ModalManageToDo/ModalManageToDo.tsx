@@ -2,20 +2,20 @@ import { useMemo } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 
-import { useForm } from "../../hooks/useForm";
+import { useForm } from "@src/hooks/useForm";
 import {
   closeModalManageToDo,
   displayAlert,
-} from "../../store/global/globalSlice";
+} from "@src/store/global/globalSlice";
 import {
   addToDo,
   editToDo,
   resetIdToDoToEdit,
-} from "../../store/toDos/toDosSlice";
-import { getToDoById } from "../../helpers/getToDoById";
-import { useAppDispatch, useAppSelector } from "../../constants/redux";
+} from "@src/store/toDos/toDosSlice";
+import { getToDoById } from "@src/helpers/getToDoById";
+import { useAppDispatch, useAppSelector } from "@src/constants/redux";
 
-import "./ModalManageToDo.css";
+import "@src/components/ModalManageToDo/ModalManageToDo.css";
 
 interface ModalManageToDoProps {
   idCategory: string;
