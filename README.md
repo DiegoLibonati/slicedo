@@ -24,6 +24,7 @@ I made a web application that serves to save things to do. In addition we have a
 3. CSS3
 4. REDUX
 5. REDUX-TOOLKIT
+6. Vite
 
 ## Libraries used
 
