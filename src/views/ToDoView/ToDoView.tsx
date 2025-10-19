@@ -2,26 +2,16 @@ import { Fragment } from "react/jsx-runtime";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaPlus, FaRegPaperPlane } from "react-icons/fa";
 
-import { ToDo } from "@src/entities/entities";
+import { ToDoViewProps } from "@src/entities/props";
 
 import { Loader } from "@src/components/Loader/Loader";
 import { ModalManageToDo } from "@src/components/ModalManageToDo/ModalManageToDo";
 import { ToDoItem } from "@src/components/ToDoItem/ToDoItem";
 
-import {
-  closeSidebar,
-  openModalManageToDo,
-} from "@src/store/global/globalSlice";
-import { useAppDispatch, useAppSelector } from "@src/constants/redux";
+import { useGlobalStore } from "@src/hooks/useGlobalStore";
+import { useToDosStore } from "@src/hooks/useToDosStore";
 
 import "@src/views/TodoView/ToDoView.css";
-
-interface ToDoViewProps {
-  icon: string;
-  idCategory: string;
-  category: string;
-  toDos: ToDo[];
-}
 
 export const ToDoView = ({
   icon,
@@ -29,29 +19,29 @@ export const ToDoView = ({
   category,
   toDos,
 }: ToDoViewProps): JSX.Element => {
-  const { sidebar, modal } = useAppSelector((state) => state.global);
-  const { loading } = useAppSelector((state) => state.toDos);
-  const dispatch = useAppDispatch();
+  const { globalState, handleOpenModalManageToDo, handleCloseSidebar } =
+    useGlobalStore();
+  const { toDosState } = useToDosStore();
 
   const handleClickCloseSidebar: React.MouseEventHandler<
     HTMLButtonElement
   > = () => {
-    dispatch(closeSidebar());
+    handleCloseSidebar();
   };
 
   const handleClickAddToDo: React.MouseEventHandler<HTMLButtonElement> = () => {
-    dispatch(openModalManageToDo());
+    handleOpenModalManageToDo();
   };
 
   return (
     <main
       className={
-        sidebar.sidebarMobile
+        globalState.sidebar.sidebarMobile
           ? "main-todo-view main-todo-view--sidebar-open animate__animated animate__fadeIn"
           : "main-todo-view animate__animated animate__fadeIn"
       }
     >
-      {loading ? (
+      {toDosState.loading ? (
         <Loader></Loader>
       ) : (
         <Fragment>
@@ -64,7 +54,7 @@ export const ToDoView = ({
             <h2 className="category-header__date">
               {new Date().toUTCString()}
             </h2>
-            {sidebar.sidebarMobile && (
+            {globalState.sidebar.sidebarMobile && (
               <button
                 type="button"
                 onClick={handleClickCloseSidebar}
@@ -95,7 +85,7 @@ export const ToDoView = ({
             </section>
           )}
 
-          {modal.modalManageToDo && (
+          {globalState.modal.modalManageToDo && (
             <ModalManageToDo
               idCategory={idCategory}
               category={category}

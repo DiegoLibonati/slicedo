@@ -3,11 +3,12 @@ import user from "@testing-library/user-event";
 
 import { ToDoPresentantionButton } from "@src/components/ToDoPresentationButton/ToDoPresentantionButton";
 
-import { useAppDispatch } from "@src/constants/redux";
+import { useAppDispatch } from "@src/app/hooks";
 
 import { renderWithOriginalProvider } from "@tests/renders/renderWithOriginalProvider";
 
-jest.mock("@src/constants/redux", () => ({
+jest.mock("@src/app/hooks", () => ({
+  ...jest.requireActual("@src/app/hooks"),
   useAppDispatch: jest.fn(),
 }));
 

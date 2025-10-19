@@ -5,38 +5,35 @@ import { ModalAddCategory } from "@src/components/ModalAddCategory/ModalAddCateg
 import { SidebarItem } from "@src/components/SidebarItem/SidebarItem";
 import { Loader } from "@src/components/Loader/Loader";
 
-import {
-  openModalAddCategory,
-  openSidebar,
-} from "@src/store/global/globalSlice";
-import { setViewIdCategory } from "@src/store/toDos/toDosSlice";
+import { useToDosStore } from "@src/hooks/useToDosStore";
+import { useGlobalStore } from "@src/hooks/useGlobalStore";
 import { useMediaQuery } from "@src/hooks/useMatchMedia";
-import { useAppSelector, useAppDispatch } from "@src/constants/redux";
-import { MEDIA_QUERY_1024 } from "@src/constants/config";
+
+import { MEDIA_QUERY_1024 } from "@src/constants/vars";
 
 import "@src/components/Sidebar/Sidebar.css";
 
 export const Sidebar = (): JSX.Element => {
-  const { categories, loading } = useAppSelector((state) => state.toDos);
-  const { modal } = useAppSelector((state) => state.global);
-  const dispatch = useAppDispatch();
+  const {toDosState, handleSetViewIdCategory } = useToDosStore();
+  const { globalState, handleOpenSidebar, handleOpenModalAddCategory } =
+    useGlobalStore();
 
   const { matches } = useMediaQuery(MEDIA_QUERY_1024);
 
   const onOpenCategoryToDo = (idCategory: string): void => {
-    if (!matches) dispatch(openSidebar());
-    dispatch(setViewIdCategory(idCategory));
+    if (!matches) handleOpenSidebar();
+    handleSetViewIdCategory(idCategory);
   };
 
   const handleClickOpenModalAddCategory: React.MouseEventHandler<
     HTMLButtonElement
   > = () => {
-    dispatch(openModalAddCategory());
+    handleOpenModalAddCategory();
   };
 
   return (
     <header className="sidebar">
-      {loading ? (
+      {toDosState.loading ? (
         <Loader></Loader>
       ) : (
         <Fragment>
@@ -46,7 +43,7 @@ export const Sidebar = (): JSX.Element => {
 
           <nav className="sidebar__nav">
             <ul className="sidebar__list">
-              {categories.map((category, index) => {
+              {toDosState.categories.map((category, index) => {
                 return (
                   <Fragment key={category.id}>
                     <SidebarItem
@@ -63,7 +60,9 @@ export const Sidebar = (): JSX.Element => {
             </ul>
           </nav>
 
-          {modal.modalAddCategory && <ModalAddCategory></ModalAddCategory>}
+          {globalState.modal.modalAddCategory && (
+            <ModalAddCategory></ModalAddCategory>
+          )}
 
           <button
             type="button"

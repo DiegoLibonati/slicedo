@@ -1,11 +1,6 @@
-import "@src/components/SidebarItem/SidebarItem.css";
+import { SidebarItemProps } from "@src/entities/props";
 
-interface SidebarItemProps {
-  icon: string;
-  category: string;
-  quantity: number;
-  onOpenCategoryToDo: React.MouseEventHandler<HTMLHeadingElement>;
-}
+import "@src/components/SidebarItem/SidebarItem.css";
 
 export const SidebarItem = ({
   icon,

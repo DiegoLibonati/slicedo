@@ -1,8 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-type UseMatchMedia = {
-  matches: boolean;
-};
+import { UseMatchMedia } from "@src/entities/hooks";
 
 export function useMediaQuery(mediaQueryString: string): UseMatchMedia {
   const queryString = removeReservedMediaKeyWord(mediaQueryString);

@@ -3,9 +3,10 @@ import { Provider } from "react-redux";
 
 import App from "@src/App";
 
-import { store } from "@src/store/store";
+import { store } from "@src/app/store";
 
 import "@src/index.css";
+import "animate.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

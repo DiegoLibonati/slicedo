@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { GlobalState } from "@src/entities/entities";
+import { GlobalState } from "@src/entities/states";
 
 import { Alert } from "@src/components/Alert/Alert";
 
@@ -30,7 +30,7 @@ describe("Alert.tsx", () => {
       const btnCloseAlert = screen.getByRole("button", {
         name: /close alert/i,
       });
-      // eslint-disable-next-line
+ 
       const alertContainer = message.parentElement as HTMLDivElement;
 
       expect(message).toBeInTheDocument();
@@ -51,7 +51,7 @@ describe("Alert.tsx", () => {
       const btnCloseAlert = screen.getByRole("button", {
         name: /close alert/i,
       });
-      // eslint-disable-next-line
+   
       const alertContainer = message.parentElement as HTMLDivElement;
 
       expect(message).toBeInTheDocument();

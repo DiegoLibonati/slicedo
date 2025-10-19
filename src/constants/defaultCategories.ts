@@ -1,8 +1,6 @@
-import { ToDoCategory } from "@src/entities/entities";
+import { ToDoCategory } from "@src/entities/app";
 
-export const LOCAL_STORAGE_KEY_CATEGORIES = "categories";
-
-export const defaultCategories: ToDoCategory[] = [
+const defaultCategories: ToDoCategory[] = [
   {
     id: "my_day",
     category: "My Day",
@@ -29,4 +27,4 @@ export const defaultCategories: ToDoCategory[] = [
   },
 ];
 
-export const MEDIA_QUERY_1024 = "@media only screen and (min-width: 1024px)"
+export default defaultCategories;

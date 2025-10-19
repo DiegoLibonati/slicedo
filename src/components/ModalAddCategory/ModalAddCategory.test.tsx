@@ -1,15 +1,16 @@
 import { screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { Alert, ToDoCategory } from "@src/entities/entities";
+import { Alert, ToDoCategory } from "@src/entities/app";
 
 import { ModalAddCategory } from "@src/components/ModalAddCategory/ModalAddCategory";
 
-import { useAppDispatch } from "@src/constants/redux";
+import { useAppDispatch } from "@src/app/hooks";
 
 import { renderWithOriginalProvider } from "@tests/renders/renderWithOriginalProvider";
 
-jest.mock("@src/constants/redux", () => ({
+jest.mock("@src/app/hooks", () => ({
+  ...jest.requireActual("@src/app/hooks"),
   useAppDispatch: jest.fn(),
 }));
 
@@ -40,7 +41,6 @@ describe("ModalAddCategory.tsx", () => {
         children: <ModalAddCategory></ModalAddCategory>,
       });
 
-      // eslint-disable-next-line
       const emojiPickerContainer = container.querySelector(
         ".emoji-picker-react"
       ) as HTMLElement;

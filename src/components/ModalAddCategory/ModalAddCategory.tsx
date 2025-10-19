@@ -3,23 +3,19 @@ import { FaWindowClose } from "react-icons/fa";
 import Picker, { IEmojiData } from "emoji-picker-react";
 import { v4 as uuidv4 } from "uuid";
 
-import { ToDoCategory } from "@src/entities/entities";
+import { ToDoCategory } from "@src/entities/app";
 
-import {
-  closeModalAddCategory,
-  displayAlert,
-} from "@src/store/global/globalSlice";
-import { newCategoryToDo } from "@src/store/toDos/toDosSlice";
+import { useGlobalStore } from "@src/hooks/useGlobalStore";
+import { useToDosStore } from "@src/hooks/useToDosStore";
 import { useForm } from "@src/hooks/useForm";
-
-import { useAppDispatch } from "@src/constants/redux";
 
 import "@src/components/ModalAddCategory/ModalAddCategory.css";
 
 export const ModalAddCategory = (): JSX.Element => {
-  const dispatch = useAppDispatch();
   const [chosenEmoji, setChosenEmoji] = useState<IEmojiData | null>(null);
 
+  const { handleCloseModalAddCategory, handleDisplayAlert } = useGlobalStore();
+  const { handleNewCategoryToDo } = useToDosStore();
   const { formState, onInputChange, onResetForm } = useForm<{
     categoryName: string;
   }>({
@@ -34,7 +30,7 @@ export const ModalAddCategory = (): JSX.Element => {
   };
 
   const handleClickClose: React.MouseEventHandler<HTMLButtonElement> = () => {
-    dispatch(closeModalAddCategory());
+    handleCloseModalAddCategory();
   };
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
@@ -50,17 +46,15 @@ export const ModalAddCategory = (): JSX.Element => {
       icon: emoji!,
     };
 
-    dispatch(newCategoryToDo(category));
+    handleNewCategoryToDo(category);
 
     onResetForm();
 
-    dispatch(
-      displayAlert({
-        message: `${emoji} ${categoryName} was successfully added!`,
-        type: "alert--good",
-      })
+    handleDisplayAlert(
+      `${emoji} ${categoryName} was successfully added!`,
+      "alert--good"
     );
-    dispatch(closeModalAddCategory());
+    handleCloseModalAddCategory();
   };
 
   return (

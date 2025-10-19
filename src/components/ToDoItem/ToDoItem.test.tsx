@@ -3,17 +3,18 @@ import user from "@testing-library/user-event";
 
 import { ToDoItem } from "@src/components/ToDoItem/ToDoItem";
 
-import { useAppDispatch } from "@src/constants/redux";
+import { useAppDispatch } from "@src/app/hooks";
 
 import { renderWithOriginalProvider } from "@tests/renders/renderWithOriginalProvider";
 
-jest.mock("@src/constants/redux", () => ({
+jest.mock("@src/app/hooks", () => ({
+  ...jest.requireActual("@src/app/hooks"),
   useAppDispatch: jest.fn(),
 }));
 
 describe("ToDoItem.tsx", () => {
   describe("If the idCategory key is important", () => {
-    const done = false; // can be true.
+    const done = false;
 
     const props = {
       id: "todo_1",
@@ -52,7 +53,7 @@ describe("ToDoItem.tsx", () => {
   });
 
   describe("If the idCategory key is not important", () => {
-    const done = false; // can be true.
+    const done = false;
 
     const props = {
       id: "todo_1",
@@ -188,7 +189,6 @@ describe("ToDoItem.tsx", () => {
       });
 
       const btnRemove = screen.getByRole("button", { name: /remove todo/i });
-      // eslint-disable-next-line
       const icon = btnRemove.children[0] as HTMLElement;
 
       expect(btnRemove).toBeInTheDocument();
@@ -308,7 +308,6 @@ describe("ToDoItem.tsx", () => {
       });
 
       const btnRemove = screen.getByRole("button", { name: /remove todo/i });
-      // eslint-disable-next-line
       const icon = btnRemove.children[0] as HTMLElement;
 
       expect(btnRemove).toBeInTheDocument();

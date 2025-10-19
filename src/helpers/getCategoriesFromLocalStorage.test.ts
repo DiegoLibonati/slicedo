@@ -1,6 +1,6 @@
 import { getCategoriesFromLocalStorage } from "@src/helpers/getCategoriesFromLocalStorage";
 
-import { LOCAL_STORAGE_KEY_CATEGORIES } from "@src/constants/config";
+import { LOCAL_STORAGE_KEY_CATEGORIES } from "@src/constants/vars";
 
 import { mocksLocalStorage } from "@tests/jest.constants";
 

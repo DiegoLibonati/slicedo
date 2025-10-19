@@ -1,15 +1,14 @@
 import { screen, render } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
+import { SidebarItemProps } from "@src/entities/props";
+
 import { SidebarItem } from "@src/components/SidebarItem/SidebarItem";
 
 type RenderComponent = {
   props: {
-    icon: string;
-    category: string;
-    quantity: number;
     onOpenCategoryToDo: jest.Mock;
-  };
+  } & SidebarItemProps;
   container: HTMLElement;
 };
 

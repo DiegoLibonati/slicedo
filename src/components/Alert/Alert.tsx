@@ -1,21 +1,21 @@
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
-import { resetAlert } from "@src/store/global/globalSlice";
-import { useAppDispatch, useAppSelector } from "@src/constants/redux";
+import { useGlobalStore } from "@src/hooks/useGlobalStore";
 
 import "@src/components/Alert/Alert.css";
 
 export const Alert = (): JSX.Element => {
-  const { alert } = useAppSelector((state) => state.global);
-  const dispatch = useAppDispatch();
+  const { globalState, handleResetAlert } = useGlobalStore();
 
   const handleClickClose: React.MouseEventHandler<HTMLButtonElement> = () => {
-    dispatch(resetAlert());
+    handleResetAlert();
   };
 
   return (
-    <div className={alert.message ? `alert ${alert.type}` : "alert"}>
-      <h2 className="alert__text">{alert.message}</h2>
+    <div
+      className={globalState.alert.message ? `alert ${globalState.alert.type}` : "alert"}
+    >
+      <h2 className="alert__text">{globalState.alert.message}</h2>
       <button
         type="button"
         onClick={handleClickClose}

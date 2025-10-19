@@ -1,17 +1,17 @@
 import { screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
-import { ToDo } from "@src/entities/entities";
+import { ToDo } from "@src/entities/app";
 
 import { ToDoView } from "@src/views/ToDoView/ToDoView";
 
-import { useAppDispatch } from "@src/constants/redux";
+import { useAppDispatch } from "@src/app/hooks";
 
 import { renderWithState } from "@tests/renders/renderWithState";
 import { mockGlobalState, mockTodosState } from "@tests/jest.constants";
 
-jest.mock("@src/constants/redux", () => ({
-  ...jest.requireActual("@src/constants/redux"),
+jest.mock("@src/app/hooks", () => ({
+  ...jest.requireActual("@src/app/hooks"),
   useAppDispatch: jest.fn(),
 }));
 
@@ -197,7 +197,6 @@ describe("ToDoView.tsx", () => {
         toDosState: { ...mockTodosState, loading: loading },
       });
 
-      // eslint-disable-next-line
       const loader = container.querySelector(".loader") as HTMLDivElement;
 
       expect(loader).toBeInTheDocument();
@@ -246,7 +245,6 @@ describe("ToDoView.tsx", () => {
         toDosState: { ...mockTodosState, loading: loading },
       });
 
-      // eslint-disable-next-line
       const loader = container.querySelector(".loader") as HTMLDivElement;
 
       expect(loader).not.toBeInTheDocument();
@@ -290,11 +288,11 @@ describe("ToDoView.tsx", () => {
           toDosState: { ...mockTodosState, loading: loading },
         });
 
-        // eslint-disable-next-line
-        const toDoContainer = container.querySelector(".category-todos") as HTMLElement;
+        const toDoContainer = container.querySelector(
+          ".category-todos"
+        ) as HTMLElement;
 
         expect(toDoContainer).toBeInTheDocument();
-        // eslint-disable-next-line
         expect(toDoContainer?.children).toHaveLength(props.toDos.length);
       });
 
@@ -341,7 +339,6 @@ describe("ToDoView.tsx", () => {
           toDosState: { ...mockTodosState, loading: loading },
         });
 
-        // eslint-disable-next-line
         const toDoContainer = container.querySelector(
           ".todos"
         ) as HTMLDivElement;
@@ -426,7 +423,6 @@ describe("ToDoView.tsx", () => {
         },
       });
 
-      // eslint-disable-next-line
       const modal = container.querySelector(
         ".modal-manage-todo"
       ) as HTMLDivElement;
@@ -480,7 +476,6 @@ describe("ToDoView.tsx", () => {
         },
       });
 
-      // eslint-disable-next-line
       const modal = container.querySelector(
         ".modal__add-todo"
       ) as HTMLDivElement;

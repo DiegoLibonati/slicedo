@@ -1,0 +1,40 @@
+import { ToDo } from "@src/entities/app";
+
+interface DefaultProps {
+  className?: string;
+  children?: React.ReactNode;
+}
+
+export interface ModalManageToDoProps {
+  idCategory: string;
+  icon: string;
+  category: string;
+}
+
+export interface SidebarItemProps {
+  icon: string;
+  category: string;
+  quantity: number;
+  onOpenCategoryToDo: React.MouseEventHandler<HTMLHeadingElement>;
+}
+
+export interface ToDoItemProps {
+  id: string;
+  content: string;
+  done: boolean;
+  idCategory: string;
+  category: string;
+}
+
+export interface ToDoPresentantionButtonProps {
+  idCategory: string;
+  category: string;
+  icon: string;
+}
+
+export interface ToDoViewProps {
+  icon: string;
+  idCategory: string;
+  category: string;
+  toDos: ToDo[];
+}

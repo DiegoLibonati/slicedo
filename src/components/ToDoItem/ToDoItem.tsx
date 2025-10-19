@@ -6,29 +6,13 @@ import {
   FaCalendarCheck,
 } from "react-icons/fa";
 
-import { ToDo } from "@src/entities/entities";
+import { ToDo } from "@src/entities/app";
+import { ToDoItemProps } from "@src/entities/props";
 
-import {
-  doneToDo,
-  goToImportantToDo,
-  setEditToDo,
-  removeToDo,
-} from "@src/store/toDos/toDosSlice";
-import {
-  displayAlert,
-  openModalManageToDo,
-} from "@src/store/global/globalSlice";
-import { useAppDispatch } from "@src/constants/redux";
+import { useGlobalStore } from "@src/hooks/useGlobalStore";
+import { useToDosStore } from "@src/hooks/useToDosStore";
 
 import "@src/components/ToDoItem/ToDoItem.css";
-
-interface ToDoItemProps {
-  id: string;
-  content: string;
-  done: boolean;
-  idCategory: string;
-  category: string;
-}
 
 export const ToDoItem = ({
   id,
@@ -37,7 +21,13 @@ export const ToDoItem = ({
   idCategory,
   category,
 }: ToDoItemProps): JSX.Element => {
-  const dispatch = useAppDispatch();
+  const { handleDisplayAlert, handleOpenModalManageToDo } = useGlobalStore();
+  const {
+    handleDoneToDo,
+    handleRemoveToDo,
+    handleSetEditToDo,
+    handleGoToImportantToDo,
+  } = useToDosStore();
 
   const toDo: ToDo = {
     id: id,
@@ -48,41 +38,37 @@ export const ToDoItem = ({
   const handleClickUnDoneToDo: React.MouseEventHandler<
     HTMLButtonElement
   > = () => {
-    dispatch(doneToDo({ idCategory: idCategory, idToDo: toDo.id }));
+    handleDoneToDo(idCategory, toDo.id);
   };
 
   const handleClickDoneToDo: React.MouseEventHandler<
     HTMLButtonElement
   > = () => {
-    dispatch(doneToDo({ idCategory: idCategory, idToDo: toDo.id }));
+    handleDoneToDo(idCategory, toDo.id);
   };
 
   const handleClickRemoveToDo: React.MouseEventHandler<
     HTMLButtonElement
   > = () => {
-    dispatch(removeToDo({ idCategory: idCategory, idToDo: toDo.id }));
-    dispatch(
-      displayAlert({
-        message: `${toDo.id} was successfully removed from ${category}!`,
-        type: "alert--bad",
-      })
+    handleRemoveToDo(idCategory, toDo.id);
+    handleDisplayAlert(
+      `${toDo.id} was successfully removed from ${category}!`,
+      "alert--bad"
     );
   };
 
   const handleEditToDo: React.MouseEventHandler<HTMLButtonElement> = () => {
-    dispatch(setEditToDo(toDo.id));
-    dispatch(openModalManageToDo());
+    handleSetEditToDo(toDo.id);
+    handleOpenModalManageToDo();
   };
 
   const handleMoveToImportant: React.MouseEventHandler<
     HTMLButtonElement
   > = () => {
-    dispatch(goToImportantToDo({ idCategory: idCategory, toDo: toDo }));
-    dispatch(
-      displayAlert({
-        message: `${toDo.id} was successfully moved to Important!`,
-        type: "alert--good",
-      })
+    handleGoToImportantToDo(idCategory, toDo);
+    handleDisplayAlert(
+      `${toDo.id} was successfully moved to Important!`,
+      "alert--good"
     );
   };
 

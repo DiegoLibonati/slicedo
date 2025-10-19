@@ -10,14 +10,12 @@ describe("ToDoPresentationView.tsx", () => {
         children: <ToDoPresentationView></ToDoPresentationView>,
       });
 
-      // eslint-disable-next-line
       const toDosContainer = container.querySelector(
         ".categories"
       ) as HTMLElement;
 
       expect(toDosContainer).toBeInTheDocument();
 
-      // eslint-disable-next-line
       expect(toDosContainer?.children).toHaveLength(
         mockTodosState.categories.length
       );

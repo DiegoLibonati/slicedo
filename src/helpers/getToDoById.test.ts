@@ -1,6 +1,6 @@
 import { getToDoById } from "@src/helpers/getToDoById";
 
-import { defaultCategories } from "@src/constants/config";
+import defaultCategories from "@src/constants/defaultCategories";
 
 describe("getToDoById.ts", () => {
   describe("General Tests.", () => {

@@ -3,8 +3,9 @@ import user from "@testing-library/user-event";
 
 import { Sidebar } from "@src/components/Sidebar/Sidebar";
 
-import { useAppDispatch } from "@src/constants/redux";
-import { defaultCategories } from "@src/constants/config";
+import defaultCategories from "@src/constants/defaultCategories";
+
+import { useAppDispatch } from "@src/app/hooks";
 
 import { renderWithOriginalProvider } from "@tests/renders/renderWithOriginalProvider";
 import { renderWithState } from "@tests/renders/renderWithState";
@@ -14,8 +15,8 @@ import {
   mockTodosState,
 } from "@tests/jest.constants";
 
-jest.mock("@src/constants/redux", () => ({
-  ...jest.requireActual("@src/constants/redux"),
+jest.mock("@src/app/hooks", () => ({
+  ...jest.requireActual("@src/app/hooks"),
   useAppDispatch: jest.fn(),
 }));
 
@@ -37,7 +38,6 @@ describe("Sidebar.tsx", () => {
         toDosState: { ...mockTodosState, loading: true },
       });
 
-      // eslint-disable-next-line
       const loading = container.querySelector(".loader") as HTMLDivElement;
 
       expect(loading).toBeInTheDocument();
@@ -62,7 +62,6 @@ describe("Sidebar.tsx", () => {
       expect(list).toBeInTheDocument();
       expect(categories).toHaveLength(defaultCategories.length);
 
-      // eslint-disable-next-line
       const hr = container.querySelector(".sidebar__hr") as HTMLHRElement;
 
       expect(hr).toBeInTheDocument();
@@ -73,7 +72,6 @@ describe("Sidebar.tsx", () => {
         children: <Sidebar></Sidebar>,
       });
 
-      // eslint-disable-next-line
       const modalAddCategory = container.querySelector(
         ".modal"
       ) as HTMLDivElement;
@@ -154,7 +152,6 @@ describe("Sidebar.tsx", () => {
         },
       });
 
-      // eslint-disable-next-line
       const modalAddCategory = container.querySelector(
         ".modal-add-category"
       ) as HTMLDivElement;

@@ -1,26 +1,20 @@
-import { useAppDispatch } from "@src/constants/redux";
+import { ToDoPresentantionButtonProps } from "@src/entities/props";
 
-import { setViewIdCategory } from "@src/store/toDos/toDosSlice";
+import { useToDosStore } from "@src/hooks/useToDosStore";
 
 import "@src/components/ToDoPresentationButton/ToDoPresentationButton.css";
-
-interface ToDoPresentantionButtonProps {
-  idCategory: string;
-  category: string;
-  icon: string;
-}
 
 export const ToDoPresentantionButton = ({
   idCategory,
   icon,
   category,
 }: ToDoPresentantionButtonProps): JSX.Element => {
-  const dispatch = useAppDispatch();
+  const { handleSetViewIdCategory } = useToDosStore();
 
   const handleClickCategory: React.MouseEventHandler<
     HTMLButtonElement
   > = () => {
-    dispatch(setViewIdCategory(idCategory));
+    handleSetViewIdCategory(idCategory);
   };
 
   return (
