@@ -197,7 +197,7 @@ describe("ToDoView.tsx", () => {
         toDosState: { ...mockTodosState, loading: loading },
       });
 
-      const loader = container.querySelector(".loader") as HTMLDivElement;
+      const loader = container.querySelector<HTMLDivElement>(".loader");
 
       expect(loader).toBeInTheDocument();
     });
@@ -245,7 +245,7 @@ describe("ToDoView.tsx", () => {
         toDosState: { ...mockTodosState, loading: loading },
       });
 
-      const loader = container.querySelector(".loader") as HTMLDivElement;
+      const loader = container.querySelector<HTMLDivElement>(".loader");
 
       expect(loader).not.toBeInTheDocument();
     });
@@ -288,9 +288,8 @@ describe("ToDoView.tsx", () => {
           toDosState: { ...mockTodosState, loading: loading },
         });
 
-        const toDoContainer = container.querySelector(
-          ".category-todos"
-        ) as HTMLElement;
+        const toDoContainer =
+          container.querySelector<HTMLElement>(".category-todos");
 
         expect(toDoContainer).toBeInTheDocument();
         expect(toDoContainer?.children).toHaveLength(props.toDos.length);
@@ -339,9 +338,7 @@ describe("ToDoView.tsx", () => {
           toDosState: { ...mockTodosState, loading: loading },
         });
 
-        const toDoContainer = container.querySelector(
-          ".todos"
-        ) as HTMLDivElement;
+        const toDoContainer = container.querySelector<HTMLDivElement>(".todos");
 
         expect(toDoContainer).not.toBeInTheDocument();
       });
@@ -423,9 +420,8 @@ describe("ToDoView.tsx", () => {
         },
       });
 
-      const modal = container.querySelector(
-        ".modal-manage-todo"
-      ) as HTMLDivElement;
+      const modal =
+        container.querySelector<HTMLDivElement>(".modal-manage-todo");
 
       expect(modal).toBeInTheDocument();
     });
@@ -476,9 +472,7 @@ describe("ToDoView.tsx", () => {
         },
       });
 
-      const modal = container.querySelector(
-        ".modal__add-todo"
-      ) as HTMLDivElement;
+      const modal = container.querySelector<HTMLDivElement>(".modal__add-todo");
 
       expect(modal).not.toBeInTheDocument();
     });

@@ -41,9 +41,9 @@ describe("ModalAddCategory.tsx", () => {
         children: <ModalAddCategory></ModalAddCategory>,
       });
 
-      const emojiPickerContainer = container.querySelector(
+      const emojiPickerContainer = container.querySelector<HTMLElement>(
         ".emoji-picker-react"
-      ) as HTMLElement;
+      );
       const input = screen.getByPlaceholderText("Category Name");
       const btnCreate = screen.getByRole("button", {
         name: /create category/i,

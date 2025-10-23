@@ -10,9 +10,8 @@ describe("ToDoPresentationView.tsx", () => {
         children: <ToDoPresentationView></ToDoPresentationView>,
       });
 
-      const toDosContainer = container.querySelector(
-        ".categories"
-      ) as HTMLElement;
+      const toDosContainer =
+        container.querySelector<HTMLElement>(".categories");
 
       expect(toDosContainer).toBeInTheDocument();
 

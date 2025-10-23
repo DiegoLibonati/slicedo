@@ -38,7 +38,7 @@ describe("Sidebar.tsx", () => {
         toDosState: { ...mockTodosState, loading: true },
       });
 
-      const loading = container.querySelector(".loader") as HTMLDivElement;
+      const loading = container.querySelector<HTMLDivElement>(".loader");
 
       expect(loading).toBeInTheDocument();
     });
@@ -62,7 +62,7 @@ describe("Sidebar.tsx", () => {
       expect(list).toBeInTheDocument();
       expect(categories).toHaveLength(defaultCategories.length);
 
-      const hr = container.querySelector(".sidebar__hr") as HTMLHRElement;
+      const hr = container.querySelector<HTMLHRElement>(".sidebar__hr");
 
       expect(hr).toBeInTheDocument();
     });
@@ -72,9 +72,8 @@ describe("Sidebar.tsx", () => {
         children: <Sidebar></Sidebar>,
       });
 
-      const modalAddCategory = container.querySelector(
-        ".modal"
-      ) as HTMLDivElement;
+      const modalAddCategory =
+        container.querySelector<HTMLDivElement>(".modal");
       const btnOpenModalAddCategory = screen.getByRole("button", {
         name: /open modal add category/i,
       });
@@ -152,9 +151,9 @@ describe("Sidebar.tsx", () => {
         },
       });
 
-      const modalAddCategory = container.querySelector(
+      const modalAddCategory = container.querySelector<HTMLDivElement>(
         ".modal-add-category"
-      ) as HTMLDivElement;
+      );
 
       expect(modalAddCategory).toBeInTheDocument();
     });
