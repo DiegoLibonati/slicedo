@@ -1,6 +1,6 @@
-import { ToDoPage } from "@src/pages/ToDoPage/ToDoPage";
+import ToDoPage from "@/pages/ToDoPage/ToDoPage";
 
-function App(): JSX.Element {
+function App() {
   return <ToDoPage></ToDoPage>;
 }
 

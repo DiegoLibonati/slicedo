@@ -1,9 +1,9 @@
-import { ToDo } from "@src/entities/app";
+import { ToDo } from "@/types/app";
 
-interface DefaultProps {
-  className?: string;
-  children?: React.ReactNode;
-}
+// interface DefaultProps {
+//   className?: string;
+//   children?: React.ReactNode;
+// }
 
 export interface ModalManageToDoProps {
   idCategory: string;

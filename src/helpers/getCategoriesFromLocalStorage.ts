@@ -1,13 +1,11 @@
-import { ToDoCategory } from "@src/entities/app";
+import type { ToDoCategory } from "@/types/app";
 
-import { getLocalStorage } from "@src/helpers/getLocalStorage";
+import { getLocalStorage } from "@/helpers/getLocalStorage";
 
-import { LOCAL_STORAGE_KEY_CATEGORIES } from "@src/constants/vars";
+import { LOCAL_STORAGE_KEY_CATEGORIES } from "@/constants/vars";
 
 export const getCategoriesFromLocalStorage = (): ToDoCategory[] => {
-  const categories = getLocalStorage<ToDoCategory[]>(
-    LOCAL_STORAGE_KEY_CATEGORIES
-  );
+  const categories = getLocalStorage(LOCAL_STORAGE_KEY_CATEGORIES) as ToDoCategory[] | null;
 
-  return categories ? categories : [];
+  return categories ?? [];
 };

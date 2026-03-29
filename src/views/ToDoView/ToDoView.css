@@ -3,7 +3,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   flex-flow: column nowrap;
-  background-color: var(--primary-color);
+  background-color: var(--color-primary);
   width: 0;
   height: 100%;
   position: absolute;
@@ -30,7 +30,7 @@
 .category-header__date {
   white-space: nowrap;
   font-size: 2rem;
-  color: var(--white-color);
+  color: var(--color-white);
   padding: 1rem 0 1rem 0;
 }
 
@@ -40,14 +40,14 @@
 
 .category-header__btn-close-icon {
   font-size: 3rem;
-  color: var(--white-color);
+  color: var(--color-white);
   cursor: pointer;
 }
 
 .category-hr {
   width: 100%;
-  color: var(--white-color);
-  background-color: var(--white-color);
+  color: var(--color-white);
+  background-color: var(--color-white);
   border: none;
   height: 0.2rem;
 }
@@ -68,8 +68,8 @@
   bottom: 2rem;
   right: 2rem;
   font-size: 3rem;
-  background-color: var(--red-color);
-  color: var(--white-color);
+  background-color: var(--color-red);
+  color: var(--color-white);
   border-radius: 50%;
   padding: 0.5rem;
   cursor: pointer;
@@ -88,13 +88,13 @@
 .category-first-add__title {
   font-size: 3rem;
   text-align: center;
-  color: var(--white-color);
+  color: var(--color-white);
 }
 
 .category-first-add__btn-add-icon {
   font-size: 5rem;
   margin-top: 2rem;
-  color: var(--white-color);
+  color: var(--color-white);
   cursor: pointer;
 }
 
@@ -102,7 +102,7 @@
   .main-todo-view {
     width: calc(100% - 30rem);
     right: 0;
-    background-color: var(--secondary-color);
+    background-color: var(--color-secondary);
     transition: width 0s;
   }
 
@@ -113,7 +113,7 @@
   .category-header__name,
   .category-header__date {
     font-size: 3.5rem;
-    color: var(--primary-color);
+    color: var(--color-primary);
   }
 
   .category-header__date {
@@ -121,8 +121,8 @@
   }
 
   .category-hr {
-    color: var(--primary-color);
-    background-color: var(--primary-color);
+    color: var(--color-primary);
+    background-color: var(--color-primary);
     height: 0.2rem;
     margin: 1rem;
     width: calc(100% - 2rem);
@@ -130,16 +130,16 @@
 
   .category-header__btn-close-icon {
     display: none;
-    color: var(--primary-color);
+    color: var(--color-primary);
   }
 
   .category-first-add__title {
     font-size: 6rem;
-    color: var(--primary-color);
+    color: var(--color-primary);
   }
 
   .category-first-add__btn-add-icon {
     font-size: 10rem;
-    color: var(--primary-color);
+    color: var(--color-primary);
   }
 }

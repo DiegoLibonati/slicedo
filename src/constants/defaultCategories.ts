@@ -1,4 +1,4 @@
-import { ToDoCategory } from "@src/entities/app";
+import { ToDoCategory } from "@/types/app";
 
 const defaultCategories: ToDoCategory[] = [
   {

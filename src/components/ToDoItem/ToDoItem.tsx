@@ -1,33 +1,17 @@
-import {
-  FaTrash,
-  FaEdit,
-  FaStar,
-  FaCalendar,
-  FaCalendarCheck,
-} from "react-icons/fa";
+import { FaTrash, FaEdit, FaStar, FaCalendar, FaCalendarCheck } from "react-icons/fa";
 
-import { ToDo } from "@src/entities/app";
-import { ToDoItemProps } from "@src/entities/props";
+import { ToDo } from "@/types/app";
+import { ToDoItemProps } from "@/types/props";
 
-import { useGlobalStore } from "@src/hooks/useGlobalStore";
-import { useToDosStore } from "@src/hooks/useToDosStore";
+import { useGlobalStore } from "@/hooks/useGlobalStore";
+import { useToDosStore } from "@/hooks/useToDosStore";
 
-import "@src/components/ToDoItem/ToDoItem.css";
+import "@/components/ToDoItem/ToDoItem.css";
 
-export const ToDoItem = ({
-  id,
-  content,
-  done,
-  idCategory,
-  category,
-}: ToDoItemProps): JSX.Element => {
+const ToDoItem = ({ id, content, done, idCategory, category }: ToDoItemProps) => {
   const { handleDisplayAlert, handleOpenModalManageToDo } = useGlobalStore();
-  const {
-    handleDoneToDo,
-    handleRemoveToDo,
-    handleSetEditToDo,
-    handleGoToImportantToDo,
-  } = useToDosStore();
+  const { handleDoneToDo, handleRemoveToDo, handleSetEditToDo, handleGoToImportantToDo } =
+    useToDosStore();
 
   const toDo: ToDo = {
     id: id,
@@ -35,26 +19,17 @@ export const ToDoItem = ({
     done: done,
   };
 
-  const handleClickUnDoneToDo: React.MouseEventHandler<
-    HTMLButtonElement
-  > = () => {
+  const handleClickUnDoneToDo: React.MouseEventHandler<HTMLButtonElement> = () => {
     handleDoneToDo(idCategory, toDo.id);
   };
 
-  const handleClickDoneToDo: React.MouseEventHandler<
-    HTMLButtonElement
-  > = () => {
+  const handleClickDoneToDo: React.MouseEventHandler<HTMLButtonElement> = () => {
     handleDoneToDo(idCategory, toDo.id);
   };
 
-  const handleClickRemoveToDo: React.MouseEventHandler<
-    HTMLButtonElement
-  > = () => {
+  const handleClickRemoveToDo: React.MouseEventHandler<HTMLButtonElement> = () => {
     handleRemoveToDo(idCategory, toDo.id);
-    handleDisplayAlert(
-      `${toDo.id} was successfully removed from ${category}!`,
-      "alert--bad"
-    );
+    handleDisplayAlert(`${toDo.id} was successfully removed from ${category}!`, "alert--bad");
   };
 
   const handleEditToDo: React.MouseEventHandler<HTMLButtonElement> = () => {
@@ -62,14 +37,9 @@ export const ToDoItem = ({
     handleOpenModalManageToDo();
   };
 
-  const handleMoveToImportant: React.MouseEventHandler<
-    HTMLButtonElement
-  > = () => {
+  const handleMoveToImportant: React.MouseEventHandler<HTMLButtonElement> = () => {
     handleGoToImportantToDo(idCategory, toDo);
-    handleDisplayAlert(
-      `${toDo.id} was successfully moved to Important!`,
-      "alert--good"
-    );
+    handleDisplayAlert(`${toDo.id} was successfully moved to Important!`, "alert--good");
   };
 
   return (
@@ -103,11 +73,7 @@ export const ToDoItem = ({
           </button>
         )}
 
-        <h3
-          className={
-            toDo.done ? "todo-item__content--done" : "todo-item__content"
-          }
-        >
+        <h3 className={toDo.done ? "todo-item__content--done" : "todo-item__content"}>
           {toDo.content}
         </h3>
       </div>
@@ -121,9 +87,7 @@ export const ToDoItem = ({
         >
           <FaTrash
             className={
-              toDo.done
-                ? "todo-item__btn-remove-icon--done"
-                : "todo-item__btn-remove-icon"
+              toDo.done ? "todo-item__btn-remove-icon--done" : "todo-item__btn-remove-icon"
             }
           ></FaTrash>
         </button>
@@ -153,3 +117,5 @@ export const ToDoItem = ({
     </article>
   );
 };
+
+export default ToDoItem;

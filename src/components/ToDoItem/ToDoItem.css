@@ -9,14 +9,14 @@
   padding-right: 1rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  background-color: var(--white-color);
+  background-color: var(--color-white);
   border-radius: 1rem;
   margin: 0.5rem 0 0.5rem 0;
   transition: background-color 1s;
 }
 
 .todo-item--done {
-  background-color: var(--red-color);
+  background-color: var(--color-red);
   transition: background-color 1s;
 }
 
@@ -30,13 +30,13 @@
 }
 
 .todo-item__btn-undone-icon {
-  color: var(--white-color);
+  color: var(--color-white);
   font-size: 2rem;
   cursor: pointer;
 }
 
 .todo-item__btn-done-icon {
-  color: var(--primary-color);
+  color: var(--color-primary);
   font-size: 2rem;
   cursor: pointer;
 }
@@ -45,14 +45,14 @@
   font-size: 2rem;
   justify-self: flex-start;
   align-self: flex-start;
-  color: var(--black-color);
+  color: var(--color-black);
 }
 
 .todo-item__content--done {
   font-size: 2rem;
   justify-self: flex-start;
   align-self: flex-start;
-  color: var(--white-color);
+  color: var(--color-white);
 }
 
 .todo-item__options {
@@ -69,12 +69,12 @@
 .todo-item__btn-edit-icon,
 .todo-item__btn-move-important-icon {
   font-size: 1.5rem;
-  color: var(--primary-color);
+  color: var(--color-primary);
   cursor: pointer;
 }
 
 .todo-item__btn-remove-icon--done {
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--white-color);
+  color: var(--color-white);
 }

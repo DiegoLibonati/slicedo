@@ -1,18 +1,16 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { ToDo, ToDoCategory } from "@src/entities/app";
-import { ToDosState } from "@src/entities/states";
+import { ToDo, ToDoCategory } from "@/types/app";
+import { ToDosState } from "@/types/states";
 
-import { getCategoriesFromLocalStorage } from "@src/helpers/getCategoriesFromLocalStorage";
+import { getCategoriesFromLocalStorage } from "@/helpers/getCategoriesFromLocalStorage";
 
-import defaultCategories from "@src/constants/defaultCategories";
+import defaultCategories from "@/constants/defaultCategories";
 
 const localStorageCategories = getCategoriesFromLocalStorage();
 
 const initialState: ToDosState = {
-  categories: localStorageCategories.length
-    ? localStorageCategories
-    : defaultCategories,
+  categories: localStorageCategories.length ? localStorageCategories : defaultCategories,
   loading: false,
   viewIdCategory: "",
   idToDoToEdit: "",
@@ -49,10 +47,7 @@ export const toDosSlice = createSlice({
 
       state.loading = false;
     },
-    removeToDo: (
-      state,
-      action: PayloadAction<{ idCategory: string; idToDo: string }>
-    ) => {
+    removeToDo: (state, action: PayloadAction<{ idCategory: string; idToDo: string }>) => {
       state.loading = true;
 
       const idCategory = action.payload.idCategory;
@@ -67,10 +62,7 @@ export const toDosSlice = createSlice({
 
       state.loading = false;
     },
-    doneToDo: (
-      state,
-      action: PayloadAction<{ idCategory: string; idToDo: string }>
-    ) => {
+    doneToDo: (state, action: PayloadAction<{ idCategory: string; idToDo: string }>) => {
       state.loading = true;
 
       const idCategory = action.payload.idCategory;
@@ -87,10 +79,7 @@ export const toDosSlice = createSlice({
 
       state.loading = false;
     },
-    goToImportantToDo: (
-      state,
-      action: PayloadAction<{ idCategory: string; toDo: ToDo }>
-    ) => {
+    goToImportantToDo: (state, action: PayloadAction<{ idCategory: string; toDo: ToDo }>) => {
       state.loading = true;
 
       const idCategory = action.payload.idCategory;
@@ -98,9 +87,7 @@ export const toDosSlice = createSlice({
 
       state.categories = state.categories.map((category) => {
         if (category.id === idCategory)
-          category.toDos = category.toDos.filter(
-            (toDo) => toDo.id !== toDoToMove.id
-          );
+          category.toDos = category.toDos.filter((toDo) => toDo.id !== toDoToMove.id);
 
         if (category.id === "important") category.toDos.push(toDoToMove);
 
@@ -109,10 +96,7 @@ export const toDosSlice = createSlice({
 
       state.loading = false;
     },
-    editToDo: (
-      state,
-      action: PayloadAction<{ idCategory: string; toDo: ToDo }>
-    ) => {
+    editToDo: (state, action: PayloadAction<{ idCategory: string; toDo: ToDo }>) => {
       state.loading = true;
 
       const idCategory = action.payload.idCategory;

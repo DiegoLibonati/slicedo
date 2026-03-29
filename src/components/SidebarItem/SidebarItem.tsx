@@ -1,13 +1,8 @@
-import { SidebarItemProps } from "@src/entities/props";
+import { SidebarItemProps } from "@/types/props";
 
-import "@src/components/SidebarItem/SidebarItem.css";
+import "@/components/SidebarItem/SidebarItem.css";
 
-export const SidebarItem = ({
-  icon,
-  category,
-  quantity,
-  onOpenCategoryToDo,
-}: SidebarItemProps) => {
+const SidebarItem = ({ icon, category, quantity, onOpenCategoryToDo }: SidebarItemProps) => {
   return (
     <li className="sidebar-item">
       <h2 onClick={onOpenCategoryToDo} className="sidebar-item__category">
@@ -18,3 +13,5 @@ export const SidebarItem = ({
     </li>
   );
 };
+
+export default SidebarItem;

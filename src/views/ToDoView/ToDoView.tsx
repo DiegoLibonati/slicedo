@@ -2,30 +2,22 @@ import { Fragment } from "react/jsx-runtime";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaPlus, FaRegPaperPlane } from "react-icons/fa";
 
-import { ToDoViewProps } from "@src/entities/props";
+import { ToDoViewProps } from "@/types/props";
 
-import { Loader } from "@src/components/Loader/Loader";
-import { ModalManageToDo } from "@src/components/ModalManageToDo/ModalManageToDo";
-import { ToDoItem } from "@src/components/ToDoItem/ToDoItem";
+import Loader from "@/components/Loader/Loader";
+import ModalManageToDo from "@/components/ModalManageToDo/ModalManageToDo";
+import ToDoItem from "@/components/ToDoItem/ToDoItem";
 
-import { useGlobalStore } from "@src/hooks/useGlobalStore";
-import { useToDosStore } from "@src/hooks/useToDosStore";
+import { useGlobalStore } from "@/hooks/useGlobalStore";
+import { useToDosStore } from "@/hooks/useToDosStore";
 
-import "@src/views/TodoView/ToDoView.css";
+import "@/views/TodoView/ToDoView.css";
 
-export const ToDoView = ({
-  icon,
-  idCategory,
-  category,
-  toDos,
-}: ToDoViewProps): JSX.Element => {
-  const { globalState, handleOpenModalManageToDo, handleCloseSidebar } =
-    useGlobalStore();
+const ToDoView = ({ icon, idCategory, category, toDos }: ToDoViewProps) => {
+  const { globalState, handleOpenModalManageToDo, handleCloseSidebar } = useGlobalStore();
   const { toDosState } = useToDosStore();
 
-  const handleClickCloseSidebar: React.MouseEventHandler<
-    HTMLButtonElement
-  > = () => {
+  const handleClickCloseSidebar: React.MouseEventHandler<HTMLButtonElement> = () => {
     handleCloseSidebar();
   };
 
@@ -51,9 +43,7 @@ export const ToDoView = ({
               {category.toUpperCase()}
             </h2>
 
-            <h2 className="category-header__date">
-              {new Date().toUTCString()}
-            </h2>
+            <h2 className="category-header__date">{new Date().toUTCString()}</h2>
             {globalState.sidebar.sidebarMobile && (
               <button
                 type="button"
@@ -122,3 +112,5 @@ export const ToDoView = ({
     </main>
   );
 };
+
+export default ToDoView;

@@ -1,10 +1,10 @@
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
-import { useGlobalStore } from "@src/hooks/useGlobalStore";
+import { useGlobalStore } from "@/hooks/useGlobalStore";
 
-import "@src/components/Alert/Alert.css";
+import "@/components/Alert/Alert.css";
 
-export const Alert = (): JSX.Element => {
+const Alert = () => {
   const { globalState, handleResetAlert } = useGlobalStore();
 
   const handleClickClose: React.MouseEventHandler<HTMLButtonElement> = () => {
@@ -12,9 +12,7 @@ export const Alert = (): JSX.Element => {
   };
 
   return (
-    <div
-      className={globalState.alert.message ? `alert ${globalState.alert.type}` : "alert"}
-    >
+    <div className={globalState.alert.message ? `alert ${globalState.alert.type}` : "alert"}>
       <h2 className="alert__text">{globalState.alert.message}</h2>
       <button
         type="button"
@@ -27,3 +25,5 @@ export const Alert = (): JSX.Element => {
     </div>
   );
 };
+
+export default Alert;

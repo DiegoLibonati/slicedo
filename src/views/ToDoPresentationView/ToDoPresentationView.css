@@ -11,7 +11,7 @@
   overflow-x: hidden;
   transition: width 1s;
   right: 0;
-  background-color: var(--secondary-color);
+  background-color: var(--color-secondary);
   padding: 1rem;
 }
 

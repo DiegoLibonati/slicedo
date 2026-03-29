@@ -12,24 +12,24 @@
 }
 
 .alert--good {
-  background-color: var(--green-color);
+  background-color: var(--color-green);
   padding: 1rem;
 }
 
 .alert--bad {
-  background-color: var(--red-color);
+  background-color: var(--color-red);
   padding: 1rem;
 }
 
 .alert__text {
   font-size: 1.5rem;
-  color: var(--white-color);
+  color: var(--color-white);
 }
 
 .alert__btn-close-icon {
   width: 100%;
   font-size: 3rem;
-  color: var(--white-color);
+  color: var(--color-white);
   cursor: pointer;
 }
 

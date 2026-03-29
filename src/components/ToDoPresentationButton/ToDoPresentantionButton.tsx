@@ -1,19 +1,13 @@
-import { ToDoPresentantionButtonProps } from "@src/entities/props";
+import { ToDoPresentantionButtonProps } from "@/types/props";
 
-import { useToDosStore } from "@src/hooks/useToDosStore";
+import { useToDosStore } from "@/hooks/useToDosStore";
 
-import "@src/components/ToDoPresentationButton/ToDoPresentationButton.css";
+import "@/components/ToDoPresentationButton/ToDoPresentationButton.css";
 
-export const ToDoPresentantionButton = ({
-  idCategory,
-  icon,
-  category,
-}: ToDoPresentantionButtonProps): JSX.Element => {
+const ToDoPresentantionButton = ({ idCategory, icon, category }: ToDoPresentantionButtonProps) => {
   const { handleSetViewIdCategory } = useToDosStore();
 
-  const handleClickCategory: React.MouseEventHandler<
-    HTMLButtonElement
-  > = () => {
+  const handleClickCategory: React.MouseEventHandler<HTMLButtonElement> = () => {
     handleSetViewIdCategory(idCategory);
   };
 
@@ -30,3 +24,5 @@ export const ToDoPresentantionButton = ({
     </article>
   );
 };
+
+export default ToDoPresentantionButton;

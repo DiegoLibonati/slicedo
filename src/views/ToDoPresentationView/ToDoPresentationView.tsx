@@ -1,10 +1,10 @@
-import { ToDoPresentantionButton } from "@src/components/ToDoPresentationButton/ToDoPresentantionButton";
+import ToDoPresentantionButton from "@/components/ToDoPresentationButton/ToDoPresentantionButton";
 
-import { useToDosStore } from "@src/hooks/useToDosStore";
+import { useToDosStore } from "@/hooks/useToDosStore";
 
-import "@src/views/ToDoPresentationView/ToDoPresentationView.css";
+import "@/views/ToDoPresentationView/ToDoPresentationView.css";
 
-export const ToDoPresentationView = (): JSX.Element => {
+const ToDoPresentationView = () => {
   const { toDosState } = useToDosStore();
 
   return (
@@ -24,3 +24,5 @@ export const ToDoPresentationView = (): JSX.Element => {
     </main>
   );
 };
+
+export default ToDoPresentationView;

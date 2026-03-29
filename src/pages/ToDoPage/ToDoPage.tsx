@@ -1,29 +1,26 @@
 import { useEffect, useMemo } from "react";
 import { Fragment } from "react/jsx-runtime";
 
-import { ToDoCategory } from "@src/entities/app";
+import { ToDoCategory } from "@/types/app";
 
-import { Alert } from "@src/components/Alert/Alert";
-import { Sidebar } from "@src/components/Sidebar/Sidebar";
+import Alert from "@/components/Alert/Alert";
+import Sidebar from "@/components/Sidebar/Sidebar";
 
-import { ToDoView } from "@src/views/ToDoView/ToDoView";
-import { ToDoPresentationView } from "@src/views/ToDoPresentationView/ToDoPresentationView";
+import ToDoView from "@/views/ToDoView/ToDoView";
+import ToDoPresentationView from "@/views/ToDoPresentationView/ToDoPresentationView";
 
-import { useGlobalStore } from "@src/hooks/useGlobalStore";
-import { useToDosStore } from "@src/hooks/useToDosStore";
-import { useMediaQuery } from "@src/hooks/useMatchMedia";
+import { useGlobalStore } from "@/hooks/useGlobalStore";
+import { useToDosStore } from "@/hooks/useToDosStore";
+import { useMediaQuery } from "@/hooks/useMatchMedia";
 
-import { getCategoryById } from "@src/helpers/getCategoryById";
-import { setLocalStorage } from "@src/helpers/setLocalStorage";
+import { getCategoryById } from "@/helpers/getCategoryById";
+import { setLocalStorage } from "@/helpers/setLocalStorage";
 
-import {
-  LOCAL_STORAGE_KEY_CATEGORIES,
-  MEDIA_QUERY_1024,
-} from "@src/constants/vars";
+import { LOCAL_STORAGE_KEY_CATEGORIES, MEDIA_QUERY_1024 } from "@/constants/vars";
 
-import "@src/pages/ToDoPage/ToDoPage.css";
+import "@/pages/ToDoPage/ToDoPage.css";
 
-export const ToDoPage = () => {
+const ToDoPage = () => {
   const { globalState } = useGlobalStore();
   const { toDosState } = useToDosStore();
   const { matches } = useMediaQuery(MEDIA_QUERY_1024);
@@ -49,11 +46,11 @@ export const ToDoPage = () => {
         ></ToDoView>
       )}
 
-      {matches && !toDosState.viewIdCategory && (
-        <ToDoPresentationView></ToDoPresentationView>
-      )}
+      {matches && !toDosState.viewIdCategory && <ToDoPresentationView></ToDoPresentationView>}
 
       {globalState.alert.message && <Alert></Alert>}
     </Fragment>
   );
 };
+
+export default ToDoPage;

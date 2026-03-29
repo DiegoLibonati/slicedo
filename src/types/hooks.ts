@@ -1,5 +1,5 @@
-import { ToDo, ToDoCategory } from "@src/entities/app";
-import { GlobalState, ToDosState } from "@src/entities/states";
+import { ToDo, ToDoCategory } from "@/types/app";
+import { GlobalState, ToDosState } from "@/types/states";
 
 export type UseForm<T> = {
   formState: T;

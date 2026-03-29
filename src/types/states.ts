@@ -1,4 +1,4 @@
-import { Alert, ToDoCategory } from "@src/entities/app";
+import { Alert, ToDoCategory } from "@/types/app";
 
 export type ToDosState = {
   categories: ToDoCategory[];

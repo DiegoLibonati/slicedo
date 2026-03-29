@@ -1,22 +1,21 @@
 import { Fragment } from "react/jsx-runtime";
 import { FaPlus } from "react-icons/fa";
 
-import { ModalAddCategory } from "@src/components/ModalAddCategory/ModalAddCategory";
-import { SidebarItem } from "@src/components/SidebarItem/SidebarItem";
-import { Loader } from "@src/components/Loader/Loader";
+import ModalAddCategory from "@/components/ModalAddCategory/ModalAddCategory";
+import SidebarItem from "@/components/SidebarItem/SidebarItem";
+import Loader from "@/components/Loader/Loader";
 
-import { useToDosStore } from "@src/hooks/useToDosStore";
-import { useGlobalStore } from "@src/hooks/useGlobalStore";
-import { useMediaQuery } from "@src/hooks/useMatchMedia";
+import { useToDosStore } from "@/hooks/useToDosStore";
+import { useGlobalStore } from "@/hooks/useGlobalStore";
+import { useMediaQuery } from "@/hooks/useMatchMedia";
 
-import { MEDIA_QUERY_1024 } from "@src/constants/vars";
+import { MEDIA_QUERY_1024 } from "@/constants/vars";
 
-import "@src/components/Sidebar/Sidebar.css";
+import "@/components/Sidebar/Sidebar.css";
 
-export const Sidebar = (): JSX.Element => {
-  const {toDosState, handleSetViewIdCategory } = useToDosStore();
-  const { globalState, handleOpenSidebar, handleOpenModalAddCategory } =
-    useGlobalStore();
+const Sidebar = () => {
+  const { toDosState, handleSetViewIdCategory } = useToDosStore();
+  const { globalState, handleOpenSidebar, handleOpenModalAddCategory } = useGlobalStore();
 
   const { matches } = useMediaQuery(MEDIA_QUERY_1024);
 
@@ -25,9 +24,7 @@ export const Sidebar = (): JSX.Element => {
     handleSetViewIdCategory(idCategory);
   };
 
-  const handleClickOpenModalAddCategory: React.MouseEventHandler<
-    HTMLButtonElement
-  > = () => {
+  const handleClickOpenModalAddCategory: React.MouseEventHandler<HTMLButtonElement> = () => {
     handleOpenModalAddCategory();
   };
 
@@ -60,9 +57,7 @@ export const Sidebar = (): JSX.Element => {
             </ul>
           </nav>
 
-          {globalState.modal.modalAddCategory && (
-            <ModalAddCategory></ModalAddCategory>
-          )}
+          {globalState.modal.modalAddCategory && <ModalAddCategory></ModalAddCategory>}
 
           <button
             type="button"
@@ -77,3 +72,5 @@ export const Sidebar = (): JSX.Element => {
     </header>
   );
 };
+
+export default Sidebar;

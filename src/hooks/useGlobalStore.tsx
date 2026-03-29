@@ -1,6 +1,6 @@
-import { UseGlobalStore } from "@src/entities/hooks";
+import { UseGlobalStore } from "@/types/hooks";
 
-import { useAppDispatch, useAppSelector } from "@src/app/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 
 import {
   closeModalAddCategory,
@@ -11,7 +11,7 @@ import {
   openModalManageToDo,
   openSidebar,
   resetAlert,
-} from "@src/features/global/globalSlice";
+} from "@/features/global/globalSlice";
 
 export const useGlobalStore = (): UseGlobalStore => {
   const globalState = useAppSelector((state) => state.global);

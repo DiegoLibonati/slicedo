@@ -2,29 +2,22 @@ import { useMemo } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 
-import { ModalManageToDoProps } from "@src/entities/props";
+import { ModalManageToDoProps } from "@/types/props";
 
-import { useToDosStore } from "@src/hooks/useToDosStore";
-import { useGlobalStore } from "@src/hooks/useGlobalStore";
-import { useForm } from "@src/hooks/useForm";
+import { useToDosStore } from "@/hooks/useToDosStore";
+import { useGlobalStore } from "@/hooks/useGlobalStore";
+import { useForm } from "@/hooks/useForm";
 
-import { getToDoById } from "@src/helpers/getToDoById";
+import { getToDoById } from "@/helpers/getToDoById";
 
-import "@src/components/ModalManageToDo/ModalManageToDo.css";
+import "@/components/ModalManageToDo/ModalManageToDo.css";
 
-export const ModalManageToDo = ({
-  idCategory,
-  category,
-  icon,
-}: ModalManageToDoProps): JSX.Element => {
-  const { toDosState, handleResetIdToDoToEdit, handleAddToDo, handleEditToDo } =
-    useToDosStore();
+const ModalManageToDo = ({ idCategory, category, icon }: ModalManageToDoProps) => {
+  const { toDosState, handleResetIdToDoToEdit, handleAddToDo, handleEditToDo } = useToDosStore();
   const { handleDisplayAlert, handleCloseModalManageToDo } = useGlobalStore();
 
   const toDo = useMemo(() => {
-    const toDos =
-      toDosState.categories.find((category) => category.id === idCategory)
-        ?.toDos! || [];
+    const toDos = toDosState.categories.find((category) => category.id === idCategory)?.toDos ?? [];
 
     return getToDoById(toDos, toDosState.idToDoToEdit);
   }, [toDosState.categories, toDosState.idToDoToEdit, idCategory]);
@@ -44,10 +37,7 @@ export const ModalManageToDo = ({
       };
 
       handleAddToDo(idCategory, newToDo);
-      handleDisplayAlert(
-        `${newToDo.id} was successfully added!`,
-        "alert--good"
-      );
+      handleDisplayAlert(`${newToDo.id} was successfully added!`, "alert--good");
     } else {
       const toDoEdited = {
         id: toDo.id,
@@ -95,14 +85,12 @@ export const ModalManageToDo = ({
           className="modal-manage-todo__form-textarea"
         ></textarea>
 
-        <button
-          type="submit"
-          aria-label="submit form"
-          className="modal-manage-todo__form-submit"
-        >
+        <button type="submit" aria-label="submit form" className="modal-manage-todo__form-submit">
           {toDo ? "EDIT TODO" : "ADD TODO"}
         </button>
       </form>
     </div>
   );
 };
+
+export default ModalManageToDo;

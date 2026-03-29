@@ -1,7 +1,7 @@
-import { UseToDosStore } from "@src/entities/hooks";
-import { ToDo, ToDoCategory } from "@src/entities/app";
+import { UseToDosStore } from "@/types/hooks";
+import { ToDo, ToDoCategory } from "@/types/app";
 
-import { useAppDispatch, useAppSelector } from "@src/app/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 
 import {
   addToDo,
@@ -13,7 +13,7 @@ import {
   resetIdToDoToEdit,
   setEditToDo,
   setViewIdCategory,
-} from "@src/features/toDos/toDosSlice";
+} from "@/features/toDos/toDosSlice";
 
 export const useToDosStore = (): UseToDosStore => {
   const toDosState = useAppSelector((state) => state.toDos);
