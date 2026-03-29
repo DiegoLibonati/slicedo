@@ -10,11 +10,11 @@
 }
 
 .sidebar__header {
-  padding: 1rem;
+  padding: 0.625rem;
 }
 
 .sidebar__title {
-  font-size: 3rem;
+  font-size: 1.875rem;
   color: var(--color-white);
 }
 
@@ -24,7 +24,7 @@
   justify-content: center;
   width: 100%;
   height: auto;
-  padding: 1rem;
+  padding: 0.625rem;
 }
 
 .sidebar__list {
@@ -40,13 +40,13 @@
 .sidebar__btn-open-modal-add-category-icon {
   position: absolute;
   z-index: 50;
-  bottom: 2rem;
-  right: 2rem;
-  font-size: 3rem;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  font-size: 1.875rem;
   background-color: var(--color-red);
   color: var(--color-white);
   border-radius: 50%;
-  padding: 0.5rem;
+  padding: 0.3125rem;
   cursor: pointer;
 }
 
@@ -54,17 +54,17 @@
   width: 100%;
   color: var(--color-black);
   background-color: var(--color-black);
-  margin: 1rem 0 1rem 0;
+  margin: 0.625rem 0 0.625rem 0;
 }
 
 @media only screen and (min-width: 1024px) {
   .sidebar {
-    width: 30rem;
+    width: 18.75rem;
     background-color: var(--color-white);
   }
 
   .sidebar__title {
-    font-size: 3rem;
+    font-size: 1.875rem;
     color: var(--color-black);
   }
 }

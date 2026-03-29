@@ -62,7 +62,7 @@ const Sidebar = () => {
           <button
             type="button"
             onClick={handleClickOpenModalAddCategory}
-            aria-label="open modal add category"
+            aria-label="Add new category"
             className="sidebar__btn-open-modal-add-category"
           >
             <FaPlus className="sidebar__btn-open-modal-add-category-icon"></FaPlus>

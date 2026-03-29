@@ -59,7 +59,7 @@ const ModalAddCategory = () => {
       <button
         type="button"
         onClick={handleClickClose}
-        aria-label="close modal add category"
+        aria-label="Close add category dialog"
         className="modal-add-category__btn-close"
       >
         <FaWindowClose className="modal-add-category__btn-close-icon"></FaWindowClose>
@@ -79,7 +79,7 @@ const ModalAddCategory = () => {
         <button
           className="modal-add-category__form-btn-create"
           type="submit"
-          aria-label="create category"
+          aria-label="Create new category"
         >
           CREATE
         </button>

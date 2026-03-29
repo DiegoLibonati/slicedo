@@ -11,9 +11,9 @@
 
 .modal-manage-todo__btn-close-icon {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 3rem;
+  top: 0.625rem;
+  right: 0.625rem;
+  font-size: 1.875rem;
   color: var(--color-white);
   cursor: pointer;
 }
@@ -23,43 +23,43 @@
   align-items: center;
   justify-content: center;
   flex-flow: column wrap;
-  border-radius: 1rem;
+  border-radius: 0.625rem;
   width: 75%;
   height: 50%;
   background-color: var(--color-primary);
 }
 
 .modal-manage-todo__form-category {
-  font-size: 3rem;
+  font-size: 1.875rem;
   color: var(--color-white);
   align-self: flex-start;
-  width: calc(100% - 2rem);
-  margin: 0 1rem 0 1rem;
+  width: calc(100% - 1.25rem);
+  margin: 0 0.625rem 0 0.625rem;
 }
 
 .modal-manage-todo__form-textarea {
   resize: none;
-  width: calc(100% - 2rem);
+  width: calc(100% - 1.25rem);
   height: 70%;
-  padding: 1rem;
-  margin: 1rem;
+  padding: 0.625rem;
+  margin: 0.625rem;
   border: none;
   outline: none;
   color: var(--color-primary);
-  font-size: 2rem;
+  font-size: 1.25rem;
   background-color: var(--color-white);
-  border-radius: 1rem;
+  border-radius: 0.625rem;
 }
 
 .modal-manage-todo__form-submit {
   background-color: var(--color-white);
-  width: calc(100% - 2rem);
+  width: calc(100% - 1.25rem);
   height: 10%;
-  border-radius: 1rem;
+  border-radius: 0.625rem;
   color: var(--color-primary);
   border: none;
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: 900;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.125rem;
   cursor: pointer;
 }

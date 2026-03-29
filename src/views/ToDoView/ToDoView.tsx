@@ -48,7 +48,7 @@ const ToDoView = ({ icon, idCategory, category, toDos }: ToDoViewProps) => {
               <button
                 type="button"
                 onClick={handleClickCloseSidebar}
-                aria-label="close sidebar"
+                aria-label="Close to-do view"
                 className="category-header__btn-close"
               >
                 <AiOutlineCloseCircle className="category-header__btn-close-icon"></AiOutlineCloseCircle>
@@ -87,7 +87,7 @@ const ToDoView = ({ icon, idCategory, category, toDos }: ToDoViewProps) => {
             <button
               type="button"
               onClick={handleClickAddToDo}
-              aria-label="add todo"
+              aria-label="Add new to-do"
               className="category-btn-add"
             >
               <FaPlus className="category-btn-add__icon"></FaPlus>
@@ -100,7 +100,7 @@ const ToDoView = ({ icon, idCategory, category, toDos }: ToDoViewProps) => {
               <button
                 type="button"
                 onClick={handleClickAddToDo}
-                aria-label="add todo"
+                aria-label="Add your first to-do"
                 className="category-first-add__btn-add"
               >
                 <FaRegPaperPlane className="category-first-add__btn-add-icon"></FaRegPaperPlane>

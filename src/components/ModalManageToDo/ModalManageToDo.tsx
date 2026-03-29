@@ -62,7 +62,7 @@ const ModalManageToDo = ({ idCategory, category, icon }: ModalManageToDoProps) =
     <div className="modal-manage-todo">
       <button
         type="button"
-        aria-label="close modal"
+        aria-label="Close to-do dialog"
         onClick={handleCloseModal}
         className="modal-manage-todo__btn-close"
       >
@@ -85,7 +85,11 @@ const ModalManageToDo = ({ idCategory, category, icon }: ModalManageToDoProps) =
           className="modal-manage-todo__form-textarea"
         ></textarea>
 
-        <button type="submit" aria-label="submit form" className="modal-manage-todo__form-submit">
+        <button
+          type="submit"
+          aria-label={toDo ? "Save to-do edits" : "Add new to-do"}
+          className="modal-manage-todo__form-submit"
+        >
           {toDo ? "EDIT TODO" : "ADD TODO"}
         </button>
       </form>

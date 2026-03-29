@@ -5,36 +5,36 @@
   flex-flow: row nowrap;
   position: absolute;
   z-index: 9999999;
-  right: 2rem;
-  top: 2rem;
-  width: 25rem;
-  border-radius: 1rem;
+  right: 1.25rem;
+  top: 1.25rem;
+  width: 15.625rem;
+  border-radius: 0.625rem;
 }
 
 .alert--good {
   background-color: var(--color-green);
-  padding: 1rem;
+  padding: 0.625rem;
 }
 
 .alert--bad {
   background-color: var(--color-red);
-  padding: 1rem;
+  padding: 0.625rem;
 }
 
 .alert__text {
-  font-size: 1.5rem;
+  font-size: 0.9375rem;
   color: var(--color-white);
 }
 
 .alert__btn-close-icon {
   width: 100%;
-  font-size: 3rem;
+  font-size: 1.875rem;
   color: var(--color-white);
   cursor: pointer;
 }
 
 @media only screen and (min-width: 1024px) {
   .alert {
-    width: 50rem;
+    width: 31.25rem;
   }
 }

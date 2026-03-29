@@ -17,7 +17,7 @@ const Alert = () => {
       <button
         type="button"
         onClick={handleClickClose}
-        aria-label="close alert"
+        aria-label="Dismiss alert"
         className="alert__btn-close"
       >
         <AiOutlineCloseCircle className="alert__btn-close-icon"></AiOutlineCloseCircle>

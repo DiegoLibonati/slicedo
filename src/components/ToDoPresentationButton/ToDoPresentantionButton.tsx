@@ -16,7 +16,7 @@ const ToDoPresentantionButton = ({ idCategory, icon, category }: ToDoPresentanti
       <button
         className="category__btn-name"
         onClick={handleClickCategory}
-        aria-label="todo category button"
+        aria-label={`Select ${category} category`}
       >
         {icon}
         {category}

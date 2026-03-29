@@ -23,15 +23,15 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 1rem;
+  padding: 0.625rem;
 }
 
 .category-header__name,
 .category-header__date {
   white-space: nowrap;
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: var(--color-white);
-  padding: 1rem 0 1rem 0;
+  padding: 0.625rem 0 0.625rem 0;
 }
 
 .category-header__date {
@@ -39,7 +39,7 @@
 }
 
 .category-header__btn-close-icon {
-  font-size: 3rem;
+  font-size: 1.875rem;
   color: var(--color-white);
   cursor: pointer;
 }
@@ -49,7 +49,7 @@
   color: var(--color-white);
   background-color: var(--color-white);
   border: none;
-  height: 0.2rem;
+  height: 0.125rem;
 }
 
 .category-todos {
@@ -59,19 +59,19 @@
   flex-flow: column wrap;
   width: 100%;
   height: auto;
-  padding: 1rem;
+  padding: 0.625rem;
 }
 
 .category-btn-add__icon {
   position: absolute;
   z-index: 50;
-  bottom: 2rem;
-  right: 2rem;
-  font-size: 3rem;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  font-size: 1.875rem;
   background-color: var(--color-red);
   color: var(--color-white);
   border-radius: 50%;
-  padding: 0.5rem;
+  padding: 0.3125rem;
   cursor: pointer;
 }
 
@@ -82,25 +82,25 @@
   flex-flow: column wrap;
   width: 100%;
   margin: auto;
-  padding: 1rem;
+  padding: 0.625rem;
 }
 
 .category-first-add__title {
-  font-size: 3rem;
+  font-size: 1.875rem;
   text-align: center;
   color: var(--color-white);
 }
 
 .category-first-add__btn-add-icon {
-  font-size: 5rem;
-  margin-top: 2rem;
+  font-size: 3.125rem;
+  margin-top: 1.25rem;
   color: var(--color-white);
   cursor: pointer;
 }
 
 @media only screen and (min-width: 1024px) {
   .main-todo-view {
-    width: calc(100% - 30rem);
+    width: calc(100% - 18.75rem);
     right: 0;
     background-color: var(--color-secondary);
     transition: width 0s;
@@ -112,7 +112,7 @@
 
   .category-header__name,
   .category-header__date {
-    font-size: 3.5rem;
+    font-size: 2.1875rem;
     color: var(--color-primary);
   }
 
@@ -123,9 +123,9 @@
   .category-hr {
     color: var(--color-primary);
     background-color: var(--color-primary);
-    height: 0.2rem;
-    margin: 1rem;
-    width: calc(100% - 2rem);
+    height: 0.125rem;
+    margin: 0.625rem;
+    width: calc(100% - 1.25rem);
   }
 
   .category-header__btn-close-icon {
@@ -134,12 +134,12 @@
   }
 
   .category-first-add__title {
-    font-size: 6rem;
+    font-size: 3.75rem;
     color: var(--color-primary);
   }
 
   .category-first-add__btn-add-icon {
-    font-size: 10rem;
+    font-size: 6.25rem;
     color: var(--color-primary);
   }
 }

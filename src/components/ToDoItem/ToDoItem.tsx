@@ -55,7 +55,7 @@ const ToDoItem = ({ id, content, done, idCategory, category }: ToDoItemProps) =>
           <button
             type="button"
             onClick={handleClickUnDoneToDo}
-            aria-label="undone todo"
+            aria-label="Mark to-do as incomplete"
             className="todo-item__btn-undone"
           >
             <FaCalendarCheck className="todo-item__btn-undone-icon"></FaCalendarCheck>
@@ -66,7 +66,7 @@ const ToDoItem = ({ id, content, done, idCategory, category }: ToDoItemProps) =>
           <button
             type="button"
             onClick={handleClickDoneToDo}
-            aria-label="done todo"
+            aria-label="Mark to-do as complete"
             className="todo-item__btn-done"
           >
             <FaCalendar className="todo-item__btn-done-icon"></FaCalendar>
@@ -82,7 +82,7 @@ const ToDoItem = ({ id, content, done, idCategory, category }: ToDoItemProps) =>
         <button
           type="button"
           onClick={handleClickRemoveToDo}
-          aria-label="remove todo"
+          aria-label="Delete to-do"
           className="todo-item__btn-remove"
         >
           <FaTrash
@@ -96,7 +96,7 @@ const ToDoItem = ({ id, content, done, idCategory, category }: ToDoItemProps) =>
           <button
             type="button"
             onClick={handleEditToDo}
-            aria-label="edit todo"
+            aria-label="Edit to-do"
             className="todo-item__btn-edit"
           >
             <FaEdit className="todo-item__btn-edit-icon"></FaEdit>
@@ -107,7 +107,7 @@ const ToDoItem = ({ id, content, done, idCategory, category }: ToDoItemProps) =>
           <button
             type="button"
             onClick={handleMoveToImportant}
-            aria-label="move todo to important"
+            aria-label="Move to-do to Important"
             className="todo-item__btn-move-important"
           >
             <FaStar className="todo-item__btn-move-important-icon"></FaStar>

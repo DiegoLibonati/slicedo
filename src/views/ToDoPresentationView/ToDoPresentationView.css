@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: flex-start;
   flex-flow: column nowrap;
-  width: calc(100% - 30rem);
+  width: calc(100% - 18.75rem);
   height: 100vh;
   position: absolute;
   z-index: 999999;
@@ -12,14 +12,14 @@
   transition: width 1s;
   right: 0;
   background-color: var(--color-secondary);
-  padding: 1rem;
+  padding: 0.625rem;
 }
 
 .categories {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 1rem;
-  row-gap: 1rem;
+  column-gap: 0.625rem;
+  row-gap: 0.625rem;
   justify-items: center;
   align-items: center;
   width: 100%;

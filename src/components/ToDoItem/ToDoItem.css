@@ -5,13 +5,13 @@
   flex-flow: row wrap;
   width: 100%;
   height: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
   background-color: var(--color-white);
-  border-radius: 1rem;
-  margin: 0.5rem 0 0.5rem 0;
+  border-radius: 0.625rem;
+  margin: 0.3125rem 0 0.3125rem 0;
   transition: background-color 1s;
 }
 
@@ -22,7 +22,7 @@
 
 .todo-item__header {
   display: grid;
-  grid-template-columns: 3rem 1fr;
+  grid-template-columns: 1.875rem 1fr;
   justify-items: center;
   align-items: center;
   width: 70%;
@@ -31,25 +31,25 @@
 
 .todo-item__btn-undone-icon {
   color: var(--color-white);
-  font-size: 2rem;
+  font-size: 1.25rem;
   cursor: pointer;
 }
 
 .todo-item__btn-done-icon {
   color: var(--color-primary);
-  font-size: 2rem;
+  font-size: 1.25rem;
   cursor: pointer;
 }
 
 .todo-item__content {
-  font-size: 2rem;
+  font-size: 1.25rem;
   justify-self: flex-start;
   align-self: flex-start;
   color: var(--color-black);
 }
 
 .todo-item__content--done {
-  font-size: 2rem;
+  font-size: 1.25rem;
   justify-self: flex-start;
   align-self: flex-start;
   color: var(--color-white);
@@ -60,7 +60,7 @@
   align-items: center;
   justify-content: flex-end;
   flex-flow: row nowrap;
-  gap: 1rem;
+  gap: 0.625rem;
   width: 30%;
   height: auto;
 }
@@ -68,13 +68,13 @@
 .todo-item__btn-remove-icon,
 .todo-item__btn-edit-icon,
 .todo-item__btn-move-important-icon {
-  font-size: 1.5rem;
+  font-size: 0.9375rem;
   color: var(--color-primary);
   cursor: pointer;
 }
 
 .todo-item__btn-remove-icon--done {
-  font-size: 1.5rem;
+  font-size: 0.9375rem;
   cursor: pointer;
   color: var(--color-white);
 }
