@@ -8,33 +8,42 @@ import ToDoPresentantionButton from "@/components/ToDoPresentationButton/ToDoPre
 
 import { useToDosStore } from "@/hooks/useToDosStore";
 
-jest.mock("@/hooks/useToDosStore");
-
-const mockUseToDosStore = useToDosStore as jest.MockedFunction<typeof useToDosStore>;
-
-const buildToDosStoreMock = (overrides?: Partial<UseToDosStore>): UseToDosStore => ({
-  toDosState: { categories: [], loading: false, viewIdCategory: "", idToDoToEdit: "" },
-  handleNewCategoryToDo: jest.fn(),
-  handleAddToDo: jest.fn(),
-  handleRemoveToDo: jest.fn(),
-  handleDoneToDo: jest.fn(),
-  handleGoToImportantToDo: jest.fn(),
-  handleEditToDo: jest.fn(),
-  handleSetViewIdCategory: jest.fn(),
-  handleSetEditToDo: jest.fn(),
-  handleResetIdToDoToEdit: jest.fn(),
-  ...overrides,
-});
-
 type RenderComponent = {
   container: HTMLElement;
   props: ToDoPresentantionButtonProps;
-  mock: UseToDosStore;
+  mockToDosStore: UseToDosStore;
 };
 
+jest.mock("@/hooks/useToDosStore");
+
+const mockUseToDosStore = useToDosStore as jest.MockedFunction<typeof useToDosStore>;
+const mockHandleNewCategoryToDo = jest.fn();
+const mockHandleAddToDo = jest.fn();
+const mockHandleRemoveToDo = jest.fn();
+const mockHandleDoneToDo = jest.fn();
+const mockHandleGoToImportantToDo = jest.fn();
+const mockHandleEditToDo = jest.fn();
+const mockHandleSetViewIdCategory = jest.fn();
+const mockHandleSetEditToDo = jest.fn();
+const mockHandleResetIdToDoToEdit = jest.fn();
+
+const buildToDosStoreMock = (overrides?: Partial<UseToDosStore>): UseToDosStore => ({
+  toDosState: { categories: [], loading: false, viewIdCategory: "", idToDoToEdit: "" },
+  handleNewCategoryToDo: mockHandleNewCategoryToDo,
+  handleAddToDo: mockHandleAddToDo,
+  handleRemoveToDo: mockHandleRemoveToDo,
+  handleDoneToDo: mockHandleDoneToDo,
+  handleGoToImportantToDo: mockHandleGoToImportantToDo,
+  handleEditToDo: mockHandleEditToDo,
+  handleSetViewIdCategory: mockHandleSetViewIdCategory,
+  handleSetEditToDo: mockHandleSetEditToDo,
+  handleResetIdToDoToEdit: mockHandleResetIdToDoToEdit,
+  ...overrides,
+});
+
 const renderComponent = (overrides?: Partial<ToDoPresentantionButtonProps>): RenderComponent => {
-  const mock = buildToDosStoreMock();
-  mockUseToDosStore.mockReturnValue(mock);
+  const mockToDosStore = buildToDosStoreMock();
+  mockUseToDosStore.mockReturnValue(mockToDosStore);
 
   const props: ToDoPresentantionButtonProps = {
     idCategory: "my_day",
@@ -43,7 +52,7 @@ const renderComponent = (overrides?: Partial<ToDoPresentantionButtonProps>): Ren
     ...overrides,
   };
   const { container } = render(<ToDoPresentantionButton {...props} />);
-  return { container, props, mock };
+  return { container, props, mockToDosStore };
 };
 
 describe("ToDoPresentantionButton", () => {
@@ -58,9 +67,9 @@ describe("ToDoPresentantionButton", () => {
   });
 
   it("should call handleSetViewIdCategory with the idCategory when clicked", async () => {
-    const { mock, props } = renderComponent();
+    const { mockToDosStore, props } = renderComponent();
     const user = userEvent.setup();
     await user.click(screen.getByRole("button", { name: "Select My Day category" }));
-    expect(mock.handleSetViewIdCategory).toHaveBeenCalledWith(props.idCategory);
+    expect(mockToDosStore.handleSetViewIdCategory).toHaveBeenCalledWith(props.idCategory);
   });
 });

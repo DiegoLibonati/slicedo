@@ -7,9 +7,22 @@ import Alert from "@/components/Alert/Alert";
 
 import { useGlobalStore } from "@/hooks/useGlobalStore";
 
+type RenderComponent = {
+  container: HTMLElement;
+  mockGlobalStore: UseGlobalStore;
+};
+
 jest.mock("@/hooks/useGlobalStore");
 
 const mockUseGlobalStore = useGlobalStore as jest.MockedFunction<typeof useGlobalStore>;
+const mockHandleResetAlert = jest.fn();
+const mockHandleDisplayAlert = jest.fn();
+const mockHandleOpenModalAddCategory = jest.fn();
+const mockHandleCloseModalAddCategory = jest.fn();
+const mockHandleOpenModalManageToDo = jest.fn();
+const mockHandleCloseModalManageToDo = jest.fn();
+const mockHandleOpenSidebar = jest.fn();
+const mockHandleCloseSidebar = jest.fn();
 
 const buildGlobalStoreMock = (overrides?: Partial<UseGlobalStore>): UseGlobalStore => ({
   globalState: {
@@ -17,27 +30,22 @@ const buildGlobalStoreMock = (overrides?: Partial<UseGlobalStore>): UseGlobalSto
     modal: { modalAddCategory: false, modalManageToDo: false },
     sidebar: { sidebarMobile: false },
   },
-  handleResetAlert: jest.fn(),
-  handleDisplayAlert: jest.fn(),
-  handleOpenModalAddCategory: jest.fn(),
-  handleCloseModalAddCategory: jest.fn(),
-  handleOpenModalManageToDo: jest.fn(),
-  handleCloseModalManageToDo: jest.fn(),
-  handleOpenSidebar: jest.fn(),
-  handleCloseSidebar: jest.fn(),
+  handleResetAlert: mockHandleResetAlert,
+  handleDisplayAlert: mockHandleDisplayAlert,
+  handleOpenModalAddCategory: mockHandleOpenModalAddCategory,
+  handleCloseModalAddCategory: mockHandleCloseModalAddCategory,
+  handleOpenModalManageToDo: mockHandleOpenModalManageToDo,
+  handleCloseModalManageToDo: mockHandleCloseModalManageToDo,
+  handleOpenSidebar: mockHandleOpenSidebar,
+  handleCloseSidebar: mockHandleCloseSidebar,
   ...overrides,
 });
 
-type RenderComponent = {
-  container: HTMLElement;
-  mock: UseGlobalStore;
-};
-
 const renderComponent = (overrides?: Partial<UseGlobalStore>): RenderComponent => {
-  const mock = buildGlobalStoreMock(overrides);
-  mockUseGlobalStore.mockReturnValue(mock);
+  const mockGlobalStore = buildGlobalStoreMock(overrides);
+  mockUseGlobalStore.mockReturnValue(mockGlobalStore);
   const { container } = render(<Alert />);
-  return { container, mock };
+  return { container, mockGlobalStore };
 };
 
 describe("Alert", () => {
@@ -52,9 +60,9 @@ describe("Alert", () => {
   });
 
   it("should call handleResetAlert when the dismiss button is clicked", async () => {
-    const { mock } = renderComponent();
+    const { mockGlobalStore } = renderComponent();
     const user = userEvent.setup();
     await user.click(screen.getByRole("button", { name: "Dismiss alert" }));
-    expect(mock.handleResetAlert).toHaveBeenCalledTimes(1);
+    expect(mockGlobalStore.handleResetAlert).toHaveBeenCalledTimes(1);
   });
 });

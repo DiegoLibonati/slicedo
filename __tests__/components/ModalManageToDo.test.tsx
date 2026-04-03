@@ -9,11 +9,35 @@ import ModalManageToDo from "@/components/ModalManageToDo/ModalManageToDo";
 import { useGlobalStore } from "@/hooks/useGlobalStore";
 import { useToDosStore } from "@/hooks/useToDosStore";
 
+type RenderComponent = {
+  container: HTMLElement;
+  props: ModalManageToDoProps;
+  mockGlobalStore: UseGlobalStore;
+  mockToDosStore: UseToDosStore;
+};
+
 jest.mock("@/hooks/useGlobalStore");
 jest.mock("@/hooks/useToDosStore");
 
 const mockUseGlobalStore = useGlobalStore as jest.MockedFunction<typeof useGlobalStore>;
 const mockUseToDosStore = useToDosStore as jest.MockedFunction<typeof useToDosStore>;
+const mockHandleResetAlert = jest.fn();
+const mockHandleDisplayAlert = jest.fn();
+const mockHandleOpenModalAddCategory = jest.fn();
+const mockHandleCloseModalAddCategory = jest.fn();
+const mockHandleOpenModalManageToDo = jest.fn();
+const mockHandleCloseModalManageToDo = jest.fn();
+const mockHandleOpenSidebar = jest.fn();
+const mockHandleCloseSidebar = jest.fn();
+const mockHandleNewCategoryToDo = jest.fn();
+const mockHandleAddToDo = jest.fn();
+const mockHandleRemoveToDo = jest.fn();
+const mockHandleDoneToDo = jest.fn();
+const mockHandleGoToImportantToDo = jest.fn();
+const mockHandleEditToDo = jest.fn();
+const mockHandleSetViewIdCategory = jest.fn();
+const mockHandleSetEditToDo = jest.fn();
+const mockHandleResetIdToDoToEdit = jest.fn();
 
 const buildGlobalStoreMock = (overrides?: Partial<UseGlobalStore>): UseGlobalStore => ({
   globalState: {
@@ -21,14 +45,14 @@ const buildGlobalStoreMock = (overrides?: Partial<UseGlobalStore>): UseGlobalSto
     modal: { modalAddCategory: false, modalManageToDo: true },
     sidebar: { sidebarMobile: false },
   },
-  handleResetAlert: jest.fn(),
-  handleDisplayAlert: jest.fn(),
-  handleOpenModalAddCategory: jest.fn(),
-  handleCloseModalAddCategory: jest.fn(),
-  handleOpenModalManageToDo: jest.fn(),
-  handleCloseModalManageToDo: jest.fn(),
-  handleOpenSidebar: jest.fn(),
-  handleCloseSidebar: jest.fn(),
+  handleResetAlert: mockHandleResetAlert,
+  handleDisplayAlert: mockHandleDisplayAlert,
+  handleOpenModalAddCategory: mockHandleOpenModalAddCategory,
+  handleCloseModalAddCategory: mockHandleCloseModalAddCategory,
+  handleOpenModalManageToDo: mockHandleOpenModalManageToDo,
+  handleCloseModalManageToDo: mockHandleCloseModalManageToDo,
+  handleOpenSidebar: mockHandleOpenSidebar,
+  handleCloseSidebar: mockHandleCloseSidebar,
   ...overrides,
 });
 
@@ -39,33 +63,26 @@ const buildToDosStoreMock = (overrides?: Partial<UseToDosStore>): UseToDosStore 
     viewIdCategory: "cat-1",
     idToDoToEdit: "",
   },
-  handleNewCategoryToDo: jest.fn(),
-  handleAddToDo: jest.fn(),
-  handleRemoveToDo: jest.fn(),
-  handleDoneToDo: jest.fn(),
-  handleGoToImportantToDo: jest.fn(),
-  handleEditToDo: jest.fn(),
-  handleSetViewIdCategory: jest.fn(),
-  handleSetEditToDo: jest.fn(),
-  handleResetIdToDoToEdit: jest.fn(),
+  handleNewCategoryToDo: mockHandleNewCategoryToDo,
+  handleAddToDo: mockHandleAddToDo,
+  handleRemoveToDo: mockHandleRemoveToDo,
+  handleDoneToDo: mockHandleDoneToDo,
+  handleGoToImportantToDo: mockHandleGoToImportantToDo,
+  handleEditToDo: mockHandleEditToDo,
+  handleSetViewIdCategory: mockHandleSetViewIdCategory,
+  handleSetEditToDo: mockHandleSetEditToDo,
+  handleResetIdToDoToEdit: mockHandleResetIdToDoToEdit,
   ...overrides,
 });
-
-type RenderComponent = {
-  container: HTMLElement;
-  props: ModalManageToDoProps;
-  globalMock: UseGlobalStore;
-  todosMock: UseToDosStore;
-};
 
 const renderComponent = (
   propOverrides?: Partial<ModalManageToDoProps>,
   storeOverrides?: Partial<UseToDosStore>
 ): RenderComponent => {
-  const globalMock = buildGlobalStoreMock();
-  const todosMock = buildToDosStoreMock(storeOverrides);
-  mockUseGlobalStore.mockReturnValue(globalMock);
-  mockUseToDosStore.mockReturnValue(todosMock);
+  const mockGlobalStore = buildGlobalStoreMock();
+  const mockToDosStore = buildToDosStoreMock(storeOverrides);
+  mockUseGlobalStore.mockReturnValue(mockGlobalStore);
+  mockUseToDosStore.mockReturnValue(mockToDosStore);
 
   const props: ModalManageToDoProps = {
     idCategory: "cat-1",
@@ -74,7 +91,7 @@ const renderComponent = (
     ...propOverrides,
   };
   const { container } = render(<ModalManageToDo {...props} />);
-  return { container, props, globalMock, todosMock };
+  return { container, props, mockGlobalStore, mockToDosStore };
 };
 
 describe("ModalManageToDo", () => {
@@ -103,19 +120,19 @@ describe("ModalManageToDo", () => {
   });
 
   it("should call handleCloseModalManageToDo and handleResetIdToDoToEdit when close button is clicked", async () => {
-    const { globalMock, todosMock } = renderComponent();
+    const { mockGlobalStore, mockToDosStore } = renderComponent();
     const user = userEvent.setup();
     await user.click(screen.getByRole("button", { name: "Close to-do dialog" }));
-    expect(globalMock.handleCloseModalManageToDo).toHaveBeenCalledTimes(1);
-    expect(todosMock.handleResetIdToDoToEdit).toHaveBeenCalledTimes(1);
+    expect(mockGlobalStore.handleCloseModalManageToDo).toHaveBeenCalledTimes(1);
+    expect(mockToDosStore.handleResetIdToDoToEdit).toHaveBeenCalledTimes(1);
   });
 
   it("should call handleAddToDo with the correct category and content when the form is submitted", async () => {
-    const { todosMock } = renderComponent();
+    const { mockToDosStore } = renderComponent();
     const user = userEvent.setup();
     await user.type(screen.getByRole("textbox"), "New task");
     await user.click(screen.getByRole("button", { name: "Add new to-do" }));
-    expect(todosMock.handleAddToDo).toHaveBeenCalledWith(
+    expect(mockToDosStore.handleAddToDo).toHaveBeenCalledWith(
       "cat-1",
       expect.objectContaining({ content: "New task", done: false })
     );

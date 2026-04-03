@@ -6,9 +6,23 @@ import ToDoPresentationView from "@/views/ToDoPresentationView/ToDoPresentationV
 
 import { useToDosStore } from "@/hooks/useToDosStore";
 
+type RenderView = {
+  container: HTMLElement;
+  mockToDosStore: UseToDosStore;
+};
+
 jest.mock("@/hooks/useToDosStore");
 
 const mockUseToDosStore = useToDosStore as jest.MockedFunction<typeof useToDosStore>;
+const mockHandleNewCategoryToDo = jest.fn();
+const mockHandleAddToDo = jest.fn();
+const mockHandleRemoveToDo = jest.fn();
+const mockHandleDoneToDo = jest.fn();
+const mockHandleGoToImportantToDo = jest.fn();
+const mockHandleEditToDo = jest.fn();
+const mockHandleSetViewIdCategory = jest.fn();
+const mockHandleSetEditToDo = jest.fn();
+const mockHandleResetIdToDoToEdit = jest.fn();
 
 const buildToDosStoreMock = (overrides?: Partial<UseToDosStore>): UseToDosStore => ({
   toDosState: {
@@ -20,28 +34,23 @@ const buildToDosStoreMock = (overrides?: Partial<UseToDosStore>): UseToDosStore 
     viewIdCategory: "",
     idToDoToEdit: "",
   },
-  handleNewCategoryToDo: jest.fn(),
-  handleAddToDo: jest.fn(),
-  handleRemoveToDo: jest.fn(),
-  handleDoneToDo: jest.fn(),
-  handleGoToImportantToDo: jest.fn(),
-  handleEditToDo: jest.fn(),
-  handleSetViewIdCategory: jest.fn(),
-  handleSetEditToDo: jest.fn(),
-  handleResetIdToDoToEdit: jest.fn(),
+  handleNewCategoryToDo: mockHandleNewCategoryToDo,
+  handleAddToDo: mockHandleAddToDo,
+  handleRemoveToDo: mockHandleRemoveToDo,
+  handleDoneToDo: mockHandleDoneToDo,
+  handleGoToImportantToDo: mockHandleGoToImportantToDo,
+  handleEditToDo: mockHandleEditToDo,
+  handleSetViewIdCategory: mockHandleSetViewIdCategory,
+  handleSetEditToDo: mockHandleSetEditToDo,
+  handleResetIdToDoToEdit: mockHandleResetIdToDoToEdit,
   ...overrides,
 });
 
-type RenderView = {
-  container: HTMLElement;
-  mock: UseToDosStore;
-};
-
 const renderView = (overrides?: Partial<UseToDosStore>): RenderView => {
-  const mock = buildToDosStoreMock(overrides);
-  mockUseToDosStore.mockReturnValue(mock);
+  const mockToDosStore = buildToDosStoreMock(overrides);
+  mockUseToDosStore.mockReturnValue(mockToDosStore);
   const { container } = render(<ToDoPresentationView />);
-  return { container, mock };
+  return { container, mockToDosStore };
 };
 
 describe("ToDoPresentationView", () => {

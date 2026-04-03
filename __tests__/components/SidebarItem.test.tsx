@@ -11,11 +11,13 @@ type RenderComponent = {
 };
 
 const renderComponent = (overrides?: Partial<SidebarItemProps>): RenderComponent => {
+  const mockOnOpenCategoryToDo = jest.fn();
+
   const props: SidebarItemProps = {
     icon: "☀️",
     category: "My Day",
     quantity: 5,
-    onOpenCategoryToDo: jest.fn(),
+    onOpenCategoryToDo: mockOnOpenCategoryToDo,
     ...overrides,
   };
   const { container } = render(<SidebarItem {...props} />);
@@ -34,10 +36,10 @@ describe("SidebarItem", () => {
   });
 
   it("should call onOpenCategoryToDo when the category heading is clicked", async () => {
-    const onOpenCategoryToDo = jest.fn();
+    const mockOnOpenCategoryToDo = jest.fn();
     const user = userEvent.setup();
-    renderComponent({ onOpenCategoryToDo });
+    renderComponent({ onOpenCategoryToDo: mockOnOpenCategoryToDo });
     await user.click(screen.getByText(/My Day/));
-    expect(onOpenCategoryToDo).toHaveBeenCalledTimes(1);
+    expect(mockOnOpenCategoryToDo).toHaveBeenCalledTimes(1);
   });
 });

@@ -8,6 +8,12 @@ import { useGlobalStore } from "@/hooks/useGlobalStore";
 import { useToDosStore } from "@/hooks/useToDosStore";
 import { useMediaQuery } from "@/hooks/useMatchMedia";
 
+type RenderPage = {
+  container: HTMLElement;
+  mockGlobalStore: UseGlobalStore;
+  mockToDosStore: UseToDosStore;
+};
+
 jest.mock("@/hooks/useGlobalStore");
 jest.mock("@/hooks/useToDosStore");
 jest.mock("@/hooks/useMatchMedia");
@@ -15,6 +21,23 @@ jest.mock("@/hooks/useMatchMedia");
 const mockUseGlobalStore = useGlobalStore as jest.MockedFunction<typeof useGlobalStore>;
 const mockUseToDosStore = useToDosStore as jest.MockedFunction<typeof useToDosStore>;
 const mockUseMediaQuery = useMediaQuery as jest.MockedFunction<typeof useMediaQuery>;
+const mockHandleResetAlert = jest.fn();
+const mockHandleDisplayAlert = jest.fn();
+const mockHandleOpenModalAddCategory = jest.fn();
+const mockHandleCloseModalAddCategory = jest.fn();
+const mockHandleOpenModalManageToDo = jest.fn();
+const mockHandleCloseModalManageToDo = jest.fn();
+const mockHandleOpenSidebar = jest.fn();
+const mockHandleCloseSidebar = jest.fn();
+const mockHandleNewCategoryToDo = jest.fn();
+const mockHandleAddToDo = jest.fn();
+const mockHandleRemoveToDo = jest.fn();
+const mockHandleDoneToDo = jest.fn();
+const mockHandleGoToImportantToDo = jest.fn();
+const mockHandleEditToDo = jest.fn();
+const mockHandleSetViewIdCategory = jest.fn();
+const mockHandleSetEditToDo = jest.fn();
+const mockHandleResetIdToDoToEdit = jest.fn();
 
 const buildGlobalStoreMock = (overrides?: Partial<UseGlobalStore>): UseGlobalStore => ({
   globalState: {
@@ -22,14 +45,14 @@ const buildGlobalStoreMock = (overrides?: Partial<UseGlobalStore>): UseGlobalSto
     modal: { modalAddCategory: false, modalManageToDo: false },
     sidebar: { sidebarMobile: false },
   },
-  handleResetAlert: jest.fn(),
-  handleDisplayAlert: jest.fn(),
-  handleOpenModalAddCategory: jest.fn(),
-  handleCloseModalAddCategory: jest.fn(),
-  handleOpenModalManageToDo: jest.fn(),
-  handleCloseModalManageToDo: jest.fn(),
-  handleOpenSidebar: jest.fn(),
-  handleCloseSidebar: jest.fn(),
+  handleResetAlert: mockHandleResetAlert,
+  handleDisplayAlert: mockHandleDisplayAlert,
+  handleOpenModalAddCategory: mockHandleOpenModalAddCategory,
+  handleCloseModalAddCategory: mockHandleCloseModalAddCategory,
+  handleOpenModalManageToDo: mockHandleOpenModalManageToDo,
+  handleCloseModalManageToDo: mockHandleCloseModalManageToDo,
+  handleOpenSidebar: mockHandleOpenSidebar,
+  handleCloseSidebar: mockHandleCloseSidebar,
   ...overrides,
 });
 
@@ -40,36 +63,30 @@ const buildToDosStoreMock = (overrides?: Partial<UseToDosStore>): UseToDosStore 
     viewIdCategory: "",
     idToDoToEdit: "",
   },
-  handleNewCategoryToDo: jest.fn(),
-  handleAddToDo: jest.fn(),
-  handleRemoveToDo: jest.fn(),
-  handleDoneToDo: jest.fn(),
-  handleGoToImportantToDo: jest.fn(),
-  handleEditToDo: jest.fn(),
-  handleSetViewIdCategory: jest.fn(),
-  handleSetEditToDo: jest.fn(),
-  handleResetIdToDoToEdit: jest.fn(),
+  handleNewCategoryToDo: mockHandleNewCategoryToDo,
+  handleAddToDo: mockHandleAddToDo,
+  handleRemoveToDo: mockHandleRemoveToDo,
+  handleDoneToDo: mockHandleDoneToDo,
+  handleGoToImportantToDo: mockHandleGoToImportantToDo,
+  handleEditToDo: mockHandleEditToDo,
+  handleSetViewIdCategory: mockHandleSetViewIdCategory,
+  handleSetEditToDo: mockHandleSetEditToDo,
+  handleResetIdToDoToEdit: mockHandleResetIdToDoToEdit,
   ...overrides,
 });
-
-type RenderPage = {
-  container: HTMLElement;
-  globalMock: UseGlobalStore;
-  todosMock: UseToDosStore;
-};
 
 const renderPage = (
   globalOverrides?: Partial<UseGlobalStore>,
   todosOverrides?: Partial<UseToDosStore>,
   matches = false
 ): RenderPage => {
-  const globalMock = buildGlobalStoreMock(globalOverrides);
-  const todosMock = buildToDosStoreMock(todosOverrides);
-  mockUseGlobalStore.mockReturnValue(globalMock);
-  mockUseToDosStore.mockReturnValue(todosMock);
+  const mockGlobalStore = buildGlobalStoreMock(globalOverrides);
+  const mockToDosStore = buildToDosStoreMock(todosOverrides);
+  mockUseGlobalStore.mockReturnValue(mockGlobalStore);
+  mockUseToDosStore.mockReturnValue(mockToDosStore);
   mockUseMediaQuery.mockReturnValue({ matches });
   const { container } = render(<ToDoPage />);
-  return { container, globalMock, todosMock };
+  return { container, mockGlobalStore, mockToDosStore };
 };
 
 describe("ToDoPage", () => {
