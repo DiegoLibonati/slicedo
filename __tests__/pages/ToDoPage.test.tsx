@@ -14,10 +14,6 @@ type RenderPage = {
   mockToDosStore: UseToDosStore;
 };
 
-jest.mock("@/hooks/useGlobalStore");
-jest.mock("@/hooks/useToDosStore");
-jest.mock("@/hooks/useMatchMedia");
-
 const mockUseGlobalStore = useGlobalStore as jest.MockedFunction<typeof useGlobalStore>;
 const mockUseToDosStore = useToDosStore as jest.MockedFunction<typeof useToDosStore>;
 const mockUseMediaQuery = useMediaQuery as jest.MockedFunction<typeof useMediaQuery>;
@@ -38,6 +34,10 @@ const mockHandleEditToDo = jest.fn();
 const mockHandleSetViewIdCategory = jest.fn();
 const mockHandleSetEditToDo = jest.fn();
 const mockHandleResetIdToDoToEdit = jest.fn();
+
+jest.mock("@/hooks/useGlobalStore");
+jest.mock("@/hooks/useToDosStore");
+jest.mock("@/hooks/useMatchMedia");
 
 const buildGlobalStoreMock = (overrides?: Partial<UseGlobalStore>): UseGlobalStore => ({
   globalState: {

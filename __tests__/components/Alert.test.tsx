@@ -12,8 +12,6 @@ type RenderComponent = {
   mockGlobalStore: UseGlobalStore;
 };
 
-jest.mock("@/hooks/useGlobalStore");
-
 const mockUseGlobalStore = useGlobalStore as jest.MockedFunction<typeof useGlobalStore>;
 const mockHandleResetAlert = jest.fn();
 const mockHandleDisplayAlert = jest.fn();
@@ -23,6 +21,8 @@ const mockHandleOpenModalManageToDo = jest.fn();
 const mockHandleCloseModalManageToDo = jest.fn();
 const mockHandleOpenSidebar = jest.fn();
 const mockHandleCloseSidebar = jest.fn();
+
+jest.mock("@/hooks/useGlobalStore");
 
 const buildGlobalStoreMock = (overrides?: Partial<UseGlobalStore>): UseGlobalStore => ({
   globalState: {

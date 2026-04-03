@@ -11,8 +11,6 @@ type RenderView = {
   mockToDosStore: UseToDosStore;
 };
 
-jest.mock("@/hooks/useToDosStore");
-
 const mockUseToDosStore = useToDosStore as jest.MockedFunction<typeof useToDosStore>;
 const mockHandleNewCategoryToDo = jest.fn();
 const mockHandleAddToDo = jest.fn();
@@ -23,6 +21,8 @@ const mockHandleEditToDo = jest.fn();
 const mockHandleSetViewIdCategory = jest.fn();
 const mockHandleSetEditToDo = jest.fn();
 const mockHandleResetIdToDoToEdit = jest.fn();
+
+jest.mock("@/hooks/useToDosStore");
 
 const buildToDosStoreMock = (overrides?: Partial<UseToDosStore>): UseToDosStore => ({
   toDosState: {

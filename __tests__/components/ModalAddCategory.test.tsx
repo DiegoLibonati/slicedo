@@ -14,9 +14,6 @@ type RenderComponent = {
   mockToDosStore: UseToDosStore;
 };
 
-jest.mock("@/hooks/useGlobalStore");
-jest.mock("@/hooks/useToDosStore");
-
 const mockUseGlobalStore = useGlobalStore as jest.MockedFunction<typeof useGlobalStore>;
 const mockUseToDosStore = useToDosStore as jest.MockedFunction<typeof useToDosStore>;
 const mockHandleResetAlert = jest.fn();
@@ -36,6 +33,9 @@ const mocHandleEditToDo = jest.fn();
 const mocHandleSetViewIdCategory = jest.fn();
 const mocHandleSetEditToDo = jest.fn();
 const mocHandleResetIdToDoToEdit = jest.fn();
+
+jest.mock("@/hooks/useGlobalStore");
+jest.mock("@/hooks/useToDosStore");
 
 const buildGlobalStoreMock = (overrides?: Partial<UseGlobalStore>): UseGlobalStore => ({
   globalState: {
