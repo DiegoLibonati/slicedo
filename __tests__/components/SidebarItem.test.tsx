@@ -10,9 +10,9 @@ type RenderComponent = {
   props: SidebarItemProps;
 };
 
-const renderComponent = (overrides?: Partial<SidebarItemProps>): RenderComponent => {
-  const mockOnOpenCategoryToDo = jest.fn();
+const mockOnOpenCategoryToDo = jest.fn();
 
+const renderComponent = (overrides?: Partial<SidebarItemProps>): RenderComponent => {
   const props: SidebarItemProps = {
     icon: "☀️",
     category: "My Day",
@@ -25,6 +25,10 @@ const renderComponent = (overrides?: Partial<SidebarItemProps>): RenderComponent
 };
 
 describe("SidebarItem", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the category name", () => {
     renderComponent();
     expect(screen.getByText(/My Day/)).toBeInTheDocument();
@@ -36,9 +40,8 @@ describe("SidebarItem", () => {
   });
 
   it("should call onOpenCategoryToDo when the category heading is clicked", async () => {
-    const mockOnOpenCategoryToDo = jest.fn();
     const user = userEvent.setup();
-    renderComponent({ onOpenCategoryToDo: mockOnOpenCategoryToDo });
+    renderComponent();
     await user.click(screen.getByText(/My Day/));
     expect(mockOnOpenCategoryToDo).toHaveBeenCalledTimes(1);
   });

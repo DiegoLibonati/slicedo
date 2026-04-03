@@ -49,6 +49,10 @@ const renderComponent = (overrides?: Partial<UseGlobalStore>): RenderComponent =
 };
 
 describe("Alert", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the alert message", () => {
     renderComponent();
     expect(screen.getByText("Something went wrong")).toBeInTheDocument();

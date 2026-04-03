@@ -54,6 +54,10 @@ const renderView = (overrides?: Partial<UseToDosStore>): RenderView => {
 };
 
 describe("ToDoPresentationView", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render a button for each category", () => {
     renderView();
     expect(screen.getAllByRole("button")).toHaveLength(2);

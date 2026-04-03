@@ -90,6 +90,10 @@ const renderPage = (
 };
 
 describe("ToDoPage", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should always render the sidebar", () => {
     renderPage();
     expect(screen.getByText("Die Redux ToDo")).toBeInTheDocument();

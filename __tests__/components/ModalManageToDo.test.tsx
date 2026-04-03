@@ -95,6 +95,10 @@ const renderComponent = (
 };
 
 describe("ModalManageToDo", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the ADD TODO submit button in add mode", () => {
     renderComponent();
     expect(screen.getByRole("button", { name: "Add new to-do" })).toBeInTheDocument();

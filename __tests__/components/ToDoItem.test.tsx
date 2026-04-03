@@ -89,6 +89,10 @@ const renderComponent = (overrides?: Partial<ToDoItemProps>): RenderComponent =>
 };
 
 describe("ToDoItem", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the todo content", () => {
     renderComponent();
     expect(screen.getByText("Write tests")).toBeInTheDocument();

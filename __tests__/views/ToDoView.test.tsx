@@ -92,6 +92,10 @@ const renderView = (
 };
 
 describe("ToDoView", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the loader when loading", () => {
     const { container } = renderView(undefined, undefined, {
       toDosState: { categories: [], loading: true, viewIdCategory: "", idToDoToEdit: "" },

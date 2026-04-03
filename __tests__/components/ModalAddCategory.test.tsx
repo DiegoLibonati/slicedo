@@ -24,15 +24,15 @@ const mockHandleOpenModalManageToDo = jest.fn();
 const mockHandleCloseModalManageToDo = jest.fn();
 const mockHandleOpenSidebar = jest.fn();
 const mockHandleCloseSidebar = jest.fn();
-const mocHandleNewCategoryToDo = jest.fn();
-const mocHandleAddToDo = jest.fn();
-const mocHandleRemoveToDo = jest.fn();
-const mocHandleDoneToDo = jest.fn();
-const mocHandleGoToImportantToDo = jest.fn();
-const mocHandleEditToDo = jest.fn();
-const mocHandleSetViewIdCategory = jest.fn();
-const mocHandleSetEditToDo = jest.fn();
-const mocHandleResetIdToDoToEdit = jest.fn();
+const mockHandleNewCategoryToDo = jest.fn();
+const mockHandleAddToDo = jest.fn();
+const mockHandleRemoveToDo = jest.fn();
+const mockHandleDoneToDo = jest.fn();
+const mockHandleGoToImportantToDo = jest.fn();
+const mockHandleEditToDo = jest.fn();
+const mockHandleSetViewIdCategory = jest.fn();
+const mockHandleSetEditToDo = jest.fn();
+const mockHandleResetIdToDoToEdit = jest.fn();
 
 jest.mock("@/hooks/useGlobalStore");
 jest.mock("@/hooks/useToDosStore");
@@ -56,15 +56,15 @@ const buildGlobalStoreMock = (overrides?: Partial<UseGlobalStore>): UseGlobalSto
 
 const buildToDosStoreMock = (overrides?: Partial<UseToDosStore>): UseToDosStore => ({
   toDosState: { categories: [], loading: false, viewIdCategory: "", idToDoToEdit: "" },
-  handleNewCategoryToDo: mocHandleNewCategoryToDo,
-  handleAddToDo: mocHandleAddToDo,
-  handleRemoveToDo: mocHandleRemoveToDo,
-  handleDoneToDo: mocHandleDoneToDo,
-  handleGoToImportantToDo: mocHandleGoToImportantToDo,
-  handleEditToDo: mocHandleEditToDo,
-  handleSetViewIdCategory: mocHandleSetViewIdCategory,
-  handleSetEditToDo: mocHandleSetEditToDo,
-  handleResetIdToDoToEdit: mocHandleResetIdToDoToEdit,
+  handleNewCategoryToDo: mockHandleNewCategoryToDo,
+  handleAddToDo: mockHandleAddToDo,
+  handleRemoveToDo: mockHandleRemoveToDo,
+  handleDoneToDo: mockHandleDoneToDo,
+  handleGoToImportantToDo: mockHandleGoToImportantToDo,
+  handleEditToDo: mockHandleEditToDo,
+  handleSetViewIdCategory: mockHandleSetViewIdCategory,
+  handleSetEditToDo: mockHandleSetEditToDo,
+  handleResetIdToDoToEdit: mockHandleResetIdToDoToEdit,
   ...overrides,
 });
 
@@ -78,6 +78,10 @@ const renderComponent = (): RenderComponent => {
 };
 
 describe("ModalAddCategory", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the category name input", () => {
     renderComponent();
     expect(screen.getByPlaceholderText("Category Name")).toBeInTheDocument();

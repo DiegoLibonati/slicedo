@@ -56,6 +56,10 @@ const renderComponent = (overrides?: Partial<ToDoPresentantionButtonProps>): Ren
 };
 
 describe("ToDoPresentantionButton", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the category name", () => {
     renderComponent();
     expect(screen.getByText(/My Day/)).toBeInTheDocument();

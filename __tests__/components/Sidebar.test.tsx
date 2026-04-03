@@ -93,6 +93,10 @@ const renderComponent = (
 };
 
 describe("Sidebar", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the app title", () => {
     renderComponent();
     expect(screen.getByText("Die Redux ToDo")).toBeInTheDocument();
