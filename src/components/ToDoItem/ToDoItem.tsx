@@ -1,14 +1,15 @@
 import { FaTrash, FaEdit, FaStar, FaCalendar, FaCalendarCheck } from "react-icons/fa";
 
-import { ToDo } from "@/types/app";
-import { ToDoItemProps } from "@/types/props";
+import type { JSX } from "react";
+import type { ToDo } from "@/types/app";
+import type { ToDoItemProps } from "@/types/props";
 
 import { useGlobalStore } from "@/hooks/useGlobalStore";
 import { useToDosStore } from "@/hooks/useToDosStore";
 
 import "@/components/ToDoItem/ToDoItem.css";
 
-const ToDoItem = ({ id, content, done, idCategory, category }: ToDoItemProps) => {
+const ToDoItem = ({ id, content, done, idCategory, category }: ToDoItemProps): JSX.Element => {
   const { handleDisplayAlert, handleOpenModalManageToDo } = useGlobalStore();
   const { handleDoneToDo, handleRemoveToDo, handleSetEditToDo, handleGoToImportantToDo } =
     useToDosStore();

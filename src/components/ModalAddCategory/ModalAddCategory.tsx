@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { FaWindowClose } from "react-icons/fa";
-import Picker, { IEmojiData } from "emoji-picker-react";
+import type { IEmojiData } from "emoji-picker-react";
+import Picker from "emoji-picker-react";
 import { v4 as uuidv4 } from "uuid";
 
-import { ToDoCategory } from "@/types/app";
+import type { JSX } from "react";
+import type { ToDoCategory } from "@/types/app";
 
 import { useGlobalStore } from "@/hooks/useGlobalStore";
 import { useToDosStore } from "@/hooks/useToDosStore";
@@ -11,21 +13,16 @@ import { useForm } from "@/hooks/useForm";
 
 import "@/components/ModalAddCategory/ModalAddCategory.css";
 
-const ModalAddCategory = () => {
+const ModalAddCategory = (): JSX.Element => {
   const [chosenEmoji, setChosenEmoji] = useState<IEmojiData | null>(null);
 
   const { handleCloseModalAddCategory, handleDisplayAlert } = useGlobalStore();
   const { handleNewCategoryToDo } = useToDosStore();
-  const { formState, onInputChange, onResetForm } = useForm<{
-    categoryName: string;
-  }>({
+  const { formState, onInputChange, onResetForm } = useForm({
     categoryName: "",
   });
 
-  const onEmojiClick: (event: React.MouseEvent<Element, MouseEvent>, data: IEmojiData) => void = (
-    _,
-    emojiObject
-  ) => {
+  const onEmojiClick: (event: React.MouseEvent, data: IEmojiData) => void = (_, emojiObject) => {
     setChosenEmoji(emojiObject);
   };
 
@@ -33,7 +30,7 @@ const ModalAddCategory = () => {
     handleCloseModalAddCategory();
   };
 
-  const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+  const onSubmit: React.SubmitEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
     const emoji = chosenEmoji?.emoji;

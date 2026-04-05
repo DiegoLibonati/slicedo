@@ -8,11 +8,11 @@ import { useGlobalStore } from "@/hooks/useGlobalStore";
 import { useToDosStore } from "@/hooks/useToDosStore";
 import { useMediaQuery } from "@/hooks/useMatchMedia";
 
-type RenderPage = {
+interface RenderPage {
   container: HTMLElement;
   mockGlobalStore: UseGlobalStore;
   mockToDosStore: UseToDosStore;
-};
+}
 
 const mockUseGlobalStore = useGlobalStore as jest.MockedFunction<typeof useGlobalStore>;
 const mockUseToDosStore = useToDosStore as jest.MockedFunction<typeof useToDosStore>;

@@ -1,6 +1,8 @@
+import type { JSX } from "react";
+
 import ToDoPage from "@/pages/ToDoPage/ToDoPage";
 
-function App() {
+function App(): JSX.Element {
   return <ToDoPage></ToDoPage>;
 }
 

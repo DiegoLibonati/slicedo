@@ -9,12 +9,12 @@ import ToDoView from "@/views/ToDoView/ToDoView";
 import { useGlobalStore } from "@/hooks/useGlobalStore";
 import { useToDosStore } from "@/hooks/useToDosStore";
 
-type RenderView = {
+interface RenderView {
   container: HTMLElement;
   props: ToDoViewProps;
   mockGlobalStore: UseGlobalStore;
   mockToDosStore: UseToDosStore;
-};
+}
 
 const mockUseGlobalStore = useGlobalStore as jest.MockedFunction<typeof useGlobalStore>;
 const mockUseToDosStore = useToDosStore as jest.MockedFunction<typeof useToDosStore>;

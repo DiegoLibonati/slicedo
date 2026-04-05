@@ -1,13 +1,13 @@
-import { Alert, ToDoCategory } from "@/types/app";
+import type { Alert, ToDoCategory } from "@/types/app";
 
-export type ToDosState = {
+export interface ToDosState {
   categories: ToDoCategory[];
   loading: boolean;
   viewIdCategory: string;
   idToDoToEdit: string;
-};
+}
 
-export type GlobalState = {
+export interface GlobalState {
   alert: Alert;
   modal: {
     modalAddCategory: boolean;
@@ -16,4 +16,4 @@ export type GlobalState = {
   sidebar: {
     sidebarMobile: boolean;
   };
-};
+}

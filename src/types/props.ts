@@ -1,4 +1,4 @@
-import { ToDo } from "@/types/app";
+import type { ToDo } from "@/types/app";
 
 // interface DefaultProps {
 //   className?: string;

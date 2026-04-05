@@ -5,10 +5,10 @@ import type { SidebarItemProps } from "@/types/props";
 
 import SidebarItem from "@/components/SidebarItem/SidebarItem";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
   props: SidebarItemProps;
-};
+}
 
 const mockOnOpenCategoryToDo = jest.fn();
 

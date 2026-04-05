@@ -1,10 +1,12 @@
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
+import type { JSX } from "react";
+
 import { useGlobalStore } from "@/hooks/useGlobalStore";
 
 import "@/components/Alert/Alert.css";
 
-const Alert = () => {
+const Alert = (): JSX.Element => {
   const { globalState, handleResetAlert } = useGlobalStore();
 
   const handleClickClose: React.MouseEventHandler<HTMLButtonElement> = () => {

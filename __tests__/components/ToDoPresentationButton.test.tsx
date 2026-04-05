@@ -8,11 +8,11 @@ import ToDoPresentantionButton from "@/components/ToDoPresentationButton/ToDoPre
 
 import { useToDosStore } from "@/hooks/useToDosStore";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
   props: ToDoPresentantionButtonProps;
   mockToDosStore: UseToDosStore;
-};
+}
 
 const mockUseToDosStore = useToDosStore as jest.MockedFunction<typeof useToDosStore>;
 const mockHandleNewCategoryToDo = jest.fn();

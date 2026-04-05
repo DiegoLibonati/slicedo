@@ -1,4 +1,4 @@
-import { UseGlobalStore } from "@/types/hooks";
+import type { UseGlobalStore } from "@/types/hooks";
 
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 
@@ -17,15 +17,15 @@ export const useGlobalStore = (): UseGlobalStore => {
   const globalState = useAppSelector((state) => state.global);
   const dispatch = useAppDispatch();
 
-  const handleResetAlert = () => {
+  const handleResetAlert = (): void => {
     dispatch(resetAlert());
   };
 
-  const handleCloseModalAddCategory = () => {
+  const handleCloseModalAddCategory = (): void => {
     dispatch(closeModalAddCategory());
   };
 
-  const handleDisplayAlert = (message: string, type: string) => {
+  const handleDisplayAlert = (message: string, type: string): void => {
     dispatch(
       displayAlert({
         message: message,
@@ -34,23 +34,23 @@ export const useGlobalStore = (): UseGlobalStore => {
     );
   };
 
-  const handleCloseModalManageToDo = () => {
+  const handleCloseModalManageToDo = (): void => {
     dispatch(closeModalManageToDo());
   };
 
-  const handleOpenSidebar = () => {
+  const handleOpenSidebar = (): void => {
     dispatch(openSidebar());
   };
 
-  const handleCloseSidebar = () => {
+  const handleCloseSidebar = (): void => {
     dispatch(closeSidebar());
   };
 
-  const handleOpenModalAddCategory = () => {
+  const handleOpenModalAddCategory = (): void => {
     dispatch(openModalAddCategory());
   };
 
-  const handleOpenModalManageToDo = () => {
+  const handleOpenModalManageToDo = (): void => {
     dispatch(openModalManageToDo());
   };
 

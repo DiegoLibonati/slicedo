@@ -6,10 +6,10 @@ import ToDoPresentationView from "@/views/ToDoPresentationView/ToDoPresentationV
 
 import { useToDosStore } from "@/hooks/useToDosStore";
 
-type RenderView = {
+interface RenderView {
   container: HTMLElement;
   mockToDosStore: UseToDosStore;
-};
+}
 
 const mockUseToDosStore = useToDosStore as jest.MockedFunction<typeof useToDosStore>;
 const mockHandleNewCategoryToDo = jest.fn();

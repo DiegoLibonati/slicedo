@@ -9,12 +9,12 @@ import ModalManageToDo from "@/components/ModalManageToDo/ModalManageToDo";
 import { useGlobalStore } from "@/hooks/useGlobalStore";
 import { useToDosStore } from "@/hooks/useToDosStore";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
   props: ModalManageToDoProps;
   mockGlobalStore: UseGlobalStore;
   mockToDosStore: UseToDosStore;
-};
+}
 
 const mockUseGlobalStore = useGlobalStore as jest.MockedFunction<typeof useGlobalStore>;
 const mockUseToDosStore = useToDosStore as jest.MockedFunction<typeof useToDosStore>;

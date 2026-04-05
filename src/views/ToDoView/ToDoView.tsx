@@ -2,7 +2,8 @@ import { Fragment } from "react/jsx-runtime";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaPlus, FaRegPaperPlane } from "react-icons/fa";
 
-import { ToDoViewProps } from "@/types/props";
+import type { JSX } from "react";
+import type { ToDoViewProps } from "@/types/props";
 
 import Loader from "@/components/Loader/Loader";
 import ModalManageToDo from "@/components/ModalManageToDo/ModalManageToDo";
@@ -13,7 +14,7 @@ import { useToDosStore } from "@/hooks/useToDosStore";
 
 import "@/views/TodoView/ToDoView.css";
 
-const ToDoView = ({ icon, idCategory, category, toDos }: ToDoViewProps) => {
+const ToDoView = ({ icon, idCategory, category, toDos }: ToDoViewProps): JSX.Element => {
   const { globalState, handleOpenModalManageToDo, handleCloseSidebar } = useGlobalStore();
   const { toDosState } = useToDosStore();
 
@@ -60,7 +61,7 @@ const ToDoView = ({ icon, idCategory, category, toDos }: ToDoViewProps) => {
 
           {toDos.length > 0 && (
             <section className="category-todos">
-              {toDos?.map((toDo) => {
+              {toDos.map((toDo) => {
                 return (
                   <ToDoItem
                     key={toDo.id}

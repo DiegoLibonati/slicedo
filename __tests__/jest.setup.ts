@@ -4,7 +4,7 @@ import { mockLocalStorage, storage } from "@tests/__mocks__/localStorage.mock";
 
 jest.mock("emoji-picker-react", () => ({
   __esModule: true,
-  default: () => null,
+  default: (): null => null,
 }));
 
 Object.defineProperty(global, "localStorage", {

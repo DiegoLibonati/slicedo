@@ -1,7 +1,8 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-import { Alert } from "@/types/app";
-import { GlobalState } from "@/types/states";
+import type { Alert } from "@/types/app";
+import type { GlobalState } from "@/types/states";
 
 const initialState: GlobalState = {
   alert: {

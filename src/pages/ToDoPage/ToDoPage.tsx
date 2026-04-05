@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { Fragment } from "react/jsx-runtime";
 
-import { ToDoCategory } from "@/types/app";
+import type { JSX } from "react";
 
 import Alert from "@/components/Alert/Alert";
 import Sidebar from "@/components/Sidebar/Sidebar";
@@ -20,12 +20,12 @@ import { LOCAL_STORAGE_KEY_CATEGORIES, MEDIA_QUERY_1024 } from "@/constants/vars
 
 import "@/pages/ToDoPage/ToDoPage.css";
 
-const ToDoPage = () => {
+const ToDoPage = (): JSX.Element => {
   const { globalState } = useGlobalStore();
   const { toDosState } = useToDosStore();
   const { matches } = useMediaQuery(MEDIA_QUERY_1024);
 
-  const currentCategory: ToDoCategory = useMemo(() => {
+  const currentCategory = useMemo(() => {
     return getCategoryById(toDosState.categories, toDosState.viewIdCategory);
   }, [toDosState.categories, toDosState.viewIdCategory]);
 

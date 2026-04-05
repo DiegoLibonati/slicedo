@@ -1,18 +1,18 @@
-import { ToDo, ToDoCategory } from "@/types/app";
-import { GlobalState, ToDosState } from "@/types/states";
+import type { ToDo, ToDoCategory } from "@/types/app";
+import type { GlobalState, ToDosState } from "@/types/states";
 
-export type UseForm<T> = {
+export interface UseForm<T> {
   formState: T;
   onInputChange: React.ChangeEventHandler<HTMLInputElement>;
   onTextAreaChange: React.ChangeEventHandler<HTMLTextAreaElement>;
   onResetForm: () => void;
-};
+}
 
-export type UseMatchMedia = {
+export interface UseMatchMedia {
   matches: boolean;
-};
+}
 
-export type UseGlobalStore = {
+export interface UseGlobalStore {
   globalState: GlobalState;
   handleResetAlert: () => void;
   handleCloseModalAddCategory: () => void;
@@ -22,9 +22,9 @@ export type UseGlobalStore = {
   handleCloseSidebar: () => void;
   handleOpenModalAddCategory: () => void;
   handleOpenModalManageToDo: () => void;
-};
+}
 
-export type UseToDosStore = {
+export interface UseToDosStore {
   toDosState: ToDosState;
   handleNewCategoryToDo: (category: ToDoCategory) => void;
   handleResetIdToDoToEdit: () => void;
@@ -35,4 +35,4 @@ export type UseToDosStore = {
   handleRemoveToDo: (idCategory: string, idToDo: string) => void;
   handleSetEditToDo: (idToDo: string) => void;
   handleGoToImportantToDo: (idCategory: string, toDo: ToDo) => void;
-};
+}

@@ -1,7 +1,8 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-import { ToDo, ToDoCategory } from "@/types/app";
-import { ToDosState } from "@/types/states";
+import type { ToDo, ToDoCategory } from "@/types/app";
+import type { ToDosState } from "@/types/states";
 
 import { getCategoriesFromLocalStorage } from "@/helpers/getCategoriesFromLocalStorage";
 

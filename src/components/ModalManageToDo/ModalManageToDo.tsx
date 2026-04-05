@@ -2,7 +2,8 @@ import { useMemo } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 
-import { ModalManageToDoProps } from "@/types/props";
+import type { JSX } from "react";
+import type { ModalManageToDoProps } from "@/types/props";
 
 import { useToDosStore } from "@/hooks/useToDosStore";
 import { useGlobalStore } from "@/hooks/useGlobalStore";
@@ -12,7 +13,7 @@ import { getToDoById } from "@/helpers/getToDoById";
 
 import "@/components/ModalManageToDo/ModalManageToDo.css";
 
-const ModalManageToDo = ({ idCategory, category, icon }: ModalManageToDoProps) => {
+const ModalManageToDo = ({ idCategory, category, icon }: ModalManageToDoProps): JSX.Element => {
   const { toDosState, handleResetIdToDoToEdit, handleAddToDo, handleEditToDo } = useToDosStore();
   const { handleDisplayAlert, handleCloseModalManageToDo } = useGlobalStore();
 
@@ -22,11 +23,11 @@ const ModalManageToDo = ({ idCategory, category, icon }: ModalManageToDoProps) =
     return getToDoById(toDos, toDosState.idToDoToEdit);
   }, [toDosState.categories, toDosState.idToDoToEdit, idCategory]);
 
-  const { onTextAreaChange, formState } = useForm<{ toDoContent: string }>({
-    toDoContent: toDo?.content || "",
+  const { onTextAreaChange, formState } = useForm({
+    toDoContent: toDo?.content ?? "",
   });
 
-  const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+  const onSubmit: React.SubmitEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
     if (!toDo) {

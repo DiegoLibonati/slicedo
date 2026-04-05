@@ -7,10 +7,10 @@ import Alert from "@/components/Alert/Alert";
 
 import { useGlobalStore } from "@/hooks/useGlobalStore";
 
-type RenderComponent = {
+interface RenderComponent {
   container: HTMLElement;
   mockGlobalStore: UseGlobalStore;
-};
+}
 
 const mockUseGlobalStore = useGlobalStore as jest.MockedFunction<typeof useGlobalStore>;
 const mockHandleResetAlert = jest.fn();

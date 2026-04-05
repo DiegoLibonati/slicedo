@@ -1,10 +1,12 @@
+import type { JSX } from "react";
+
 import ToDoPresentantionButton from "@/components/ToDoPresentationButton/ToDoPresentantionButton";
 
 import { useToDosStore } from "@/hooks/useToDosStore";
 
 import "@/views/ToDoPresentationView/ToDoPresentationView.css";
 
-const ToDoPresentationView = () => {
+const ToDoPresentationView = (): JSX.Element => {
   const { toDosState } = useToDosStore();
 
   return (

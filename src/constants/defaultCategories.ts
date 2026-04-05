@@ -1,4 +1,4 @@
-import { ToDoCategory } from "@/types/app";
+import type { ToDoCategory } from "@/types/app";
 
 const defaultCategories: ToDoCategory[] = [
   {

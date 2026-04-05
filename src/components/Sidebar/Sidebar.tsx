@@ -1,6 +1,8 @@
 import { Fragment } from "react/jsx-runtime";
 import { FaPlus } from "react-icons/fa";
 
+import type { JSX } from "react";
+
 import ModalAddCategory from "@/components/ModalAddCategory/ModalAddCategory";
 import SidebarItem from "@/components/SidebarItem/SidebarItem";
 import Loader from "@/components/Loader/Loader";
@@ -13,7 +15,7 @@ import { MEDIA_QUERY_1024 } from "@/constants/vars";
 
 import "@/components/Sidebar/Sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = (): JSX.Element => {
   const { toDosState, handleSetViewIdCategory } = useToDosStore();
   const { globalState, handleOpenSidebar, handleOpenModalAddCategory } = useGlobalStore();
 
@@ -44,7 +46,9 @@ const Sidebar = () => {
                 return (
                   <Fragment key={category.id}>
                     <SidebarItem
-                      onOpenCategoryToDo={() => onOpenCategoryToDo(category.id)}
+                      onOpenCategoryToDo={() => {
+                        onOpenCategoryToDo(category.id);
+                      }}
                       category={category.category}
                       icon={category.icon}
                       quantity={category.toDos.length}
