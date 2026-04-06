@@ -1,6 +1,5 @@
-import type { ToDoPresentantionButtonProps } from "@/types/props";
-
 import type { JSX } from "react";
+import type { ToDoPresentantionButtonProps } from "@/types/props";
 
 import { useToDosStore } from "@/hooks/useToDosStore";
 
