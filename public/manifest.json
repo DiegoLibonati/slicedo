@@ -1,7 +1,7 @@
 {
-  "name": "ToDo Redux",
-  "short_name": "ToDo Redux",
-  "description": "I made a web application that serves to save things to do. In addition we have a sidebar where you will find our default categories: My Day, Important and Tasks. There is a button to add a new custom category in which we can put the name we want and an emoji of our choice for that category. Within each category you will be able to create, edit and delete all of them. When marking an all as done it will change color. Each action of the user will show an alert.",
+  "name": "Slicedo",
+  "short_name": "Slicedo",
+  "description": "Slicedo is a task management web application built with React and Redux Toolkit.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

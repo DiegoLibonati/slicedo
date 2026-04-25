@@ -1,39 +1,26 @@
 import "@testing-library/jest-dom";
 
-import { mockLocalStorage, storage } from "@tests/__mocks__/localStorage.mock";
+interface MediaQueryMock {
+  matches: boolean;
+  media: string;
+  onchange: null;
+  addListener: () => void;
+  removeListener: () => void;
+  addEventListener: () => void;
+  removeEventListener: () => void;
+  dispatchEvent: () => boolean;
+}
 
-jest.mock("emoji-picker-react", () => ({
-  __esModule: true,
-  default: (): null => null,
-}));
-
-Object.defineProperty(global, "localStorage", {
-  value: {
-    getItem: mockLocalStorage.getItem,
-    setItem: mockLocalStorage.setItem,
-    removeItem: mockLocalStorage.removeItem,
-    clear: mockLocalStorage.clear,
-    key: mockLocalStorage.key,
-    length: mockLocalStorage.length,
-  },
+Object.defineProperty(window, "matchMedia", {
   writable: true,
-});
-
-beforeEach(() => {
-  mockLocalStorage.getItem.mockImplementation(
-    (key: string): string | null => storage.get(key) ?? null
-  );
-  mockLocalStorage.setItem.mockImplementation((key: string, value: string): void => {
-    storage.set(key, value);
-  });
-  mockLocalStorage.removeItem.mockImplementation((key: string): void => {
-    storage.delete(key);
-  });
-  mockLocalStorage.clear.mockImplementation((): void => {
-    storage.clear();
-  });
-  mockLocalStorage.key.mockImplementation((index: number): string | null => {
-    const keys = Array.from(storage.keys());
-    return keys[index] ?? null;
-  });
+  value: (query: string): MediaQueryMock => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: (): void => undefined,
+    removeListener: (): void => undefined,
+    addEventListener: (): void => undefined,
+    removeEventListener: (): void => undefined,
+    dispatchEvent: (): boolean => false,
+  }),
 });

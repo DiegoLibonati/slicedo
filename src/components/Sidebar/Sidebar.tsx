@@ -37,7 +37,7 @@ const Sidebar = (): JSX.Element => {
       ) : (
         <Fragment>
           <div className="sidebar__header">
-            <h2 className="sidebar__title">Die Redux ToDo</h2>
+            <h2 className="sidebar__title">Slicedo</h2>
           </div>
 
           <nav className="sidebar__nav">

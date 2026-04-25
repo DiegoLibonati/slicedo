@@ -1,25 +1,25 @@
 import type { JSX } from "react";
 
-import ToDoPresentantionButton from "@/components/ToDoPresentationButton/ToDoPresentantionButton";
+import PresentantionButton from "@/components/PresentationButton/PresentantionButton";
 
 import { useToDosStore } from "@/hooks/useToDosStore";
 
-import "@/views/ToDoPresentationView/ToDoPresentationView.css";
+import "@/views/PresentationView/PresentationView.css";
 
-const ToDoPresentationView = (): JSX.Element => {
+const PresentationView = (): JSX.Element => {
   const { toDosState } = useToDosStore();
 
   return (
-    <main className="main-todo-presentation-view">
+    <main className="main-presentation-view">
       <section className="categories">
         {toDosState.categories.map((category) => {
           return (
-            <ToDoPresentantionButton
+            <PresentantionButton
               key={category.id}
               idCategory={category.id}
               category={category.category}
               icon={category.icon}
-            ></ToDoPresentantionButton>
+            ></PresentantionButton>
           );
         })}
       </section>
@@ -27,4 +27,4 @@ const ToDoPresentationView = (): JSX.Element => {
   );
 };
 
-export default ToDoPresentationView;
+export default PresentationView;

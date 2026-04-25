@@ -1,4 +1,4 @@
-# ToDo React Redux
+# Slicedo
 
 ## Educational Purpose
 
@@ -17,7 +17,23 @@ The application will open automatically at `http://localhost:3000`
 
 ## Description
 
-I made a web application that serves to save things to do. In addition we have a sidebar where you will find our default categories: My Day, Important and Tasks. There is a button to add a new custom category in which we can put the name we want and an emoji of our choice for that category. Within each category you will be able to create, edit and delete all of them. When marking an all as done it will change color. Each action of the user will show an alert.
+**Slicedo** is a task management web application built with React and Redux Toolkit. It lets you organize your to-dos into categories, keeping your work, personal tasks, and priorities clearly separated.
+
+When you open the app, you land on a two-panel layout: a sidebar on the left listing all your categories, and a main area on the right showing the to-dos for whichever category you select. On mobile the sidebar and the to-do view stack on top of each other, and a close button lets you navigate back to the category list.
+
+The app ships with three default categories — **My Day**, **Important**, and **Tasks** — and lets you create as many custom categories as you need. Each custom category gets a name you choose and an emoji icon picked from a full emoji picker, so you can tell your categories apart at a glance.
+
+Inside any category you can:
+
+- **Add** a new to-do by typing its content and submitting the form.
+- **Edit** an existing to-do to correct or update its text.
+- **Delete** a to-do permanently from the category.
+- **Mark a to-do as done or undone** — completed items are visually distinguished with a strikethrough style so you always know what is left.
+- **Move a to-do to the Important category** with a single click, without having to recreate it manually.
+
+Every action — adding, editing, deleting, marking as done, or moving a to-do — triggers a brief feedback alert at the bottom of the screen that confirms what just happened and whether it succeeded or failed.
+
+All data is persisted to `localStorage` automatically, so your categories and to-dos survive page refreshes without any backend or account required.
 
 ## Technologies used
 
@@ -40,7 +56,7 @@ I made a web application that serves to save things to do. In addition we have a
 "react-icons": "^4.4.0"
 "react-redux": "^9.2.0"
 "redux": "^5.0.1"
-"uuid": "^11.0.3"
+"uuid": "^14.0.0"
 ```
 
 #### devDependencies
@@ -74,11 +90,7 @@ I made a web application that serves to save things to do. In addition we have a
 
 ## Portfolio Link
 
-[`https://www.diegolibonati.com.ar/#/project/ToDo-React-Redux`](https://www.diegolibonati.com.ar/#/project/ToDo-React-Redux)
-
-## Video
-
-https://user-images.githubusercontent.com/99032604/199861233-0a2873d1-06fd-495c-a0d3-6ea432c885a5.mp4
+[`https://www.diegolibonati.com.ar/#/project/slicedo`](https://www.diegolibonati.com.ar/#/project/slicedo)
 
 ## Testing
 

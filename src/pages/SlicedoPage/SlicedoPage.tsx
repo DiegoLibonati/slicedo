@@ -7,7 +7,7 @@ import Alert from "@/components/Alert/Alert";
 import Sidebar from "@/components/Sidebar/Sidebar";
 
 import ToDoView from "@/views/ToDoView/ToDoView";
-import ToDoPresentationView from "@/views/ToDoPresentationView/ToDoPresentationView";
+import PresentationView from "@/views/PresentationView/PresentationView";
 
 import { useGlobalStore } from "@/hooks/useGlobalStore";
 import { useToDosStore } from "@/hooks/useToDosStore";
@@ -18,9 +18,9 @@ import { setLocalStorage } from "@/helpers/setLocalStorage";
 
 import { LOCAL_STORAGE_KEY_CATEGORIES, MEDIA_QUERY_1024 } from "@/constants/vars";
 
-import "@/pages/ToDoPage/ToDoPage.css";
+import "@/pages/SlicedoPage/SlicedoPage.css";
 
-const ToDoPage = (): JSX.Element => {
+const SlicedoPage = (): JSX.Element => {
   const { globalState } = useGlobalStore();
   const { toDosState } = useToDosStore();
   const { matches } = useMediaQuery(MEDIA_QUERY_1024);
@@ -46,11 +46,11 @@ const ToDoPage = (): JSX.Element => {
         ></ToDoView>
       )}
 
-      {matches && !toDosState.viewIdCategory && <ToDoPresentationView></ToDoPresentationView>}
+      {matches && !toDosState.viewIdCategory && <PresentationView></PresentationView>}
 
       {globalState.alert.message && <Alert></Alert>}
     </Fragment>
   );
 };
 
-export default ToDoPage;
+export default SlicedoPage;

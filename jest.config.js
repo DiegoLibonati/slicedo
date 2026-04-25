@@ -15,8 +15,9 @@ const config = {
     "^@tests/(.*)$": "<rootDir>/__tests__/$1",
   },
   transform: {
-    "^.+\\.tsx?$": ["ts-jest", { tsconfig: "tsconfig.test.json" }],
+    "^.+\\.[tj]sx?$": ["ts-jest", { tsconfig: "tsconfig.test.json" }],
   },
+  transformIgnorePatterns: ["node_modules/(?!(uuid)/)"],
   collectCoverageFrom: [
     "src/**/*.{ts,tsx}",
     "!src/**/*.d.ts",

@@ -1,5 +1,5 @@
 {
-  "name": "todo-redux",
+  "name": "slicedo",
   "version": "2.0.0",
   "type": "module",
   "private": true,
@@ -15,7 +15,7 @@
     "react-icons": "^4.4.0",
     "react-redux": "^9.2.0",
     "redux": "^5.0.1",
-    "uuid": "^11.0.3"
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",

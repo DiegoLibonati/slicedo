@@ -1,9 +1,9 @@
 import type { JSX } from "react";
 
-import ToDoPage from "@/pages/ToDoPage/ToDoPage";
+import SlicedoPage from "@/pages/SlicedoPage/SlicedoPage";
 
 function App(): JSX.Element {
-  return <ToDoPage></ToDoPage>;
+  return <SlicedoPage></SlicedoPage>;
 }
 
 export default App;

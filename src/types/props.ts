@@ -26,7 +26,7 @@ export interface ToDoItemProps {
   category: string;
 }
 
-export interface ToDoPresentantionButtonProps {
+export interface PresentantionButtonProps {
   idCategory: string;
   category: string;
   icon: string;
