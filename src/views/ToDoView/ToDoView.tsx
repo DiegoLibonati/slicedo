@@ -12,7 +12,7 @@ import ToDoItem from "@/components/ToDoItem/ToDoItem";
 import { useGlobalStore } from "@/hooks/useGlobalStore";
 import { useToDosStore } from "@/hooks/useToDosStore";
 
-import "@/views/TodoView/ToDoView.css";
+import "@/views/ToDoView/ToDoView.css";
 
 const ToDoView = ({ icon, idCategory, category, toDos }: ToDoViewProps): JSX.Element => {
   const { globalState, handleOpenModalManageToDo, handleCloseSidebar } = useGlobalStore();
