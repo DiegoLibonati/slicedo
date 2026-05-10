@@ -6,15 +6,6 @@ This project was created primarily for **educational and learning purposes**.
 While it is well-structured and could technically be used in production, it is **not intended for commercialization**.  
 The main goal is to explore and demonstrate best practices, patterns, and technologies in software development.
 
-## Getting Started
-
-1. Clone the repository
-2. Navigate to the project folder
-3. Execute: `npm install`
-4. Execute: `npm run dev`
-
-The application will open automatically at `http://localhost:3000`
-
 ## Description
 
 **Slicedo** is a task management web application built with React and Redux Toolkit. It lets you organize your to-dos into categories, keeping your work, personal tasks, and priorities clearly separated.
@@ -44,6 +35,8 @@ All data is persisted to `localStorage` automatically, so your categories and to
 5. CSS3
 
 ## Libraries used
+
+The stack above is composed from the following npm packages, split between application dependencies and tooling.
 
 #### Dependencies
 
@@ -89,11 +82,20 @@ All data is persisted to `localStorage` automatically, so your categories and to
 "vite": "^7.1.6"
 ```
 
-## Portfolio Link
+## Getting Started
 
-[`https://www.diegolibonati.com.ar/#/project/slicedo`](https://www.diegolibonati.com.ar/#/project/slicedo)
+With the stack in mind, you can run Slicedo locally in a few steps:
+
+1. Clone the repository
+2. Navigate to the project folder
+3. Execute: `npm install`
+4. Execute: `npm run dev`
+
+The application will open automatically at `http://localhost:3000`.
 
 ## Testing
+
+Once the app is running, you can validate behavior end-to-end with the test suite.
 
 1. Navigate to the project folder
 2. Execute: `npm test`
@@ -104,7 +106,9 @@ For coverage report:
 npm run test:coverage
 ```
 
-## Security
+## Security Audit
+
+Beyond functional tests, the project also exposes commands to audit dependency vulnerabilities and overall codebase health.
 
 ### npm audit
 
@@ -131,3 +135,7 @@ npm run doctor -- --verbose
 ## Known Issues
 
 None at the moment.
+
+## Portfolio Link
+
+[`https://www.diegolibonati.com.ar/#/project/slicedo`](https://www.diegolibonati.com.ar/#/project/slicedo)
