@@ -28,4 +28,9 @@ describe("getLocalStorage", () => {
     localStorage.setItem("emptyKey", "");
     expect(getLocalStorage("emptyKey")).toBeNull();
   });
+
+  it("should return null when the stored value is malformed JSON", () => {
+    localStorage.setItem("brokenKey", "{not-valid-json");
+    expect(getLocalStorage("brokenKey")).toBeNull();
+  });
 });

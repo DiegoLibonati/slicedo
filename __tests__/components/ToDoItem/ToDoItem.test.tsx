@@ -115,6 +115,25 @@ describe("ToDoItem", () => {
       expect(category?.toDos.find((t) => t.id === "todo-1")?.done).toBe(true);
     });
 
+    it("should toggle the todo to incomplete when the incomplete button is clicked", async () => {
+      const user = userEvent.setup();
+      const store = createTestStore({ toDos: defaultToDosState });
+      render(
+        <Provider store={store}>
+          <ToDoItem
+            id="todo-2"
+            content="Read book"
+            done={true}
+            idCategory="cat-1"
+            category="Work"
+          />
+        </Provider>
+      );
+      await user.click(screen.getByRole("button", { name: "Mark to-do as incomplete" }));
+      const category = store.getState().toDos.categories.find((c) => c.id === "cat-1");
+      expect(category?.toDos.find((t) => t.id === "todo-2")?.done).toBe(false);
+    });
+
     it("should remove the todo from the store when the delete button is clicked", async () => {
       const user = userEvent.setup();
       const store = createTestStore({ toDos: defaultToDosState });

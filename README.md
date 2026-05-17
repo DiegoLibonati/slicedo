@@ -106,6 +106,50 @@ For coverage report:
 npm run test:coverage
 ```
 
+## Continuous Integration
+
+The repository ships with a **GitHub Actions** pipeline defined in [`.github/workflows/ci.yml`](.github/workflows/ci.yml). It runs automatically on every `push` and `pull_request` targeting the `main` branch.
+
+### Pipeline overview
+
+```
+                      ┌─── PR or push to main ───┐
+                      ▼                          ▼
+┌──────────────────────┐  ┌──────────────────┐  ┌──────────────────┐
+│   lint-and-audit     │─▶│     testing      │─▶│      build       │
+│ eslint · type-check  │  │  jest --verbose  │  │ tsc + vite build │
+└──────────────────────┘  └──────────────────┘  └──────────────────┘
+```
+
+### Validation jobs (run on every PR and push)
+
+1. **`lint-and-audit`** — installs dependencies with `npm ci`, then runs `npm run lint` (ESLint over `src/`) followed by `npm run type-check` (`tsc -p tsconfig.app.json --noEmit`).
+2. **`testing`** — depends on `lint-and-audit`. Re-installs dependencies and runs the full Jest suite with `npm run test`.
+3. **`build`** — depends on `testing`. Re-installs dependencies and runs `npm run build` (`tsc` + `vite build`) as a smoke test that the production bundle compiles end-to-end.
+
+All jobs run on `ubuntu-latest` and use **Node 22** as pinned by [`.nvmrc`](.nvmrc), with npm's lockfile-based cache enabled via `actions/setup-node`.
+
+### Where the build outputs live
+
+| Output                                    | Location                     |
+| ----------------------------------------- | ---------------------------- |
+| Validation logs (lint, type-check, tests) | **Actions** tab on GitHub    |
+| Production bundle (`dist/`)               | Ephemeral, inside the runner |
+
+### Running the same checks locally
+
+```bash
+# lint-and-audit
+npm run lint
+npm run type-check
+
+# testing
+npm test
+
+# build
+npm run build
+```
+
 ## Security Audit
 
 Beyond functional tests, the project also exposes commands to audit dependency vulnerabilities and overall codebase health.
