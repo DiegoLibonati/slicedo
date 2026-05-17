@@ -11,9 +11,9 @@ import "animate.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(
-  <Provider store={store}>
-    <StrictMode>
+  <StrictMode>
+    <Provider store={store}>
       <App />
-    </StrictMode>
-  </Provider>
+    </Provider>
+  </StrictMode>
 );
